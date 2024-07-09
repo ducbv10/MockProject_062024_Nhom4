@@ -1,0 +1,283 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/user:
+    get:
+      summary: ''
+      operationId: getApiUser
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/notifications:
+    get:
+      summary: 'Display a listing of the notifications.'
+      operationId: displayAListingOfTheNotifications
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      NotificationId: '1'
+                      Content: 'Lorem ipsum...'
+                      Title: 'Notification 1'
+                    -
+                      NotificationId: '2'
+                      Content: 'Dolor sit amet...'
+                      Title: 'Notification 2'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        NotificationId: '1'
+                        Content: 'Lorem ipsum...'
+                        Title: 'Notification 1'
+                      -
+                        NotificationId: '2'
+                        Content: 'Dolor sit amet...'
+                        Title: 'Notification 2'
+                    items:
+                      type: object
+                      properties:
+                        NotificationId:
+                          type: string
+                          example: '1'
+                        Content:
+                          type: string
+                          example: 'Lorem ipsum...'
+                        Title:
+                          type: string
+                          example: 'Notification 1'
+      tags:
+        - Notifications
+      security: []
+    post:
+      summary: 'Store a newly created notification in storage.'
+      operationId: storeANewlyCreatedNotificationInStorage
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Notification created successfully'
+                  data:
+                    NotificationId: '1'
+                    Content: 'Lorem ipsum...'
+                    Title: 'Notification 1'
+                properties:
+                  message:
+                    type: string
+                    example: 'Notification created successfully'
+                  data:
+                    type: object
+                    properties:
+                      NotificationId:
+                        type: string
+                        example: '1'
+                      Content:
+                        type: string
+                        example: 'Lorem ipsum...'
+                      Title:
+                        type: string
+                        example: 'Notification 1'
+      tags:
+        - Notifications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                NotificationId:
+                  type: string
+                  description: 'The ID of the notification.'
+                  example: '1'
+                Content:
+                  type: string
+                  description: 'The content of the notification.'
+                  example: id
+                Title:
+                  type: string
+                  description: 'The title of the notification.'
+                  example: libero
+              required:
+                - NotificationId
+                - Content
+                - Title
+      security: []
+  '/api/notifications/{NotificationId}':
+    get:
+      summary: 'Display the specified notification.'
+      operationId: displayTheSpecifiedNotification
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    NotificationId: '1'
+                    Content: 'Lorem ipsum...'
+                    Title: 'Notification 1'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      NotificationId:
+                        type: string
+                        example: '1'
+                      Content:
+                        type: string
+                        example: 'Lorem ipsum...'
+                      Title:
+                        type: string
+                        example: 'Notification 1'
+      tags:
+        - Notifications
+      security: []
+    put:
+      summary: 'Update the specified notification in storage.'
+      operationId: updateTheSpecifiedNotificationInStorage
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Notification updated successfully'
+                  data:
+                    NotificationId: '1'
+                    Content: 'Updated content...'
+                    Title: 'Updated Notification'
+                properties:
+                  message:
+                    type: string
+                    example: 'Notification updated successfully'
+                  data:
+                    type: object
+                    properties:
+                      NotificationId:
+                        type: string
+                        example: '1'
+                      Content:
+                        type: string
+                        example: 'Updated content...'
+                      Title:
+                        type: string
+                        example: 'Updated Notification'
+      tags:
+        - Notifications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Content:
+                  type: string
+                  description: 'The new content of the notification.'
+                  example: consequuntur
+                Title:
+                  type: string
+                  description: 'The new title of the notification.'
+                  example: omnis
+              required:
+                - Content
+                - Title
+      security: []
+    delete:
+      summary: 'Remove the specified notification from storage.'
+      operationId: removeTheSpecifiedNotificationFromStorage
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Notification deleted successfully'
+                  data:
+                    NotificationId: '1'
+                    Content: 'Deleted content...'
+                    Title: 'Deleted Notification'
+                properties:
+                  message:
+                    type: string
+                    example: 'Notification deleted successfully'
+                  data:
+                    type: object
+                    properties:
+                      NotificationId:
+                        type: string
+                        example: '1'
+                      Content:
+                        type: string
+                        example: 'Deleted content...'
+                      Title:
+                        type: string
+                        example: 'Deleted Notification'
+      tags:
+        - Notifications
+      security: []
+    parameters:
+      -
+        in: path
+        name: NotificationId
+        description: 'The ID of the notification.'
+        example: '1'
+        required: true
+        schema:
+          type: string
+tags:
+  -
+    name: Endpoints
+    description: ''
+  -
+    name: Notifications
+    description: ''
