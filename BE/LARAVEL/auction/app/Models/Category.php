@@ -10,7 +10,7 @@ class Category extends Model
 {
     use HasFactory, SoftDeletes;
     protected $table = 'Category';
-    //protected $primaryKey = 'CategoryId';
+    protected $primaryKey = 'CategoryId';
     protected $fillable = ['CategoryId', 'CategoryName', 'Description', 'DeletedAt'];
 
     protected $dates = ['DeletedAt'];
