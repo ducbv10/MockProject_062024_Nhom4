@@ -19,12 +19,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::prefix('category')->group(function () {
-    Route::get('/', [CategoryController::class, 'index']);
-    Route::get('/{id}', [CategoryController::class, 'show']);
-    Route::post('/', [CategoryController::class, 'store']);
-    Route::put('/{id}', [CategoryController::class, 'update']);
-    Route::delete('/{id}', [CategoryController::class, 'destroy']);
-    Route::patch('/restore/{id}', [CategoryController::class, 'restore']);
+    Route::get('/', [CategoryController::class, 'index']); // Get All Categories
+    Route::get('/{id}', [CategoryController::class, 'show']); // Get Category by ID
+    Route::post('/', [CategoryController::class, 'store']); // Create a New Category
+    Route::put('/{id}', [CategoryController::class, 'update']); // Update Category
+    Route::delete('/{id}', [CategoryController::class, 'destroy']); // Soft Delete Category
+    Route::patch('/restore/{id}', [CategoryController::class, 'restore']); // Restore Soft Deleted Category
 });
 
 Route::get('/notifications', [NotificationController::class, 'index']);
