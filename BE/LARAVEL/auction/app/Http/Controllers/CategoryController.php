@@ -45,27 +45,35 @@ class CategoryController extends Controller
     /**
      * Store a newly created category in storage.
      *
+     * This endpoint creates a new category with the provided details.
+     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      *
      * @group Categories
-     * @bodyParam CategoryId string required The ID of the category. Example: 1
+     * @bodyParam CategoryId string required The ID of the category. Example: CA00000001
      * @bodyParam CategoryName string required The name of the category. Example: Category 1
-     * @bodyParam Description string The description of the category.
-     * @response {
-     *  "message": "Category created successfully",
-     *  "data": {
-     *      "CategoryId": "1",
-     *      "CategoryName": "Category 1",
-     *      "Description": "Description of Category 1"
-     *  }
+     * @bodyParam Description string The description of the category. Example: This is a category description.
+     *
+     * @response 201 {
+     *     "message": "Category created successfully",
+     *     "data": {
+     *         "CategoryId": "CA00000001",
+     *         "CategoryName": "Category 1",
+     *         "Description": "This is a category description."
+     *     }
      * }
+     *
      * @response 400 {
-     *  "error": {
-     *      "CategoryId": [
-     *          "The category ID has already been taken."
-     *      ]
-     *  }
+     *     "error": {
+     *         "CategoryId": [
+     *             "The category ID has already been taken."
+     *         ]
+     *     }
+     * }
+     *
+     * @response 500 {
+     *     "error": "Failed to create category."
      * }
      */
     public function store(Request $request)
@@ -80,16 +88,18 @@ class CategoryController extends Controller
             return response()->json(['error' => $validator->errors()], 400);
         }
 
-        $category = Category::create([
-            'CategoryId' => $request->input('CategoryId'),
-            'CategoryName' => $request->input('CategoryName'),
-            'Description' => $request->input('Description'),
-        ]);
+        try {
+            $data = $request->only(['CategoryId', 'CategoryName', 'Description' ]);
+            
+            $category = Category::create($data);
 
-        return response()->json([
-            'message' => 'Category created successfully',
-            'data' => $category,
-        ], 201);
+            return response()->json([
+                'message' => 'Category created successfully',
+                'data' => $category,
+            ], 201);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to create category.'], 500);
+        }
     }
 
     /**
@@ -108,7 +118,7 @@ class CategoryController extends Controller
      *  }
      * }
      * @response 404 {
-     *  "error": "Not Found"
+     *  "error": "Category not found."
      * }
      */
     public function show($id)
@@ -116,59 +126,60 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         return response()->json(['data' => $category]);
     }
-/**
- * Update the specified category in storage.
- *
- * @param  \Illuminate\Http\Request  $request
- * @param  string  $id
- * @return \Illuminate\Http\JsonResponse
- *
- * @group Categories
- * @urlParam id required The ID of the category to update. Example: 1
- * @bodyParam CategoryName string required The new name of the category. Example: Updated Category
- * @bodyParam Description string The new description of the category.
- * @response {
- *  "message": "Category updated successfully",
- *  "data": {
- *      "CategoryId": "1",
- *      "CategoryName": "Updated Category",
- *      "Description": "New description"
- *  }
- * }
- * @response 400 {
- *  "error": {
- *      "CategoryName": [
- *          "The category name field is required."
- *      ]
- *  }
- * }
- * @response 404 {
- *  "error": "Category not found."
- * }
- */
-public function update(Request $request, $id)
-{
-    $category = Category::findOrFail($id);
 
-    $validator = Validator::make($request->all(), [
-        'CategoryName' => 'required|string|max:255',
-        'Description' => 'nullable|string',
-    ]);
+    /**
+     * Update the specified category in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $id
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @group Categories
+     * @urlParam id required The ID of the category to update. Example: 1
+     * @bodyParam CategoryName string required The new name of the category. Example: Updated Category
+     * @bodyParam Description string The new description of the category.
+     * @response {
+     *  "message": "Category updated successfully",
+     *  "data": {
+     *      "CategoryId": "1",
+     *      "CategoryName": "Updated Category",
+     *      "Description": "New description"
+     *  }
+     * }
+     * @response 400 {
+     *  "error": {
+     *      "CategoryName": [
+     *          "The category name field is required."
+     *      ]
+     *  }
+     * }
+     * @response 404 {
+     *  "error": "Category not found."
+     * }
+     */
+    public function update(Request $request, $id)
+    {
+        $category = Category::findOrFail($id);
 
-    if ($validator->fails()) {
-        return response()->json(['error' => $validator->errors()], 400);
+        $validator = Validator::make($request->all(), [
+            'CategoryName' => 'required|string|max:255',
+            'Description' => 'nullable|string',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 400);
+        }
+
+        $category->update([
+            'CategoryName' => $request->input('CategoryName'),
+            'Description' => $request->input('Description'),
+        ]);
+
+        return response()->json([
+            'message' => 'Category updated successfully',
+            'data' => $category,
+        ], 200);
     }
-
-    $category->update([
-        'CategoryName' => $request->input('CategoryName'),
-        'Description' => $request->input('Description'),
-    ]);
-
-    return response()->json([
-        'message' => 'Category updated successfully',
-        'data' => $category,
-    ], 200);
-}
 
     /**
      * Remove the specified category from storage.
