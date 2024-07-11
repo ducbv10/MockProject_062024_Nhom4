@@ -1,97 +1,106 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    protected $categories;
+    protected $category;
+
     public function __construct()
     {
-        $this-> categories = new Category();
+        $this->category = new Category();
     }
+
     public function index()
     {
-        $categories = Category::all();
-        return response()->json($categories); 
+        $category = Category::all();
+        return response()->json($category);
     }
 
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $validate = [
-            'name' => 'required|string|max:255|unique:categories',
+            'CategoryId' => 'required|string|max:10|unique:Category,CategoryId',
+            'CategoryName' => 'required|string|max:255',
+            'Description' => 'nullable|string',
         ];
-        $validator = validator::make($request ->all(),$validate);
+        $validator = Validator::make($request->all(), $validate);
+
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 400);
         }
-        $dataInsert = $validator -> validated();
+
+        $dataInsert = $validator->validated();
         $category = Category::create($dataInsert);
-        return response()->json( ['message' => 'Category created successfully',
+
+        return response()->json([
+            'message' => 'Category created successfully',
             'data' => $category,
-        ], 200);
+        ], 201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        $categories = Category::findOrFail($id);
-        return response()->json($categories);
+        $category = Category::findOrFail($id);
+        return response()->json($category);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $category = Category::findOrFail($id);
 
-         $validate = [
-        'name' => 'required|string|max:255|unique:categories,name,' . $id,
-    ];
+        $validate = [
+            'CategoryId' => 'required|string|max:10|unique:Category,CategoryId,' . $id . ',CategoryId',
+            'CategoryName' => 'required|string|max:255',
+            'Description' => 'nullable|string',
+        ];
         $validator = Validator::make($request->all(), $validate);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 400);
         }
+
         $dataUpdate = $validator->validated();
         $category->update($dataUpdate);
+
         return response()->json([
             'message' => 'Category updated successfully',
             'data' => $category,
         ], 200);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+
+        if (!$category) {
+            return response()->json(['error' => 'Category not found.'], 404);
+        }
+
+        $category->delete();
+
+        return response()->json([
+            'message' => 'Category deleted successfully',
+        ], 200);
+    }
+
+    public function restore($id)
+    {
+        $category = Category::withTrashed()->find($id);
+
+        if (!$category) {
+            return response()->json(['error' => 'Category not found.'], 404);
+        }
+
+        $category->restore();
+
+        return response()->json([
+            'message' => 'Category restored successfully',
+            'data' => $category,
+        ], 200);
     }
 }
