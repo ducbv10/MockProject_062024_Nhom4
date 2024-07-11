@@ -1,0 +1,21 @@
+server:
+    port: 8080
+    servlet:
+        context-path: /api/v1
+
+spring:
+    datasource:
+        url: jdbc:sqlserver://NNGUYEN\\SQLEXPRESS:1433;encrypt=false;databaseName=MockProject_062024_Nhom4
+        username: sa
+        password: Anvu003133
+        driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+    jpa:
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.SQLServerDialect
+        hibernate:
+            naming:
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+            ddl-auto: none
+        show-sql: true
