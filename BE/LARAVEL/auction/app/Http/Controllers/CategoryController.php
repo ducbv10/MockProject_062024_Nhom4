@@ -79,7 +79,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'CategoryId' => 'required|string|max:10|unique:categories',
+            'CategoryId' => 'required|string|max:10|unique:Category',
             'CategoryName' => 'required|string|max:255',
             'Description' => 'nullable|string',
         ]);
