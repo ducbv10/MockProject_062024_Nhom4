@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\NotificationController;
-use Illuminate\Http\Request;use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AssetController;
+use App\Http\Controllers\AppraiserController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -35,6 +38,14 @@ Route::prefix('assets')->group(function () {
     Route::put('/{id}', [AssetController::class, 'update']); // Update Asset
     Route::delete('/{id}', [AssetController::class, 'destroy']); // Soft Delete Asset
     Route::patch('/restore/{id}', [AssetController::class, 'restore']); // Restore Soft Deleted Asset
+});
+Route::prefix('appraisers')->group(function () {
+    Route::get('/', [AppraiserController::class, 'index']); // Get All Assets
+    Route::get('/{id}', [AppraiserController::class, 'show']); // Get Asset by ID
+    Route::post('/', [AppraiserController::class, 'store']); // Create a New Asset
+    Route::put('/{id}', [AppraiserController::class, 'update']); // Update Asset
+    Route::delete('/{id}', [AppraiserController::class, 'destroy']); // Soft Delete Asset
+    Route::patch('/restore/{id}', [AppraiserController::class, 'restore']); // Restore Soft Deleted Asset
 });
 
 Route::get('/notifications', [NotificationController::class, 'index']);
