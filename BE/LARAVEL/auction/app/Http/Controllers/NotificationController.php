@@ -2,192 +2,87 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Notification;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
+/**
+ * @group Notifications
+ *
+ * APIs for managing notifications
+ */
 class NotificationController extends Controller
 {
     /**
      * Display a listing of the notifications.
      *
-     * @return \Illuminate\Http\JsonResponse
-     *
-     * @group Notifications
-     * @response {
-     *  "data": [
-     *      {
-     *          "NotificationId": "1",
-     *          "Content": "Lorem ipsum...",
-     *          "Title": "Notification 1"
-     *      },
-     *      {
-     *          "NotificationId": "2",
-     *          "Content": "Dolor sit amet...",
-     *          "Title": "Notification 2"
-     *      }
-     *  ]
-     * }
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $notifications = Notification::all();
-
-        return response()->json([
-            'data' => $notifications,
-        ]);
-    }
-
-    /**
-     * Display the specified notification.
-     *
-     * @param  string  $NotificationId
-     * @return \Illuminate\Http\JsonResponse
-     *
-     * @group Notifications
-     * @urlParam NotificationId required The ID of the notification. Example: 1
-     * @response {
-     *  "data": {
-     *      "NotificationId": "1",
-     *      "Content": "Lorem ipsum...",
-     *      "Title": "Notification 1"
-     *  }
-     * }
-     */
-    public function show($NotificationId)
-    {
-        $notification = Notification::find($NotificationId);
-
-        if (!$notification) {
-            return response()->json(['error' => 'Notification not found.'], 404);
-        }
-
-        return response()->json([
-            'data' => $notification,
-        ]);
+        return Notification::all();
     }
 
     /**
      * Store a newly created notification in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
+     * @bodyParam UserId string required The ID of the user associated with the notification. Example: U12345
+     * @bodyParam Content string required The content of the notification. Example: New message received.
+     * @bodyParam Title string required The title of the notification. Example: New Message
      *
-     * @group Notifications
-     * @bodyParam NotificationId string required The ID of the notification. Example: 1
-     * @bodyParam Content string required The content of the notification.
-     * @bodyParam Title string required The title of the notification.
-     * @response {
-     *  "message": "Notification created successfully",
-     *  "data": {
-     *      "NotificationId": "1",
-     *      "Content": "Lorem ipsum...",
-     *      "Title": "Notification 1"
-     *  }
-     * }
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'NotificationId' => 'required|string|max:10|unique:notifications',
-            'Content' => 'required|string',
-            'Title' => 'required|string',
-        ]);
+        $notification = Notification::create($request->all());
+        return response()->json($notification, 201);
+    }
 
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 400);
-        }
-
-        $notification = Notification::create([
-            'NotificationId' => $request->input('NotificationId'),
-            'Content' => $request->input('Content'),
-            'Title' => $request->input('Title'),
-        ]);
-
-        return response()->json([
-            'message' => 'Notification created successfully',
-            'data' => $notification,
-        ], 201);
+    /**
+     * Display the specified notification.
+     *
+     * @urlParam id string required The ID of the notification.
+     *
+     * @param  string  $NotificationId
+     * @return \Illuminate\Http\Response
+     */
+    public function show($NotificationId)
+    {
+        $notification = Notification::findOrFail($NotificationId);
+        return response()->json($notification);
     }
 
     /**
      * Update the specified notification in storage.
      *
+     * @urlParam id string required The ID of the notification.
+     * @bodyParam UserId string required The ID of the user associated with the notification. Example: U12345
+     * @bodyParam Content string required The content of the notification. Example: Updated message content.
+     * @bodyParam Title string required The title of the notification. Example: Updated Message
+     *
      * @param  \Illuminate\Http\Request  $request
      * @param  string  $NotificationId
-     * @return \Illuminate\Http\JsonResponse
-     *
-     * @group Notifications
-     * @urlParam NotificationId required The ID of the notification to update. Example: 1
-     * @bodyParam Content string required The new content of the notification.
-     * @bodyParam Title string required The new title of the notification.
-     * @response {
-     *  "message": "Notification updated successfully",
-     *  "data": {
-     *      "NotificationId": "1",
-     *      "Content": "Updated content...",
-     *      "Title": "Updated Notification"
-     *  }
-     * }
+     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $NotificationId)
     {
-        $notification = Notification::find($NotificationId);
-
-        if (!$notification) {
-            return response()->json(['error' => 'Notification not found.'], 404);
-        }
-
-        $validator = Validator::make($request->all(), [
-            'Content' => 'required|string',
-            'Title' => 'required|string',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 400);
-        }
-
-        $notification->update([
-            'Content' => $request->input('Content'),
-            'Title' => $request->input('Title'),
-        ]);
-
-        return response()->json([
-            'message' => 'Notification updated successfully',
-            'data' => $notification,
-        ]);
+        $notification = Notification::findOrFail($NotificationId);
+        $notification->update($request->all());
+        return response()->json($notification, 200);
     }
 
     /**
      * Remove the specified notification from storage.
      *
-     * @param  string  $NotificationId
-     * @return \Illuminate\Http\JsonResponse
+     * @urlParam id string required The ID of the notification.
      *
-     * @group Notifications
-     * @urlParam NotificationId required The ID of the notification to delete. Example: 1
-     * @response {
-     *  "message": "Notification deleted successfully",
-     *  "data": {
-     *      "NotificationId": "1",
-     *      "Content": "Deleted content...",
-     *      "Title": "Deleted Notification"
-     *  }
-     * }
+     * @param  string  $NotificationId
+     * @return \Illuminate\Http\Response
      */
     public function destroy($NotificationId)
     {
-        $notification = Notification::find($NotificationId);
-
-        if (!$notification) {
-            return response()->json(['error' => 'Notification not found.'], 404);
-        }
-
-        $notification->delete();
-
-        return response()->json([
-            'message' => 'Notification deleted successfully',
-            'data' => $notification,
-        ]);
+        Notification::findOrFail($NotificationId)->delete();
+        return response()->json(['message' => 'Notification deleted successfully'], 200);
     }
 }
