@@ -9,7 +9,7 @@ class Asset extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $table = 'Asset'; 
+    protected $table = 'Asset';
     protected $primaryKey = 'AssetId'; 
 
     protected $fillable = [
@@ -18,7 +18,7 @@ class Asset extends Model
         'WareHouseId', 'CategoryId', 'DeletedAt'
     ];
 
-    protected $dates = ['DeletedAt']; 
+    protected $dates = ['DeletedAt'];
     const DELETED_AT = 'DeletedAt';
     public $timestamps = false;
 
