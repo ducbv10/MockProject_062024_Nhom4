@@ -27,7 +27,37 @@ public class TransactionHistoryCreationRequest {
     private User user;
 	
     private AuctionDetail auctionDetail;
-    private LocalDateTime deleteAt;
+	private LocalDateTime deleteAt;
+    
+    public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public AuctionDetail getAuctionDetail() {
+		return auctionDetail;
+	}
+
+	public void setAuctionDetail(AuctionDetail auctionDetail) {
+		this.auctionDetail = auctionDetail;
+	}
+
+	public LocalDateTime getDeleteAt() {
+		return deleteAt;
+	}
+
+	public void setDeleteAt(LocalDateTime deleteAt) {
+		this.deleteAt = deleteAt;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
 
     public String getTransactionHistoryId() {
         return transactionHistoryId;

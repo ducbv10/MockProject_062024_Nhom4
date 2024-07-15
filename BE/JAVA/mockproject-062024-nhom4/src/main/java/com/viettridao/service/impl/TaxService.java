@@ -18,6 +18,7 @@ public class TaxService implements iTaxService{
     @Autowired
     private TaxRepository taxRepository;
 
+    @Autowired UserRepository userRepository;
     @Override
     public Tax createRequeste(TaxCreationRequest request)
     {
@@ -27,7 +28,7 @@ public class TaxService implements iTaxService{
         tax.setLocation(request.getLocation());
         tax.setValue(request.getValue());
         tax.setDeleteAt(request.getDeleteAt());
-        User user = UserRepository.findById(request.getUserId())
+        User user = userRepository.findById(request.getUserId())
                 .orElseThrow(() -> new RuntimeException("User not found"));
         tax.setUser(user);
 
