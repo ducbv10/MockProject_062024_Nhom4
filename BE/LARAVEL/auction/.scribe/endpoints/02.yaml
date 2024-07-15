@@ -1,0 +1,648 @@
+name: Assets
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/assets
+    metadata:
+      groupName: Assets
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get a list of all assets.'
+      description: 'This endpoint retrieves all assets from the database.'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+              "data": [
+                  {
+                      "AssetId": "AS00000001",
+                      "Name": "Asset 1",
+                      "Description": "Description of asset 1",
+                      "Origin": "Origin 1",
+                      "AppraiserStatus": "Appraiser status 1",
+                      "IsNew": "Yes",
+                      "IsInAuction": "No",
+                      "IsSold": "No",
+                      "UserId": "User1",
+                      "AppraiserId": "Appraiser1",
+                      "WareHouseId": "Warehouse1",
+                      "CategoryId": "Category1"
+                  }
+              ]
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/assets/{id}'
+    metadata:
+      groupName: Assets
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display the specified asset.'
+      description: 'This endpoint retrieves the details of a specific asset by its ID.'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the asset.'
+        required: true
+        example: AS00000001
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+    cleanUrlParameters:
+      id: AS00000001
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+              "data": {
+                  "AssetId": "AS00000001",
+                  "Name": "Asset 1",
+                  "Description": "This is a description of asset 1.",
+                  "Origin": "Origin 1",
+                  "AppraiserStatus": "Approved",
+                  "IsNew": "Yes",
+                  "IsInAuction": "No",
+                  "IsSold": "No",
+                  "UserId": "User1",
+                  "AppraiserId": "Appraiser1",
+                  "WareHouseId": "Warehouse1",
+                  "CategoryId": "Category1"
+              }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+              "error": "Asset not found."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/assets
+    metadata:
+      groupName: Assets
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Store a newly created asset in storage.'
+      description: 'This endpoint creates a new asset with the provided details.'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      AssetId:
+        name: AssetId
+        description: 'The ID of the asset.'
+        required: true
+        example: AS00000001
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      Name:
+        name: Name
+        description: 'The name of the asset.'
+        required: true
+        example: 'Asset 1'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      Description:
+        name: Description
+        description: 'The description of the asset.'
+        required: false
+        example: 'This is a description of asset 1.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      Origin:
+        name: Origin
+        description: 'The origin of the asset.'
+        required: false
+        example: 'Origin 1'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      AppraiserStatus:
+        name: AppraiserStatus
+        description: 'The appraiser status of the asset.'
+        required: false
+        example: Approved
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      IsNew:
+        name: IsNew
+        description: 'Indicates if the asset is new.'
+        required: false
+        example: 'Yes'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      IsInAuction:
+        name: IsInAuction
+        description: 'Indicates if the asset is in auction.'
+        required: false
+        example: 'No'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      IsSold:
+        name: IsSold
+        description: 'Indicates if the asset is sold.'
+        required: false
+        example: 'No'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      UserId:
+        name: UserId
+        description: 'The user ID associated with the asset.'
+        required: false
+        example: User1
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      AppraiserId:
+        name: AppraiserId
+        description: 'The appraiser ID associated with the asset.'
+        required: false
+        example: Appraiser1
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      WareHouseId:
+        name: WareHouseId
+        description: 'The warehouse ID where the asset is stored.'
+        required: false
+        example: Warehouse1
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      CategoryId:
+        name: CategoryId
+        description: 'The category ID associated with the asset.'
+        required: false
+        example: Category1
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+    cleanBodyParameters:
+      AssetId: AS00000001
+      Name: 'Asset 1'
+      Description: 'This is a description of asset 1.'
+      Origin: 'Origin 1'
+      AppraiserStatus: Approved
+      IsNew: 'Yes'
+      IsInAuction: 'No'
+      IsSold: 'No'
+      UserId: User1
+      AppraiserId: Appraiser1
+      WareHouseId: Warehouse1
+      CategoryId: Category1
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+              "message": "Asset created successfully",
+              "data": {
+                  "AssetId": "AS00000001",
+                  "Name": "Asset 1",
+                  "Description": "This is a description of asset 1.",
+                  "Origin": "Origin 1",
+                  "AppraiserStatus": "Approved",
+                  "IsNew": "Yes",
+                  "IsInAuction": "No",
+                  "IsSold": "No",
+                  "UserId": "User1",
+                  "AppraiserId": "Appraiser1",
+                  "WareHouseId": "Warehouse1",
+                  "CategoryId": "Category1"
+              }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+              "error": {
+                  "AssetId": [
+                      "The asset ID has already been taken."
+                  ]
+              }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+              "error": "Failed to create asset."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/assets/{id}'
+    metadata:
+      groupName: Assets
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update the specified asset in storage.'
+      description: 'This endpoint updates the details of a specific asset.'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the asset.'
+        required: true
+        example: AS00000001
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+    cleanUrlParameters:
+      id: AS00000001
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      Name:
+        name: Name
+        description: 'The name of the asset.'
+        required: true
+        example: 'Asset 1'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      Description:
+        name: Description
+        description: 'The description of the asset.'
+        required: false
+        example: 'This is a description of asset 1.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      Origin:
+        name: Origin
+        description: 'The origin of the asset.'
+        required: false
+        example: 'Origin 1'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      AppraiserStatus:
+        name: AppraiserStatus
+        description: 'The appraiser status of the asset.'
+        required: false
+        example: Approved
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      IsNew:
+        name: IsNew
+        description: 'Indicates if the asset is new.'
+        required: false
+        example: 'Yes'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      IsInAuction:
+        name: IsInAuction
+        description: 'Indicates if the asset is in auction.'
+        required: false
+        example: 'No'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      IsSold:
+        name: IsSold
+        description: 'Indicates if the asset is sold.'
+        required: false
+        example: 'No'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      UserId:
+        name: UserId
+        description: 'The user ID associated with the asset.'
+        required: false
+        example: User1
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      AppraiserId:
+        name: AppraiserId
+        description: 'The appraiser ID associated with the asset.'
+        required: false
+        example: Appraiser1
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      WareHouseId:
+        name: WareHouseId
+        description: 'The warehouse ID where the asset is stored.'
+        required: false
+        example: Warehouse1
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      CategoryId:
+        name: CategoryId
+        description: 'The category ID associated with the asset.'
+        required: false
+        example: Category1
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+    cleanBodyParameters:
+      Name: 'Asset 1'
+      Description: 'This is a description of asset 1.'
+      Origin: 'Origin 1'
+      AppraiserStatus: Approved
+      IsNew: 'Yes'
+      IsInAuction: 'No'
+      IsSold: 'No'
+      UserId: User1
+      AppraiserId: Appraiser1
+      WareHouseId: Warehouse1
+      CategoryId: Category1
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+              "message": "Asset updated successfully",
+              "data": {
+                  "AssetId": "AS00000001",
+                  "Name": "Asset 1",
+                  "Description": "This is a description of asset 1.",
+                  "Origin": "Origin 1",
+                  "AppraiserStatus": "Approved",
+                  "IsNew": "Yes",
+                  "IsInAuction": "No",
+                  "IsSold": "No",
+                  "UserId": "User1",
+                  "AppraiserId": "Appraiser1",
+                  "WareHouseId": "Warehouse1",
+                  "CategoryId": "Category1"
+              }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+              "error": {
+                  "Name": [
+                      "The name field is required."
+                  ]
+              }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+              "error": "Asset not found."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/assets/{id}'
+    metadata:
+      groupName: Assets
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Remove the specified asset from storage.'
+      description: 'This endpoint deletes a specific asset by its ID.'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the asset.'
+        required: true
+        example: AS00000001
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+    cleanUrlParameters:
+      id: AS00000001
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+              "message": "Asset deleted successfully"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+              "error": "Asset not found."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PATCH
+    uri: 'api/assets/restore/{id}'
+    metadata:
+      groupName: Assets
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Restore the specified asset from storage.'
+      description: 'This endpoint restores a deleted asset by its ID.'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the asset.'
+        required: true
+        example: AS00000001
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+    cleanUrlParameters:
+      id: AS00000001
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+              "message": "Asset restored successfully",
+              "data": {
+                  "AssetId": "AS00000001",
+                  "Name": "Asset 1",
+                  "Description": "This is a description of asset 1.",
+                  "Origin": "Origin 1",
+                  "AppraiserStatus": "Approved",
+                  "IsNew": "Yes",
+                  "IsInAuction": "No",
+                  "IsSold": "No",
+                  "UserId": "User1",
+                  "AppraiserId": "Appraiser1",
+                  "WareHouseId": "Warehouse1",
+                  "CategoryId": "Category1"
+              }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+              "error": "Asset not found."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

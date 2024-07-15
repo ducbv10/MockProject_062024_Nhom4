@@ -4,6 +4,7 @@ use App\Http\Controllers\AppraiserController;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\WarehouseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
