@@ -255,14 +255,14 @@ endpoints:
         name: Description
         description: 'The new description of the category.'
         required: false
-        example: 'Pariatur id dicta nulla fugiat non qui nihil vel.'
+        example: 'Maxime harum exercitationem natus fugit hic et.'
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
       CategoryName: 'Updated Category'
-      Description: 'Pariatur id dicta nulla fugiat non qui nihil vel.'
+      Description: 'Maxime harum exercitationem natus fugit hic et.'
     fileParameters: []
     responses:
       -

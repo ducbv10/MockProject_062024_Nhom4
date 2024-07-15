@@ -149,6 +149,9 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-PATCHapi-appraisers-restore--id-">
                                 <a href="#endpoints-PATCHapi-appraisers-restore--id-">PATCH api/appraisers/restore/{id}</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-PUTapi-users--UserId-">
+                                <a href="#endpoints-PUTapi-users--UserId-">Update a user record.</a>
+                            </li>
                                                                         </ul>
                             </ul>
                     <ul id="tocify-header-notifications" class="tocify-header">
@@ -2057,7 +2060,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --data "{
     \"CategoryName\": \"Updated Category\",
-    \"Description\": \"Pariatur id dicta nulla fugiat non qui nihil vel.\"
+    \"Description\": \"Maxime harum exercitationem natus fugit hic et.\"
 }"
 </code></pre></div>
 
@@ -2074,7 +2077,7 @@ const headers = {
 
 let body = {
     "CategoryName": "Updated Category",
-    "Description": "Pariatur id dicta nulla fugiat non qui nihil vel."
+    "Description": "Maxime harum exercitationem natus fugit hic et."
 };
 
 fetch(url, {
@@ -2222,10 +2225,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="Description"                data-endpoint="PUTapi-categories--id-"
-               value="Pariatur id dicta nulla fugiat non qui nihil vel."
+               value="Maxime harum exercitationem natus fugit hic et."
                data-component="body">
     <br>
-<p>The new description of the category. Example: <code>Pariatur id dicta nulla fugiat non qui nihil vel.</code></p>
+<p>The new description of the category. Example: <code>Maxime harum exercitationem natus fugit hic et.</code></p>
         </div>
         </form>
 
@@ -2684,7 +2687,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 55
+x-ratelimit-remaining: 58
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -2777,14 +2780,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/appraisers/1" \
+    --get "http://localhost/api/appraisers/4" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/appraisers/1"
+    "http://localhost/api/appraisers/4"
 );
 
 const headers = {
@@ -2810,7 +2813,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 54
+x-ratelimit-remaining: 57
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -2895,10 +2898,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="GETapi-appraisers--id-"
-               value="1"
+               value="4"
                data-component="url">
     <br>
-<p>The ID of the appraiser. Example: <code>1</code></p>
+<p>The ID of the appraiser. Example: <code>4</code></p>
             </div>
                     </form>
 
@@ -2919,11 +2922,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"AppraiserId\": \"womu\",
-    \"Name\": \"facere\",
-    \"Experience\": \"recusandae\",
-    \"Email\": \"aurelio.hettinger@example.org\",
-    \"Phone\": \"perferendis\",
+    \"AppraiserId\": \"xejrxy\",
+    \"Name\": \"iusto\",
+    \"Experience\": \"non\",
+    \"Email\": \"pklein@example.org\",
+    \"Phone\": \"adipisci\",
     \"Address\": \"quibusdam\"
 }"
 </code></pre></div>
@@ -2940,11 +2943,11 @@ const headers = {
 };
 
 let body = {
-    "AppraiserId": "womu",
-    "Name": "facere",
-    "Experience": "recusandae",
-    "Email": "aurelio.hettinger@example.org",
-    "Phone": "perferendis",
+    "AppraiserId": "xejrxy",
+    "Name": "iusto",
+    "Experience": "non",
+    "Email": "pklein@example.org",
+    "Phone": "adipisci",
     "Address": "quibusdam"
 };
 
@@ -3034,10 +3037,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="AppraiserId"                data-endpoint="POSTapi-appraisers"
-               value="womu"
+               value="xejrxy"
                data-component="body">
     <br>
-<p>Must not be greater than 10 characters. Example: <code>womu</code></p>
+<p>Must not be greater than 10 characters. Example: <code>xejrxy</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>Name</code></b>&nbsp;&nbsp;
@@ -3045,10 +3048,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Name"                data-endpoint="POSTapi-appraisers"
-               value="facere"
+               value="iusto"
                data-component="body">
     <br>
-<p>Example: <code>facere</code></p>
+<p>Example: <code>iusto</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>Experience</code></b>&nbsp;&nbsp;
@@ -3056,10 +3059,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="Experience"                data-endpoint="POSTapi-appraisers"
-               value="recusandae"
+               value="non"
                data-component="body">
     <br>
-<p>Example: <code>recusandae</code></p>
+<p>Example: <code>non</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>Email</code></b>&nbsp;&nbsp;
@@ -3067,10 +3070,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="Email"                data-endpoint="POSTapi-appraisers"
-               value="aurelio.hettinger@example.org"
+               value="pklein@example.org"
                data-component="body">
     <br>
-<p>Example: <code>aurelio.hettinger@example.org</code></p>
+<p>Example: <code>pklein@example.org</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>Phone</code></b>&nbsp;&nbsp;
@@ -3078,10 +3081,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="Phone"                data-endpoint="POSTapi-appraisers"
-               value="perferendis"
+               value="adipisci"
                data-component="body">
     <br>
-<p>Example: <code>perferendis</code></p>
+<p>Example: <code>adipisci</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>Address</code></b>&nbsp;&nbsp;
@@ -3109,22 +3112,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/appraisers/15" \
+    "http://localhost/api/appraisers/4" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"Name\": \"incidunt\",
-    \"Experience\": \"quis\",
-    \"Email\": \"hane.quincy@example.org\",
-    \"Phone\": \"tenetur\",
-    \"Address\": \"reiciendis\"
+    \"Name\": \"a\",
+    \"Experience\": \"illum\",
+    \"Email\": \"jessy19@example.org\",
+    \"Phone\": \"est\",
+    \"Address\": \"dolore\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/appraisers/15"
+    "http://localhost/api/appraisers/4"
 );
 
 const headers = {
@@ -3133,11 +3136,11 @@ const headers = {
 };
 
 let body = {
-    "Name": "incidunt",
-    "Experience": "quis",
-    "Email": "hane.quincy@example.org",
-    "Phone": "tenetur",
-    "Address": "reiciendis"
+    "Name": "a",
+    "Experience": "illum",
+    "Email": "jessy19@example.org",
+    "Phone": "est",
+    "Address": "dolore"
 };
 
 fetch(url, {
@@ -3226,10 +3229,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="PUTapi-appraisers--id-"
-               value="15"
+               value="4"
                data-component="url">
     <br>
-<p>The ID of the appraiser. Example: <code>15</code></p>
+<p>The ID of the appraiser. Example: <code>4</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -3238,10 +3241,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Name"                data-endpoint="PUTapi-appraisers--id-"
-               value="incidunt"
+               value="a"
                data-component="body">
     <br>
-<p>Example: <code>incidunt</code></p>
+<p>Example: <code>a</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>Experience</code></b>&nbsp;&nbsp;
@@ -3249,10 +3252,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="Experience"                data-endpoint="PUTapi-appraisers--id-"
-               value="quis"
+               value="illum"
                data-component="body">
     <br>
-<p>Example: <code>quis</code></p>
+<p>Example: <code>illum</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>Email</code></b>&nbsp;&nbsp;
@@ -3260,10 +3263,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="Email"                data-endpoint="PUTapi-appraisers--id-"
-               value="hane.quincy@example.org"
+               value="jessy19@example.org"
                data-component="body">
     <br>
-<p>Example: <code>hane.quincy@example.org</code></p>
+<p>Example: <code>jessy19@example.org</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>Phone</code></b>&nbsp;&nbsp;
@@ -3271,10 +3274,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="Phone"                data-endpoint="PUTapi-appraisers--id-"
-               value="tenetur"
+               value="est"
                data-component="body">
     <br>
-<p>Example: <code>tenetur</code></p>
+<p>Example: <code>est</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>Address</code></b>&nbsp;&nbsp;
@@ -3282,10 +3285,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="Address"                data-endpoint="PUTapi-appraisers--id-"
-               value="reiciendis"
+               value="dolore"
                data-component="body">
     <br>
-<p>Example: <code>reiciendis</code></p>
+<p>Example: <code>dolore</code></p>
         </div>
         </form>
 
@@ -3302,14 +3305,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/appraisers/restore/aliquam" \
+    "http://localhost/api/appraisers/restore/commodi" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/appraisers/restore/aliquam"
+    "http://localhost/api/appraisers/restore/commodi"
 );
 
 const headers = {
@@ -3402,12 +3405,289 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PATCHapi-appraisers-restore--id-"
-               value="aliquam"
+               value="commodi"
                data-component="url">
     <br>
-<p>The ID of the restore. Example: <code>aliquam</code></p>
+<p>The ID of the restore. Example: <code>commodi</code></p>
             </div>
                     </form>
+
+                    <h2 id="endpoints-PUTapi-users--UserId-">Update a user record.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-PUTapi-users--UserId-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/users/dolores" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"UserName\": \"hyqgojsivfhrcepounwkucy\",
+    \"PassWord\": \"KNG}._dx\",
+    \"Avatar\": \"sxgokdxgdyierxdccusggenva\",
+    \"Name\": \"uhisftcrznzithinaz\",
+    \"DateOfBirth\": \"2024-07-15T05:25:38\",
+    \"Gender\": \"male\",
+    \"Phone\": \"dlltsdksmmwxkxltm\",
+    \"Email\": \"kristin77@example.com\",
+    \"AddressId\": \"na\",
+    \"IsBan\": \"unbanned\",
+    \"Verify\": \"unverified\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/users/dolores"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "UserName": "hyqgojsivfhrcepounwkucy",
+    "PassWord": "KNG}._dx",
+    "Avatar": "sxgokdxgdyierxdccusggenva",
+    "Name": "uhisftcrznzithinaz",
+    "DateOfBirth": "2024-07-15T05:25:38",
+    "Gender": "male",
+    "Phone": "dlltsdksmmwxkxltm",
+    "Email": "kristin77@example.com",
+    "AddressId": "na",
+    "IsBan": "unbanned",
+    "Verify": "unverified"
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-users--UserId-">
+</span>
+<span id="execution-results-PUTapi-users--UserId-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-users--UserId-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-users--UserId-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-users--UserId-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-users--UserId-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-users--UserId-" data-method="PUT"
+      data-path="api/users/{UserId}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-users--UserId-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-users--UserId-"
+                    onclick="tryItOut('PUTapi-users--UserId-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-users--UserId-"
+                    onclick="cancelTryOut('PUTapi-users--UserId-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-users--UserId-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/users/{UserId}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-users--UserId-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-users--UserId-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>UserId</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="UserId"                data-endpoint="PUTapi-users--UserId-"
+               value="dolores"
+               data-component="url">
+    <br>
+<p>Example: <code>dolores</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>UserName</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="UserName"                data-endpoint="PUTapi-users--UserId-"
+               value="hyqgojsivfhrcepounwkucy"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>hyqgojsivfhrcepounwkucy</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>PassWord</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="PassWord"                data-endpoint="PUTapi-users--UserId-"
+               value="KNG}._dx"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>KNG}._dx</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>Avatar</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="Avatar"                data-endpoint="PUTapi-users--UserId-"
+               value="sxgokdxgdyierxdccusggenva"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>sxgokdxgdyierxdccusggenva</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>Name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="Name"                data-endpoint="PUTapi-users--UserId-"
+               value="uhisftcrznzithinaz"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>uhisftcrznzithinaz</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>DateOfBirth</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="DateOfBirth"                data-endpoint="PUTapi-users--UserId-"
+               value="2024-07-15T05:25:38"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Example: <code>2024-07-15T05:25:38</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>Gender</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="Gender"                data-endpoint="PUTapi-users--UserId-"
+               value="male"
+               data-component="body">
+    <br>
+<p>Example: <code>male</code></p>
+Must be one of:
+<ul style="list-style-type: square;"><li><code>male</code></li> <li><code>female</code></li></ul>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>Phone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="Phone"                data-endpoint="PUTapi-users--UserId-"
+               value="dlltsdksmmwxkxltm"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>dlltsdksmmwxkxltm</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>Email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="Email"                data-endpoint="PUTapi-users--UserId-"
+               value="kristin77@example.com"
+               data-component="body">
+    <br>
+<p>Must be a valid email address. Must not be greater than 255 characters. Example: <code>kristin77@example.com</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>AddressId</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="AddressId"                data-endpoint="PUTapi-users--UserId-"
+               value="na"
+               data-component="body">
+    <br>
+<p>Must not be greater than 10 characters. Example: <code>na</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>IsBan</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="IsBan"                data-endpoint="PUTapi-users--UserId-"
+               value="unbanned"
+               data-component="body">
+    <br>
+<p>Example: <code>unbanned</code></p>
+Must be one of:
+<ul style="list-style-type: square;"><li><code>banned</code></li> <li><code>unbanned</code></li></ul>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>Verify</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="Verify"                data-endpoint="PUTapi-users--UserId-"
+               value="unverified"
+               data-component="body">
+    <br>
+<p>Example: <code>unverified</code></p>
+Must be one of:
+<ul style="list-style-type: square;"><li><code>verified</code></li> <li><code>unverified</code></li></ul>
+        </div>
+        </form>
 
                 <h1 id="notifications">Notifications</h1>
 
@@ -3459,7 +3739,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 53
+x-ratelimit-remaining: 56
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -3547,6 +3827,42 @@ access-control-allow-origin: *
         &quot;UserId&quot;: &quot;US00000014&quot;,
         &quot;Content&quot;: &quot;The auction for item A has been canceled&quot;,
         &quot;Title&quot;: &quot;Payment Declined&quot;
+    },
+    {
+        &quot;NotificationId&quot;: &quot;NT00000015&quot;,
+        &quot;UserId&quot;: &quot;US00000015&quot;,
+        &quot;Content&quot;: &quot;You have a new message from the seller&quot;,
+        &quot;Title&quot;: &quot;Account Suspended&quot;
+    },
+    {
+        &quot;NotificationId&quot;: &quot;NT00000016&quot;,
+        &quot;UserId&quot;: &quot;US00000016&quot;,
+        &quot;Content&quot;: &quot;Your shipping address has been updated&quot;,
+        &quot;Title&quot;: &quot;Item Pickup Ready&quot;
+    },
+    {
+        &quot;NotificationId&quot;: &quot;NT00000017&quot;,
+        &quot;UserId&quot;: &quot;US00000017&quot;,
+        &quot;Content&quot;: &quot;Your item is ready for pickup&quot;,
+        &quot;Title&quot;: &quot;Auction Rescheduled&quot;
+    },
+    {
+        &quot;NotificationId&quot;: &quot;NT00000018&quot;,
+        &quot;UserId&quot;: &quot;US00000018&quot;,
+        &quot;Content&quot;: &quot;Your withdrawal request has been processed&quot;,
+        &quot;Title&quot;: &quot;Transaction Completed&quot;
+    },
+    {
+        &quot;NotificationId&quot;: &quot;NT00000019&quot;,
+        &quot;UserId&quot;: &quot;US00000019&quot;,
+        &quot;Content&quot;: &quot;The auction platform will undergo maintenance at midnight&quot;,
+        &quot;Title&quot;: &quot;Shipping Update&quot;
+    },
+    {
+        &quot;NotificationId&quot;: &quot;NT00000020&quot;,
+        &quot;UserId&quot;: &quot;US00000020&quot;,
+        &quot;Content&quot;: &quot;Your bid on item B was not successful&quot;,
+        &quot;Title&quot;: &quot;Deposit Confirmation&quot;
     }
 ]</code>
  </pre>
@@ -3668,7 +3984,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 52
+x-ratelimit-remaining: 55
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -3767,10 +4083,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="GETapi-notifications--NotificationId-"
-               value="ex"
+               value="dolorem"
                data-component="url">
     <br>
-<p>The ID of the notification. Example: <code>ex</code></p>
+<p>The ID of the notification. Example: <code>dolorem</code></p>
             </div>
                     </form>
 
@@ -4066,10 +4382,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PUTapi-notifications--NotificationId-"
-               value="dicta"
+               value="saepe"
                data-component="url">
     <br>
-<p>The ID of the notification. Example: <code>dicta</code></p>
+<p>The ID of the notification. Example: <code>saepe</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -4231,10 +4547,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="DELETEapi-notifications--NotificationId-"
-               value="nulla"
+               value="ut"
                data-component="url">
     <br>
-<p>The ID of the notification. Example: <code>nulla</code></p>
+<p>The ID of the notification. Example: <code>ut</code></p>
             </div>
                     </form>
 
@@ -4279,7 +4595,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-warehouses">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (500):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -4288,152 +4604,13 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 51
+x-ratelimit-remaining: 54
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;">[
-    {
-        &quot;WareHouseId&quot;: &quot;WH00000001&quot;,
-        &quot;Position&quot;: &quot;Warehouse&quot;,
-        &quot;Quantity&quot;: &quot;1.0&quot;,
-        &quot;importDate&quot;: &quot;2024-05-20 00:00:00.000&quot;,
-        &quot;exportDate&quot;: &quot;2024-05-24 00:00:00.000&quot;
-    },
-    {
-        &quot;WareHouseId&quot;: &quot;WH00000002&quot;,
-        &quot;Position&quot;: &quot;Warehouse&quot;,
-        &quot;Quantity&quot;: &quot;1.0&quot;,
-        &quot;importDate&quot;: &quot;2024-05-22 00:00:00.000&quot;,
-        &quot;exportDate&quot;: &quot;2024-05-25 00:00:00.000&quot;
-    },
-    {
-        &quot;WareHouseId&quot;: &quot;WH00000003&quot;,
-        &quot;Position&quot;: &quot;Warehouse&quot;,
-        &quot;Quantity&quot;: &quot;2.0&quot;,
-        &quot;importDate&quot;: &quot;2024-05-22 00:00:00.000&quot;,
-        &quot;exportDate&quot;: &quot;2024-01-15 00:00:00.000&quot;
-    },
-    {
-        &quot;WareHouseId&quot;: &quot;WH00000004&quot;,
-        &quot;Position&quot;: &quot;Warehouse&quot;,
-        &quot;Quantity&quot;: &quot;2.0&quot;,
-        &quot;importDate&quot;: &quot;2024-01-12 00:00:00.000&quot;,
-        &quot;exportDate&quot;: &quot;2024-01-16 00:00:00.000&quot;
-    },
-    {
-        &quot;WareHouseId&quot;: &quot;WH00000005&quot;,
-        &quot;Position&quot;: &quot;Warehouse&quot;,
-        &quot;Quantity&quot;: &quot;1.0&quot;,
-        &quot;importDate&quot;: &quot;2024-01-11 00:00:00.000&quot;,
-        &quot;exportDate&quot;: &quot;2024-05-13 00:00:00.000&quot;
-    },
-    {
-        &quot;WareHouseId&quot;: &quot;WH00000006&quot;,
-        &quot;Position&quot;: &quot;Warehouse&quot;,
-        &quot;Quantity&quot;: &quot;2.0&quot;,
-        &quot;importDate&quot;: &quot;2024-05-11 00:00:00.000&quot;,
-        &quot;exportDate&quot;: &quot;2024-05-14 00:00:00.000&quot;
-    },
-    {
-        &quot;WareHouseId&quot;: &quot;WH00000007&quot;,
-        &quot;Position&quot;: &quot;Warehouse&quot;,
-        &quot;Quantity&quot;: &quot;3.0&quot;,
-        &quot;importDate&quot;: &quot;2024-01-17 00:00:00.000&quot;,
-        &quot;exportDate&quot;: &quot;2024-05-11 00:00:00.000&quot;
-    },
-    {
-        &quot;WareHouseId&quot;: &quot;WH00000008&quot;,
-        &quot;Position&quot;: &quot;Warehouse&quot;,
-        &quot;Quantity&quot;: &quot;3.0&quot;,
-        &quot;importDate&quot;: &quot;2024-05-09 00:00:00.000&quot;,
-        &quot;exportDate&quot;: &quot;2024-05-12 00:00:00.000&quot;
-    },
-    {
-        &quot;WareHouseId&quot;: &quot;WH00000009&quot;,
-        &quot;Position&quot;: &quot;Warehouse&quot;,
-        &quot;Quantity&quot;: &quot;3.0&quot;,
-        &quot;importDate&quot;: &quot;2024-01-23 00:00:00.000&quot;,
-        &quot;exportDate&quot;: &quot;2024-05-31 00:00:00.000&quot;
-    },
-    {
-        &quot;WareHouseId&quot;: &quot;WH00000010&quot;,
-        &quot;Position&quot;: &quot;Warehouse&quot;,
-        &quot;Quantity&quot;: &quot;2.0&quot;,
-        &quot;importDate&quot;: &quot;2024-05-29 00:00:00.000&quot;,
-        &quot;exportDate&quot;: &quot;2024-06-01 00:00:00.000&quot;
-    },
-    {
-        &quot;WareHouseId&quot;: &quot;WH00000011&quot;,
-        &quot;Position&quot;: &quot;Warehouse&quot;,
-        &quot;Quantity&quot;: &quot;3.0&quot;,
-        &quot;importDate&quot;: &quot;2024-02-08 00:00:00.000&quot;,
-        &quot;exportDate&quot;: &quot;2024-06-02 00:00:00.000&quot;
-    },
-    {
-        &quot;WareHouseId&quot;: &quot;WH00000012&quot;,
-        &quot;Position&quot;: &quot;Warehouse&quot;,
-        &quot;Quantity&quot;: &quot;1.0&quot;,
-        &quot;importDate&quot;: &quot;2024-05-31 00:00:00.000&quot;,
-        &quot;exportDate&quot;: &quot;2024-06-03 00:00:00.000&quot;
-    },
-    {
-        &quot;WareHouseId&quot;: &quot;WH00000013&quot;,
-        &quot;Position&quot;: &quot;Warehouse&quot;,
-        &quot;Quantity&quot;: &quot;2.0&quot;,
-        &quot;importDate&quot;: &quot;2024-02-08 00:00:00.000&quot;,
-        &quot;exportDate&quot;: &quot;2024-02-18 00:00:00.000&quot;
-    },
-    {
-        &quot;WareHouseId&quot;: &quot;WH00000014&quot;,
-        &quot;Position&quot;: &quot;Warehouse&quot;,
-        &quot;Quantity&quot;: &quot;1.0&quot;,
-        &quot;importDate&quot;: &quot;2024-02-13 00:00:00.000&quot;,
-        &quot;exportDate&quot;: &quot;2024-02-19 00:00:00.000&quot;
-    },
-    {
-        &quot;WareHouseId&quot;: &quot;WH00000015&quot;,
-        &quot;Position&quot;: &quot;Warehouse&quot;,
-        &quot;Quantity&quot;: &quot;1.0&quot;,
-        &quot;importDate&quot;: &quot;2024-06-03 00:00:00.000&quot;,
-        &quot;exportDate&quot;: &quot;2024-04-13 00:00:00.000&quot;
-    },
-    {
-        &quot;WareHouseId&quot;: &quot;WH00000016&quot;,
-        &quot;Position&quot;: &quot;Warehouse&quot;,
-        &quot;Quantity&quot;: &quot;1.0&quot;,
-        &quot;importDate&quot;: &quot;2024-04-11 00:00:00.000&quot;,
-        &quot;exportDate&quot;: &quot;2024-04-14 00:00:00.000&quot;
-    },
-    {
-        &quot;WareHouseId&quot;: &quot;WH00000017&quot;,
-        &quot;Position&quot;: &quot;Warehouse&quot;,
-        &quot;Quantity&quot;: &quot;2.0&quot;,
-        &quot;importDate&quot;: &quot;2024-02-15 00:00:00.000&quot;,
-        &quot;exportDate&quot;: &quot;2024-02-17 00:00:00.000&quot;
-    },
-    {
-        &quot;WareHouseId&quot;: &quot;WH00000018&quot;,
-        &quot;Position&quot;: &quot;Warehouse&quot;,
-        &quot;Quantity&quot;: &quot;1.0&quot;,
-        &quot;importDate&quot;: &quot;2024-02-15 00:00:00.000&quot;,
-        &quot;exportDate&quot;: &quot;2024-02-18 00:00:00.000&quot;
-    },
-    {
-        &quot;WareHouseId&quot;: &quot;WH00000019&quot;,
-        &quot;Position&quot;: &quot;Warehouse&quot;,
-        &quot;Quantity&quot;: &quot;3.0&quot;,
-        &quot;importDate&quot;: &quot;2024-03-16 00:00:00.000&quot;,
-        &quot;exportDate&quot;: &quot;2024-01-22 00:00:00.000&quot;
-    },
-    {
-        &quot;WareHouseId&quot;: &quot;WH00000020&quot;,
-        &quot;Position&quot;: &quot;Warehouse&quot;,
-        &quot;Quantity&quot;: &quot;4.0&quot;,
-        &quot;importDate&quot;: &quot;2024-01-20 00:00:00.000&quot;,
-        &quot;exportDate&quot;: &quot;2024-01-23 00:00:00.000&quot;
-    }
-]</code>
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Server Error&quot;
+}</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-warehouses" hidden>
@@ -4520,14 +4697,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/warehouses/WH00000001" \
+    --get "http://localhost/api/warehouses/distinctio" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/warehouses/WH00000001"
+    "http://localhost/api/warehouses/distinctio"
 );
 
 const headers = {
@@ -4544,7 +4721,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-warehouses--WareHouseId-">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (500):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -4553,16 +4730,12 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 50
+x-ratelimit-remaining: 53
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;WareHouseId&quot;: &quot;WH00000001&quot;,
-    &quot;Position&quot;: &quot;Warehouse&quot;,
-    &quot;Quantity&quot;: &quot;1.0&quot;,
-    &quot;importDate&quot;: &quot;2024-05-20 00:00:00.000&quot;,
-    &quot;exportDate&quot;: &quot;2024-05-24 00:00:00.000&quot;
+    &quot;message&quot;: &quot;Server Error&quot;
 }</code>
  </pre>
     </span>
@@ -4642,10 +4815,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="WareHouseId"                data-endpoint="GETapi-warehouses--WareHouseId-"
-               value="WH00000001"
+               value="distinctio"
                data-component="url">
     <br>
-<p>Example: <code>WH00000001</code></p>
+<p>Example: <code>distinctio</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
@@ -4653,10 +4826,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="GETapi-warehouses--WareHouseId-"
-               value="non"
+               value="quam"
                data-component="url">
     <br>
-<p>The ID of the warehouse. Example: <code>non</code></p>
+<p>The ID of the warehouse. Example: <code>quam</code></p>
             </div>
                     </form>
 
@@ -4841,7 +5014,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/warehouses/WH00000001" \
+    "http://localhost/api/warehouses/tenetur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -4855,7 +5028,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/warehouses/WH00000001"
+    "http://localhost/api/warehouses/tenetur"
 );
 
 const headers = {
@@ -4956,10 +5129,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="WareHouseId"                data-endpoint="PUTapi-warehouses--WareHouseId-"
-               value="WH00000001"
+               value="tenetur"
                data-component="url">
     <br>
-<p>Example: <code>WH00000001</code></p>
+<p>Example: <code>tenetur</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
@@ -4967,10 +5140,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PUTapi-warehouses--WareHouseId-"
-               value="eius"
+               value="molestiae"
                data-component="url">
     <br>
-<p>The ID of the warehouse. Example: <code>eius</code></p>
+<p>The ID of the warehouse. Example: <code>molestiae</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -5032,14 +5205,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/warehouses/WH00000001" \
+    "http://localhost/api/warehouses/atque" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/warehouses/WH00000001"
+    "http://localhost/api/warehouses/atque"
 );
 
 const headers = {
@@ -5132,10 +5305,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="WareHouseId"                data-endpoint="DELETEapi-warehouses--WareHouseId-"
-               value="WH00000001"
+               value="atque"
                data-component="url">
     <br>
-<p>Example: <code>WH00000001</code></p>
+<p>Example: <code>atque</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
@@ -5143,10 +5316,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="DELETEapi-warehouses--WareHouseId-"
-               value="repellat"
+               value="ipsam"
                data-component="url">
     <br>
-<p>The ID of the warehouse. Example: <code>repellat</code></p>
+<p>The ID of the warehouse. Example: <code>ipsam</code></p>
             </div>
                     </form>
 

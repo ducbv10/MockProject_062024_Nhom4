@@ -13,7 +13,7 @@ class CreateZipCodesTable extends Migration
      */
     public function up()
     {
-        Schema::create('zip_codes', function (Blueprint $table) {
+        Schema::create('zipcodes', function (Blueprint $table) {
             // ZipCodeId làm khóa chính, varchar(10)
             $table->string('ZipCodeId', 10)->primary();
 

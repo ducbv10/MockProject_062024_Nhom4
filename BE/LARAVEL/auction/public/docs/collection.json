@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "9f1c77c1-cb8d-4548-89af-955847af6d27",
+        "_postman_id": "da8f33db-ba54-445b-b7e2-7ba4611d7c12",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -534,7 +534,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"CategoryName\":\"Updated Category\",\"Description\":\"Pariatur id dicta nulla fugiat non qui nihil vel.\"}"
+                            "raw": "{\"CategoryName\":\"Updated Category\",\"Description\":\"Maxime harum exercitationem natus fugit hic et.\"}"
                         },
                         "description": "",
                         "auth": {
@@ -757,7 +757,7 @@
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "55"
+                                    "value": "58"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
@@ -782,7 +782,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "4",
                                     "description": "The ID of the appraiser."
                                 }
                             ]
@@ -821,7 +821,7 @@
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "54"
+                                    "value": "57"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
@@ -856,7 +856,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"AppraiserId\":\"womu\",\"Name\":\"facere\",\"Experience\":\"recusandae\",\"Email\":\"aurelio.hettinger@example.org\",\"Phone\":\"perferendis\",\"Address\":\"quibusdam\"}"
+                            "raw": "{\"AppraiserId\":\"xejrxy\",\"Name\":\"iusto\",\"Experience\":\"non\",\"Email\":\"pklein@example.org\",\"Phone\":\"adipisci\",\"Address\":\"quibusdam\"}"
                         },
                         "description": "",
                         "auth": {
@@ -877,7 +877,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "15",
+                                    "value": "4",
                                     "description": "The ID of the appraiser."
                                 }
                             ]
@@ -895,7 +895,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"Name\":\"incidunt\",\"Experience\":\"quis\",\"Email\":\"hane.quincy@example.org\",\"Phone\":\"tenetur\",\"Address\":\"reiciendis\"}"
+                            "raw": "{\"Name\":\"a\",\"Experience\":\"illum\",\"Email\":\"jessy19@example.org\",\"Phone\":\"est\",\"Address\":\"dolore\"}"
                         },
                         "description": "This endpoint updates the details of a specific asset.",
                         "auth": {
@@ -916,7 +916,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "aliquam",
+                                    "value": "commodi",
                                     "description": "The ID of the restore."
                                 }
                             ]
@@ -933,6 +933,45 @@
                             }
                         ],
                         "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update a user record.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users\/:UserId",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users\/:UserId",
+                            "variable": [
+                                {
+                                    "id": "UserId",
+                                    "key": "UserId",
+                                    "value": "dolores",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"UserName\":\"hyqgojsivfhrcepounwkucy\",\"PassWord\":\"KNG}._dx\",\"Avatar\":\"sxgokdxgdyierxdccusggenva\",\"Name\":\"uhisftcrznzithinaz\",\"DateOfBirth\":\"2024-07-15T05:25:38\",\"Gender\":\"male\",\"Phone\":\"dlltsdksmmwxkxltm\",\"Email\":\"kristin77@example.com\",\"AddressId\":\"na\",\"IsBan\":\"unbanned\",\"Verify\":\"unverified\"}"
+                        },
                         "description": "",
                         "auth": {
                             "type": "noauth"
@@ -989,7 +1028,7 @@
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "53"
+                                    "value": "56"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
@@ -997,7 +1036,7 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "[{\"NotificationId\":\"NT00000001\",\"UserId\":\"US00000001\",\"Content\":\"Your bid has been placed successfully\",\"Title\":\"Auction Ending Soon\"},{\"NotificationId\":\"NT00000002\",\"UserId\":\"US00000002\",\"Content\":\"You have been outbid on item X\",\"Title\":\"New Item Listed\"},{\"NotificationId\":\"NT00000003\",\"UserId\":\"US00000003\",\"Content\":\"Your item has been successfully sold\",\"Title\":\"Payment Received\"},{\"NotificationId\":\"NT00000004\",\"UserId\":\"US00000004\",\"Content\":\"The auction for item Y is ending soon\",\"Title\":\"Bid Placed Successfully\"},{\"NotificationId\":\"NT00000005\",\"UserId\":\"US00000005\",\"Content\":\"Your account has been credited with $100\",\"Title\":\"Outbid Notification\"},{\"NotificationId\":\"NT00000006\",\"UserId\":\"US00000006\",\"Content\":\"Please verify your email to continue\",\"Title\":\"Account Update\"},{\"NotificationId\":\"NT00000007\",\"UserId\":\"US00000007\",\"Content\":\"Your password has been changed successfully\",\"Title\":\"Deposit Refunded\"},{\"NotificationId\":\"NT00000008\",\"UserId\":\"US00000008\",\"Content\":\"The auction for item Z starts in 1 hour\",\"Title\":\"Password Changed\"},{\"NotificationId\":\"NT00000009\",\"UserId\":\"US00000009\",\"Content\":\"Your account balance is low\",\"Title\":\"Item Sold\"},{\"NotificationId\":\"NT00000010\",\"UserId\":\"US00000010\",\"Content\":\"A new auction has been listed in your favorite category\",\"Title\":\"Auction Canceled\"},{\"NotificationId\":\"NT00000011\",\"UserId\":\"US00000011\",\"Content\":\"Your payment has been received\",\"Title\":\"Email Verification Required\"},{\"NotificationId\":\"NT00000012\",\"UserId\":\"US00000012\",\"Content\":\"Your deposit has been refunded\",\"Title\":\"Maintenance Notice\"},{\"NotificationId\":\"NT00000013\",\"UserId\":\"US00000013\",\"Content\":\"Your item listing has been approved\",\"Title\":\"Message from Seller\"},{\"NotificationId\":\"NT00000014\",\"UserId\":\"US00000014\",\"Content\":\"The auction for item A has been canceled\",\"Title\":\"Payment Declined\"}]",
+                            "body": "[{\"NotificationId\":\"NT00000001\",\"UserId\":\"US00000001\",\"Content\":\"Your bid has been placed successfully\",\"Title\":\"Auction Ending Soon\"},{\"NotificationId\":\"NT00000002\",\"UserId\":\"US00000002\",\"Content\":\"You have been outbid on item X\",\"Title\":\"New Item Listed\"},{\"NotificationId\":\"NT00000003\",\"UserId\":\"US00000003\",\"Content\":\"Your item has been successfully sold\",\"Title\":\"Payment Received\"},{\"NotificationId\":\"NT00000004\",\"UserId\":\"US00000004\",\"Content\":\"The auction for item Y is ending soon\",\"Title\":\"Bid Placed Successfully\"},{\"NotificationId\":\"NT00000005\",\"UserId\":\"US00000005\",\"Content\":\"Your account has been credited with $100\",\"Title\":\"Outbid Notification\"},{\"NotificationId\":\"NT00000006\",\"UserId\":\"US00000006\",\"Content\":\"Please verify your email to continue\",\"Title\":\"Account Update\"},{\"NotificationId\":\"NT00000007\",\"UserId\":\"US00000007\",\"Content\":\"Your password has been changed successfully\",\"Title\":\"Deposit Refunded\"},{\"NotificationId\":\"NT00000008\",\"UserId\":\"US00000008\",\"Content\":\"The auction for item Z starts in 1 hour\",\"Title\":\"Password Changed\"},{\"NotificationId\":\"NT00000009\",\"UserId\":\"US00000009\",\"Content\":\"Your account balance is low\",\"Title\":\"Item Sold\"},{\"NotificationId\":\"NT00000010\",\"UserId\":\"US00000010\",\"Content\":\"A new auction has been listed in your favorite category\",\"Title\":\"Auction Canceled\"},{\"NotificationId\":\"NT00000011\",\"UserId\":\"US00000011\",\"Content\":\"Your payment has been received\",\"Title\":\"Email Verification Required\"},{\"NotificationId\":\"NT00000012\",\"UserId\":\"US00000012\",\"Content\":\"Your deposit has been refunded\",\"Title\":\"Maintenance Notice\"},{\"NotificationId\":\"NT00000013\",\"UserId\":\"US00000013\",\"Content\":\"Your item listing has been approved\",\"Title\":\"Message from Seller\"},{\"NotificationId\":\"NT00000014\",\"UserId\":\"US00000014\",\"Content\":\"The auction for item A has been canceled\",\"Title\":\"Payment Declined\"},{\"NotificationId\":\"NT00000015\",\"UserId\":\"US00000015\",\"Content\":\"You have a new message from the seller\",\"Title\":\"Account Suspended\"},{\"NotificationId\":\"NT00000016\",\"UserId\":\"US00000016\",\"Content\":\"Your shipping address has been updated\",\"Title\":\"Item Pickup Ready\"},{\"NotificationId\":\"NT00000017\",\"UserId\":\"US00000017\",\"Content\":\"Your item is ready for pickup\",\"Title\":\"Auction Rescheduled\"},{\"NotificationId\":\"NT00000018\",\"UserId\":\"US00000018\",\"Content\":\"Your withdrawal request has been processed\",\"Title\":\"Transaction Completed\"},{\"NotificationId\":\"NT00000019\",\"UserId\":\"US00000019\",\"Content\":\"The auction platform will undergo maintenance at midnight\",\"Title\":\"Shipping Update\"},{\"NotificationId\":\"NT00000020\",\"UserId\":\"US00000020\",\"Content\":\"Your bid on item B was not successful\",\"Title\":\"Deposit Confirmation\"}]",
                             "name": ""
                         }
                     ]
@@ -1020,7 +1059,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "ex",
+                                    "value": "dolorem",
                                     "description": "The ID of the notification."
                                 }
                             ]
@@ -1059,7 +1098,7 @@
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "52"
+                                    "value": "55"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
@@ -1121,7 +1160,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "dicta",
+                                    "value": "saepe",
                                     "description": "The ID of the notification."
                                 }
                             ]
@@ -1166,7 +1205,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "nulla",
+                                    "value": "ut",
                                     "description": "The ID of the notification."
                                 }
                             ]
@@ -1239,15 +1278,15 @@
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "51"
+                                    "value": "54"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
                                     "value": "*"
                                 }
                             ],
-                            "code": 200,
-                            "body": "[{\"WareHouseId\":\"WH00000001\",\"Position\":\"Warehouse\",\"Quantity\":\"1.0\",\"importDate\":\"2024-05-20 00:00:00.000\",\"exportDate\":\"2024-05-24 00:00:00.000\"},{\"WareHouseId\":\"WH00000002\",\"Position\":\"Warehouse\",\"Quantity\":\"1.0\",\"importDate\":\"2024-05-22 00:00:00.000\",\"exportDate\":\"2024-05-25 00:00:00.000\"},{\"WareHouseId\":\"WH00000003\",\"Position\":\"Warehouse\",\"Quantity\":\"2.0\",\"importDate\":\"2024-05-22 00:00:00.000\",\"exportDate\":\"2024-01-15 00:00:00.000\"},{\"WareHouseId\":\"WH00000004\",\"Position\":\"Warehouse\",\"Quantity\":\"2.0\",\"importDate\":\"2024-01-12 00:00:00.000\",\"exportDate\":\"2024-01-16 00:00:00.000\"},{\"WareHouseId\":\"WH00000005\",\"Position\":\"Warehouse\",\"Quantity\":\"1.0\",\"importDate\":\"2024-01-11 00:00:00.000\",\"exportDate\":\"2024-05-13 00:00:00.000\"},{\"WareHouseId\":\"WH00000006\",\"Position\":\"Warehouse\",\"Quantity\":\"2.0\",\"importDate\":\"2024-05-11 00:00:00.000\",\"exportDate\":\"2024-05-14 00:00:00.000\"},{\"WareHouseId\":\"WH00000007\",\"Position\":\"Warehouse\",\"Quantity\":\"3.0\",\"importDate\":\"2024-01-17 00:00:00.000\",\"exportDate\":\"2024-05-11 00:00:00.000\"},{\"WareHouseId\":\"WH00000008\",\"Position\":\"Warehouse\",\"Quantity\":\"3.0\",\"importDate\":\"2024-05-09 00:00:00.000\",\"exportDate\":\"2024-05-12 00:00:00.000\"},{\"WareHouseId\":\"WH00000009\",\"Position\":\"Warehouse\",\"Quantity\":\"3.0\",\"importDate\":\"2024-01-23 00:00:00.000\",\"exportDate\":\"2024-05-31 00:00:00.000\"},{\"WareHouseId\":\"WH00000010\",\"Position\":\"Warehouse\",\"Quantity\":\"2.0\",\"importDate\":\"2024-05-29 00:00:00.000\",\"exportDate\":\"2024-06-01 00:00:00.000\"},{\"WareHouseId\":\"WH00000011\",\"Position\":\"Warehouse\",\"Quantity\":\"3.0\",\"importDate\":\"2024-02-08 00:00:00.000\",\"exportDate\":\"2024-06-02 00:00:00.000\"},{\"WareHouseId\":\"WH00000012\",\"Position\":\"Warehouse\",\"Quantity\":\"1.0\",\"importDate\":\"2024-05-31 00:00:00.000\",\"exportDate\":\"2024-06-03 00:00:00.000\"},{\"WareHouseId\":\"WH00000013\",\"Position\":\"Warehouse\",\"Quantity\":\"2.0\",\"importDate\":\"2024-02-08 00:00:00.000\",\"exportDate\":\"2024-02-18 00:00:00.000\"},{\"WareHouseId\":\"WH00000014\",\"Position\":\"Warehouse\",\"Quantity\":\"1.0\",\"importDate\":\"2024-02-13 00:00:00.000\",\"exportDate\":\"2024-02-19 00:00:00.000\"},{\"WareHouseId\":\"WH00000015\",\"Position\":\"Warehouse\",\"Quantity\":\"1.0\",\"importDate\":\"2024-06-03 00:00:00.000\",\"exportDate\":\"2024-04-13 00:00:00.000\"},{\"WareHouseId\":\"WH00000016\",\"Position\":\"Warehouse\",\"Quantity\":\"1.0\",\"importDate\":\"2024-04-11 00:00:00.000\",\"exportDate\":\"2024-04-14 00:00:00.000\"},{\"WareHouseId\":\"WH00000017\",\"Position\":\"Warehouse\",\"Quantity\":\"2.0\",\"importDate\":\"2024-02-15 00:00:00.000\",\"exportDate\":\"2024-02-17 00:00:00.000\"},{\"WareHouseId\":\"WH00000018\",\"Position\":\"Warehouse\",\"Quantity\":\"1.0\",\"importDate\":\"2024-02-15 00:00:00.000\",\"exportDate\":\"2024-02-18 00:00:00.000\"},{\"WareHouseId\":\"WH00000019\",\"Position\":\"Warehouse\",\"Quantity\":\"3.0\",\"importDate\":\"2024-03-16 00:00:00.000\",\"exportDate\":\"2024-01-22 00:00:00.000\"},{\"WareHouseId\":\"WH00000020\",\"Position\":\"Warehouse\",\"Quantity\":\"4.0\",\"importDate\":\"2024-01-20 00:00:00.000\",\"exportDate\":\"2024-01-23 00:00:00.000\"}]",
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
                             "name": ""
                         }
                     ]
@@ -1264,13 +1303,13 @@
                                 {
                                     "id": "WareHouseId",
                                     "key": "WareHouseId",
-                                    "value": "WH00000001",
+                                    "value": "distinctio",
                                     "description": ""
                                 },
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "non",
+                                    "value": "quam",
                                     "description": "The ID of the warehouse."
                                 }
                             ]
@@ -1309,15 +1348,15 @@
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "50"
+                                    "value": "53"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
                                     "value": "*"
                                 }
                             ],
-                            "code": 200,
-                            "body": "{\"WareHouseId\":\"WH00000001\",\"Position\":\"Warehouse\",\"Quantity\":\"1.0\",\"importDate\":\"2024-05-20 00:00:00.000\",\"exportDate\":\"2024-05-24 00:00:00.000\"}",
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
                             "name": ""
                         }
                     ]
@@ -1365,13 +1404,13 @@
                                 {
                                     "id": "WareHouseId",
                                     "key": "WareHouseId",
-                                    "value": "WH00000001",
+                                    "value": "tenetur",
                                     "description": ""
                                 },
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "eius",
+                                    "value": "molestiae",
                                     "description": "The ID of the warehouse."
                                 }
                             ]
@@ -1410,13 +1449,13 @@
                                 {
                                     "id": "WareHouseId",
                                     "key": "WareHouseId",
-                                    "value": "WH00000001",
+                                    "value": "atque",
                                     "description": ""
                                 },
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "repellat",
+                                    "value": "ipsam",
                                     "description": "The ID of the warehouse."
                                 }
                             ]

@@ -13,7 +13,7 @@ class CreateWareHousesTable extends Migration
      */
     public function up()
     {
-        Schema::create('ware_houses', function (Blueprint $table) {
+        Schema::create('warehouses', function (Blueprint $table) {
             // WareHouseId làm khóa chính, varchar(10)
             $table->string('WareHouseId', 10)->primary();
 

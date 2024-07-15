@@ -31,12 +31,12 @@ endpoints:
     responses:
       -
         status: 200
-        content: '[{"NotificationId":"NT00000001","UserId":"US00000001","Content":"Your bid has been placed successfully","Title":"Auction Ending Soon"},{"NotificationId":"NT00000002","UserId":"US00000002","Content":"You have been outbid on item X","Title":"New Item Listed"},{"NotificationId":"NT00000003","UserId":"US00000003","Content":"Your item has been successfully sold","Title":"Payment Received"},{"NotificationId":"NT00000004","UserId":"US00000004","Content":"The auction for item Y is ending soon","Title":"Bid Placed Successfully"},{"NotificationId":"NT00000005","UserId":"US00000005","Content":"Your account has been credited with $100","Title":"Outbid Notification"},{"NotificationId":"NT00000006","UserId":"US00000006","Content":"Please verify your email to continue","Title":"Account Update"},{"NotificationId":"NT00000007","UserId":"US00000007","Content":"Your password has been changed successfully","Title":"Deposit Refunded"},{"NotificationId":"NT00000008","UserId":"US00000008","Content":"The auction for item Z starts in 1 hour","Title":"Password Changed"},{"NotificationId":"NT00000009","UserId":"US00000009","Content":"Your account balance is low","Title":"Item Sold"},{"NotificationId":"NT00000010","UserId":"US00000010","Content":"A new auction has been listed in your favorite category","Title":"Auction Canceled"},{"NotificationId":"NT00000011","UserId":"US00000011","Content":"Your payment has been received","Title":"Email Verification Required"},{"NotificationId":"NT00000012","UserId":"US00000012","Content":"Your deposit has been refunded","Title":"Maintenance Notice"},{"NotificationId":"NT00000013","UserId":"US00000013","Content":"Your item listing has been approved","Title":"Message from Seller"},{"NotificationId":"NT00000014","UserId":"US00000014","Content":"The auction for item A has been canceled","Title":"Payment Declined"}]'
+        content: '[{"NotificationId":"NT00000001","UserId":"US00000001","Content":"Your bid has been placed successfully","Title":"Auction Ending Soon"},{"NotificationId":"NT00000002","UserId":"US00000002","Content":"You have been outbid on item X","Title":"New Item Listed"},{"NotificationId":"NT00000003","UserId":"US00000003","Content":"Your item has been successfully sold","Title":"Payment Received"},{"NotificationId":"NT00000004","UserId":"US00000004","Content":"The auction for item Y is ending soon","Title":"Bid Placed Successfully"},{"NotificationId":"NT00000005","UserId":"US00000005","Content":"Your account has been credited with $100","Title":"Outbid Notification"},{"NotificationId":"NT00000006","UserId":"US00000006","Content":"Please verify your email to continue","Title":"Account Update"},{"NotificationId":"NT00000007","UserId":"US00000007","Content":"Your password has been changed successfully","Title":"Deposit Refunded"},{"NotificationId":"NT00000008","UserId":"US00000008","Content":"The auction for item Z starts in 1 hour","Title":"Password Changed"},{"NotificationId":"NT00000009","UserId":"US00000009","Content":"Your account balance is low","Title":"Item Sold"},{"NotificationId":"NT00000010","UserId":"US00000010","Content":"A new auction has been listed in your favorite category","Title":"Auction Canceled"},{"NotificationId":"NT00000011","UserId":"US00000011","Content":"Your payment has been received","Title":"Email Verification Required"},{"NotificationId":"NT00000012","UserId":"US00000012","Content":"Your deposit has been refunded","Title":"Maintenance Notice"},{"NotificationId":"NT00000013","UserId":"US00000013","Content":"Your item listing has been approved","Title":"Message from Seller"},{"NotificationId":"NT00000014","UserId":"US00000014","Content":"The auction for item A has been canceled","Title":"Payment Declined"},{"NotificationId":"NT00000015","UserId":"US00000015","Content":"You have a new message from the seller","Title":"Account Suspended"},{"NotificationId":"NT00000016","UserId":"US00000016","Content":"Your shipping address has been updated","Title":"Item Pickup Ready"},{"NotificationId":"NT00000017","UserId":"US00000017","Content":"Your item is ready for pickup","Title":"Auction Rescheduled"},{"NotificationId":"NT00000018","UserId":"US00000018","Content":"Your withdrawal request has been processed","Title":"Transaction Completed"},{"NotificationId":"NT00000019","UserId":"US00000019","Content":"The auction platform will undergo maintenance at midnight","Title":"Shipping Update"},{"NotificationId":"NT00000020","UserId":"US00000020","Content":"Your bid on item B was not successful","Title":"Deposit Confirmation"}]'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '53'
+          x-ratelimit-remaining: '56'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -78,14 +78,14 @@ endpoints:
         name: id
         description: 'The ID of the notification.'
         required: true
-        example: ex
+        example: dolorem
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
       NotificationId: NT00000001
-      id: ex
+      id: dolorem
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -99,7 +99,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '52'
+          x-ratelimit-remaining: '55'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -203,14 +203,14 @@ endpoints:
         name: id
         description: 'The ID of the notification.'
         required: true
-        example: dicta
+        example: saepe
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
       NotificationId: NT00000001
-      id: dicta
+      id: saepe
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -285,14 +285,14 @@ endpoints:
         name: id
         description: 'The ID of the notification.'
         required: true
-        example: nulla
+        example: ut
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
       NotificationId: NT00000001
-      id: nulla
+      id: ut
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []

@@ -74,7 +74,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '55'
+          x-ratelimit-remaining: '58'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -105,13 +105,13 @@ endpoints:
         name: id
         description: 'The ID of the appraiser.'
         required: true
-        example: 1
+        example: 4
         type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: 1
+      id: 4
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -128,7 +128,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '54'
+          x-ratelimit-remaining: '57'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -163,7 +163,7 @@ endpoints:
         name: AppraiserId
         description: 'Must not be greater than 10 characters.'
         required: true
-        example: womu
+        example: xejrxy
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -172,7 +172,7 @@ endpoints:
         name: Name
         description: ''
         required: true
-        example: facere
+        example: iusto
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -181,7 +181,7 @@ endpoints:
         name: Experience
         description: ''
         required: false
-        example: recusandae
+        example: non
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -190,7 +190,7 @@ endpoints:
         name: Email
         description: ''
         required: false
-        example: aurelio.hettinger@example.org
+        example: pklein@example.org
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -199,7 +199,7 @@ endpoints:
         name: Phone
         description: ''
         required: false
-        example: perferendis
+        example: adipisci
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -214,11 +214,11 @@ endpoints:
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      AppraiserId: womu
-      Name: facere
-      Experience: recusandae
-      Email: aurelio.hettinger@example.org
-      Phone: perferendis
+      AppraiserId: xejrxy
+      Name: iusto
+      Experience: non
+      Email: pklein@example.org
+      Phone: adipisci
       Address: quibusdam
     fileParameters: []
     responses: []
@@ -249,13 +249,13 @@ endpoints:
         name: id
         description: 'The ID of the appraiser.'
         required: true
-        example: 15
+        example: 4
         type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: 15
+      id: 4
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -263,7 +263,7 @@ endpoints:
         name: Name
         description: ''
         required: true
-        example: incidunt
+        example: a
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -272,7 +272,7 @@ endpoints:
         name: Experience
         description: ''
         required: false
-        example: quis
+        example: illum
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -281,7 +281,7 @@ endpoints:
         name: Email
         description: ''
         required: false
-        example: hane.quincy@example.org
+        example: jessy19@example.org
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -290,7 +290,7 @@ endpoints:
         name: Phone
         description: ''
         required: false
-        example: tenetur
+        example: est
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -299,17 +299,17 @@ endpoints:
         name: Address
         description: ''
         required: false
-        example: reiciendis
+        example: dolore
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      Name: incidunt
-      Experience: quis
-      Email: hane.quincy@example.org
-      Phone: tenetur
-      Address: reiciendis
+      Name: a
+      Experience: illum
+      Email: jessy19@example.org
+      Phone: est
+      Address: dolore
     fileParameters: []
     responses: []
     responseFields: []
@@ -339,17 +339,173 @@ endpoints:
         name: id
         description: 'The ID of the restore.'
         required: true
-        example: aliquam
+        example: commodi
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: aliquam
+      id: commodi
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
     cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/users/{UserId}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update a user record.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      UserId:
+        name: UserId
+        description: ''
+        required: true
+        example: dolores
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      UserId: dolores
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      UserName:
+        name: UserName
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: hyqgojsivfhrcepounwkucy
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      PassWord:
+        name: PassWord
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: 'KNG}._dx'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      Avatar:
+        name: Avatar
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: sxgokdxgdyierxdccusggenva
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      Name:
+        name: Name
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: uhisftcrznzithinaz
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      DateOfBirth:
+        name: DateOfBirth
+        description: 'Must be a valid date.'
+        required: false
+        example: '2024-07-15T05:25:38'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      Gender:
+        name: Gender
+        description: ''
+        required: false
+        example: male
+        type: string
+        enumValues:
+          - male
+          - female
+        exampleWasSpecified: false
+        custom: []
+      Phone:
+        name: Phone
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: dlltsdksmmwxkxltm
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      Email:
+        name: Email
+        description: 'Must be a valid email address. Must not be greater than 255 characters.'
+        required: false
+        example: kristin77@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      AddressId:
+        name: AddressId
+        description: 'Must not be greater than 10 characters.'
+        required: false
+        example: na
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      IsBan:
+        name: IsBan
+        description: ''
+        required: false
+        example: unbanned
+        type: string
+        enumValues:
+          - banned
+          - unbanned
+        exampleWasSpecified: false
+        custom: []
+      Verify:
+        name: Verify
+        description: ''
+        required: false
+        example: unverified
+        type: string
+        enumValues:
+          - verified
+          - unverified
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      UserName: hyqgojsivfhrcepounwkucy
+      PassWord: 'KNG}._dx'
+      Avatar: sxgokdxgdyierxdccusggenva
+      Name: uhisftcrznzithinaz
+      DateOfBirth: '2024-07-15T05:25:38'
+      Gender: male
+      Phone: dlltsdksmmwxkxltm
+      Email: kristin77@example.com
+      AddressId: na
+      IsBan: unbanned
+      Verify: unverified
     fileParameters: []
     responses: []
     responseFields: []

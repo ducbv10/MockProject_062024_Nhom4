@@ -30,13 +30,16 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 200
-        content: '[{"WareHouseId":"WH00000001","Position":"Warehouse","Quantity":"1.0","importDate":"2024-05-20 00:00:00.000","exportDate":"2024-05-24 00:00:00.000"},{"WareHouseId":"WH00000002","Position":"Warehouse","Quantity":"1.0","importDate":"2024-05-22 00:00:00.000","exportDate":"2024-05-25 00:00:00.000"},{"WareHouseId":"WH00000003","Position":"Warehouse","Quantity":"2.0","importDate":"2024-05-22 00:00:00.000","exportDate":"2024-01-15 00:00:00.000"},{"WareHouseId":"WH00000004","Position":"Warehouse","Quantity":"2.0","importDate":"2024-01-12 00:00:00.000","exportDate":"2024-01-16 00:00:00.000"},{"WareHouseId":"WH00000005","Position":"Warehouse","Quantity":"1.0","importDate":"2024-01-11 00:00:00.000","exportDate":"2024-05-13 00:00:00.000"},{"WareHouseId":"WH00000006","Position":"Warehouse","Quantity":"2.0","importDate":"2024-05-11 00:00:00.000","exportDate":"2024-05-14 00:00:00.000"},{"WareHouseId":"WH00000007","Position":"Warehouse","Quantity":"3.0","importDate":"2024-01-17 00:00:00.000","exportDate":"2024-05-11 00:00:00.000"},{"WareHouseId":"WH00000008","Position":"Warehouse","Quantity":"3.0","importDate":"2024-05-09 00:00:00.000","exportDate":"2024-05-12 00:00:00.000"},{"WareHouseId":"WH00000009","Position":"Warehouse","Quantity":"3.0","importDate":"2024-01-23 00:00:00.000","exportDate":"2024-05-31 00:00:00.000"},{"WareHouseId":"WH00000010","Position":"Warehouse","Quantity":"2.0","importDate":"2024-05-29 00:00:00.000","exportDate":"2024-06-01 00:00:00.000"},{"WareHouseId":"WH00000011","Position":"Warehouse","Quantity":"3.0","importDate":"2024-02-08 00:00:00.000","exportDate":"2024-06-02 00:00:00.000"},{"WareHouseId":"WH00000012","Position":"Warehouse","Quantity":"1.0","importDate":"2024-05-31 00:00:00.000","exportDate":"2024-06-03 00:00:00.000"},{"WareHouseId":"WH00000013","Position":"Warehouse","Quantity":"2.0","importDate":"2024-02-08 00:00:00.000","exportDate":"2024-02-18 00:00:00.000"},{"WareHouseId":"WH00000014","Position":"Warehouse","Quantity":"1.0","importDate":"2024-02-13 00:00:00.000","exportDate":"2024-02-19 00:00:00.000"},{"WareHouseId":"WH00000015","Position":"Warehouse","Quantity":"1.0","importDate":"2024-06-03 00:00:00.000","exportDate":"2024-04-13 00:00:00.000"},{"WareHouseId":"WH00000016","Position":"Warehouse","Quantity":"1.0","importDate":"2024-04-11 00:00:00.000","exportDate":"2024-04-14 00:00:00.000"},{"WareHouseId":"WH00000017","Position":"Warehouse","Quantity":"2.0","importDate":"2024-02-15 00:00:00.000","exportDate":"2024-02-17 00:00:00.000"},{"WareHouseId":"WH00000018","Position":"Warehouse","Quantity":"1.0","importDate":"2024-02-15 00:00:00.000","exportDate":"2024-02-18 00:00:00.000"},{"WareHouseId":"WH00000019","Position":"Warehouse","Quantity":"3.0","importDate":"2024-03-16 00:00:00.000","exportDate":"2024-01-22 00:00:00.000"},{"WareHouseId":"WH00000020","Position":"Warehouse","Quantity":"4.0","importDate":"2024-01-20 00:00:00.000","exportDate":"2024-01-23 00:00:00.000"}]'
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '51'
+          x-ratelimit-remaining: '54'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -69,7 +72,7 @@ endpoints:
         name: WareHouseId
         description: ''
         required: true
-        example: WH00000001
+        example: distinctio
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -78,14 +81,14 @@ endpoints:
         name: id
         description: 'The ID of the warehouse.'
         required: true
-        example: non
+        example: quam
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      WareHouseId: WH00000001
-      id: non
+      WareHouseId: distinctio
+      id: quam
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -93,13 +96,16 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 200
-        content: '{"WareHouseId":"WH00000001","Position":"Warehouse","Quantity":"1.0","importDate":"2024-05-20 00:00:00.000","exportDate":"2024-05-24 00:00:00.000"}'
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '50'
+          x-ratelimit-remaining: '53'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -204,7 +210,7 @@ endpoints:
         name: WareHouseId
         description: ''
         required: true
-        example: WH00000001
+        example: tenetur
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -213,14 +219,14 @@ endpoints:
         name: id
         description: 'The ID of the warehouse.'
         required: true
-        example: eius
+        example: molestiae
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      WareHouseId: WH00000001
-      id: eius
+      WareHouseId: tenetur
+      id: molestiae
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -296,7 +302,7 @@ endpoints:
         name: WareHouseId
         description: ''
         required: true
-        example: WH00000001
+        example: atque
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -305,14 +311,14 @@ endpoints:
         name: id
         description: 'The ID of the warehouse.'
         required: true
-        example: repellat
+        example: ipsam
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      WareHouseId: WH00000001
-      id: repellat
+      WareHouseId: atque
+      id: ipsam
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []

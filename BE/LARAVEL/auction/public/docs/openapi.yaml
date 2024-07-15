@@ -80,23 +80,23 @@ paths:
                 Name:
                   type: string
                   description: ''
-                  example: incidunt
+                  example: a
                 Experience:
                   type: string
                   description: ''
-                  example: quis
+                  example: illum
                 Email:
                   type: string
                   description: ''
-                  example: hane.quincy@example.org
+                  example: jessy19@example.org
                 Phone:
                   type: string
                   description: ''
-                  example: tenetur
+                  example: est
                 Address:
                   type: string
                   description: ''
-                  example: reiciendis
+                  example: dolore
               required:
                 - Name
       security: []
@@ -1005,7 +1005,7 @@ paths:
                 Description:
                   type: string
                   description: 'The new description of the category.'
-                  example: 'Pariatur id dicta nulla fugiat non qui nihil vel.'
+                  example: 'Maxime harum exercitationem natus fugit hic et.'
               required:
                 - CategoryName
       security: []
@@ -1172,23 +1172,23 @@ paths:
                 AppraiserId:
                   type: string
                   description: 'Must not be greater than 10 characters.'
-                  example: womu
+                  example: xejrxy
                 Name:
                   type: string
                   description: ''
-                  example: facere
+                  example: iusto
                 Experience:
                   type: string
                   description: ''
-                  example: recusandae
+                  example: non
                 Email:
                   type: string
                   description: ''
-                  example: aurelio.hettinger@example.org
+                  example: pklein@example.org
                 Phone:
                   type: string
                   description: ''
-                  example: perferendis
+                  example: adipisci
                 Address:
                   type: string
                   description: ''
@@ -1212,7 +1212,86 @@ paths:
         in: path
         name: id
         description: 'The ID of the restore.'
-        example: aliquam
+        example: commodi
+        required: true
+        schema:
+          type: string
+  '/api/users/{UserId}':
+    put:
+      summary: 'Update a user record.'
+      operationId: updateAUserRecord
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                UserName:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: hyqgojsivfhrcepounwkucy
+                PassWord:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: 'KNG}._dx'
+                Avatar:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: sxgokdxgdyierxdccusggenva
+                Name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: uhisftcrznzithinaz
+                DateOfBirth:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2024-07-15T05:25:38'
+                Gender:
+                  type: string
+                  description: ''
+                  example: male
+                  enum:
+                    - male
+                    - female
+                Phone:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: dlltsdksmmwxkxltm
+                Email:
+                  type: string
+                  description: 'Must be a valid email address. Must not be greater than 255 characters.'
+                  example: kristin77@example.com
+                AddressId:
+                  type: string
+                  description: 'Must not be greater than 10 characters.'
+                  example: na
+                IsBan:
+                  type: string
+                  description: ''
+                  example: unbanned
+                  enum:
+                    - banned
+                    - unbanned
+                Verify:
+                  type: string
+                  description: ''
+                  example: unverified
+                  enum:
+                    - verified
+                    - unverified
+      security: []
+    parameters:
+      -
+        in: path
+        name: UserId
+        description: ''
+        example: dolores
         required: true
         schema:
           type: string
@@ -1302,6 +1381,36 @@ paths:
                     UserId: US00000014
                     Content: 'The auction for item A has been canceled'
                     Title: 'Payment Declined'
+                  -
+                    NotificationId: NT00000015
+                    UserId: US00000015
+                    Content: 'You have a new message from the seller'
+                    Title: 'Account Suspended'
+                  -
+                    NotificationId: NT00000016
+                    UserId: US00000016
+                    Content: 'Your shipping address has been updated'
+                    Title: 'Item Pickup Ready'
+                  -
+                    NotificationId: NT00000017
+                    UserId: US00000017
+                    Content: 'Your item is ready for pickup'
+                    Title: 'Auction Rescheduled'
+                  -
+                    NotificationId: NT00000018
+                    UserId: US00000018
+                    Content: 'Your withdrawal request has been processed'
+                    Title: 'Transaction Completed'
+                  -
+                    NotificationId: NT00000019
+                    UserId: US00000019
+                    Content: 'The auction platform will undergo maintenance at midnight'
+                    Title: 'Shipping Update'
+                  -
+                    NotificationId: NT00000020
+                    UserId: US00000020
+                    Content: 'Your bid on item B was not successful'
+                    Title: 'Deposit Confirmation'
       tags:
         - Notifications
       security: []
@@ -1425,7 +1534,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the notification.'
-        example: ex
+        example: dolorem
         required: true
         schema:
           type: string
@@ -1436,135 +1545,18 @@ paths:
       description: ''
       parameters: []
       responses:
-        200:
+        500:
           description: ''
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
+                type: object
                 example:
-                  -
-                    WareHouseId: WH00000001
-                    Position: Warehouse
-                    Quantity: '1.0'
-                    importDate: '2024-05-20 00:00:00.000'
-                    exportDate: '2024-05-24 00:00:00.000'
-                  -
-                    WareHouseId: WH00000002
-                    Position: Warehouse
-                    Quantity: '1.0'
-                    importDate: '2024-05-22 00:00:00.000'
-                    exportDate: '2024-05-25 00:00:00.000'
-                  -
-                    WareHouseId: WH00000003
-                    Position: Warehouse
-                    Quantity: '2.0'
-                    importDate: '2024-05-22 00:00:00.000'
-                    exportDate: '2024-01-15 00:00:00.000'
-                  -
-                    WareHouseId: WH00000004
-                    Position: Warehouse
-                    Quantity: '2.0'
-                    importDate: '2024-01-12 00:00:00.000'
-                    exportDate: '2024-01-16 00:00:00.000'
-                  -
-                    WareHouseId: WH00000005
-                    Position: Warehouse
-                    Quantity: '1.0'
-                    importDate: '2024-01-11 00:00:00.000'
-                    exportDate: '2024-05-13 00:00:00.000'
-                  -
-                    WareHouseId: WH00000006
-                    Position: Warehouse
-                    Quantity: '2.0'
-                    importDate: '2024-05-11 00:00:00.000'
-                    exportDate: '2024-05-14 00:00:00.000'
-                  -
-                    WareHouseId: WH00000007
-                    Position: Warehouse
-                    Quantity: '3.0'
-                    importDate: '2024-01-17 00:00:00.000'
-                    exportDate: '2024-05-11 00:00:00.000'
-                  -
-                    WareHouseId: WH00000008
-                    Position: Warehouse
-                    Quantity: '3.0'
-                    importDate: '2024-05-09 00:00:00.000'
-                    exportDate: '2024-05-12 00:00:00.000'
-                  -
-                    WareHouseId: WH00000009
-                    Position: Warehouse
-                    Quantity: '3.0'
-                    importDate: '2024-01-23 00:00:00.000'
-                    exportDate: '2024-05-31 00:00:00.000'
-                  -
-                    WareHouseId: WH00000010
-                    Position: Warehouse
-                    Quantity: '2.0'
-                    importDate: '2024-05-29 00:00:00.000'
-                    exportDate: '2024-06-01 00:00:00.000'
-                  -
-                    WareHouseId: WH00000011
-                    Position: Warehouse
-                    Quantity: '3.0'
-                    importDate: '2024-02-08 00:00:00.000'
-                    exportDate: '2024-06-02 00:00:00.000'
-                  -
-                    WareHouseId: WH00000012
-                    Position: Warehouse
-                    Quantity: '1.0'
-                    importDate: '2024-05-31 00:00:00.000'
-                    exportDate: '2024-06-03 00:00:00.000'
-                  -
-                    WareHouseId: WH00000013
-                    Position: Warehouse
-                    Quantity: '2.0'
-                    importDate: '2024-02-08 00:00:00.000'
-                    exportDate: '2024-02-18 00:00:00.000'
-                  -
-                    WareHouseId: WH00000014
-                    Position: Warehouse
-                    Quantity: '1.0'
-                    importDate: '2024-02-13 00:00:00.000'
-                    exportDate: '2024-02-19 00:00:00.000'
-                  -
-                    WareHouseId: WH00000015
-                    Position: Warehouse
-                    Quantity: '1.0'
-                    importDate: '2024-06-03 00:00:00.000'
-                    exportDate: '2024-04-13 00:00:00.000'
-                  -
-                    WareHouseId: WH00000016
-                    Position: Warehouse
-                    Quantity: '1.0'
-                    importDate: '2024-04-11 00:00:00.000'
-                    exportDate: '2024-04-14 00:00:00.000'
-                  -
-                    WareHouseId: WH00000017
-                    Position: Warehouse
-                    Quantity: '2.0'
-                    importDate: '2024-02-15 00:00:00.000'
-                    exportDate: '2024-02-17 00:00:00.000'
-                  -
-                    WareHouseId: WH00000018
-                    Position: Warehouse
-                    Quantity: '1.0'
-                    importDate: '2024-02-15 00:00:00.000'
-                    exportDate: '2024-02-18 00:00:00.000'
-                  -
-                    WareHouseId: WH00000019
-                    Position: Warehouse
-                    Quantity: '3.0'
-                    importDate: '2024-03-16 00:00:00.000'
-                    exportDate: '2024-01-22 00:00:00.000'
-                  -
-                    WareHouseId: WH00000020
-                    Position: Warehouse
-                    Quantity: '4.0'
-                    importDate: '2024-01-20 00:00:00.000'
-                    exportDate: '2024-01-23 00:00:00.000'
+                  message: 'Server Error'
+                properties:
+                  message:
+                    type: string
+                    example: 'Server Error'
       tags:
         - Warehouses
       security: []
@@ -1612,34 +1604,18 @@ paths:
       description: ''
       parameters: []
       responses:
-        200:
+        500:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  WareHouseId: WH00000001
-                  Position: Warehouse
-                  Quantity: '1.0'
-                  importDate: '2024-05-20 00:00:00.000'
-                  exportDate: '2024-05-24 00:00:00.000'
+                  message: 'Server Error'
                 properties:
-                  WareHouseId:
+                  message:
                     type: string
-                    example: WH00000001
-                  Position:
-                    type: string
-                    example: Warehouse
-                  Quantity:
-                    type: string
-                    example: '1.0'
-                  importDate:
-                    type: string
-                    example: '2024-05-20 00:00:00.000'
-                  exportDate:
-                    type: string
-                    example: '2024-05-24 00:00:00.000'
+                    example: 'Server Error'
       tags:
         - Warehouses
       security: []
@@ -1694,7 +1670,7 @@ paths:
         in: path
         name: WareHouseId
         description: ''
-        example: WH00000001
+        example: distinctio
         required: true
         schema:
           type: string
@@ -1702,7 +1678,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the warehouse.'
-        example: non
+        example: quam
         required: true
         schema:
           type: string
