@@ -70,4 +70,102 @@ public class AuctionDetail {
 	
 	@OneToMany(mappedBy = "auctionDetail")
 	List<TransactionHistory> histories = new ArrayList<>();
+
+	public String getAuctionDetailId() {
+		return auctionDetailId;
+	}
+
+	public void setAuctionDetailId(String auctionDetailId) {
+		this.auctionDetailId = auctionDetailId;
+	}
+
+	public Double getStartingPrice() {
+		return startingPrice;
+	}
+
+	public void setStartingPrice(Double startingPrice) {
+		this.startingPrice = startingPrice;
+	}
+
+	public Double getPresentPrice() {
+		return presentPrice;
+	}
+
+	public void setPresentPrice(Double presentPrice) {
+		this.presentPrice = presentPrice;
+	}
+
+	public Double getPercentPrice() {
+		return percentPrice;
+	}
+
+	public void setPercentPrice(Double percentPrice) {
+		this.percentPrice = percentPrice;
+	}
+
+	public Double getStep() {
+		return step;
+	}
+
+	public void setStep(Double step) {
+		this.step = step;
+	}
+
+	public String getTotalTime() {
+		return totalTime;
+	}
+
+	public void setTotalTime(String totalTime) {
+		this.totalTime = totalTime;
+	}
+
+	public User getWonUser() {
+		return wonUser;
+	}
+
+	public void setWonUser(User wonUser) {
+		this.wonUser = wonUser;
+	}
+
+	public Auction getAuction() {
+		return auction;
+	}
+
+	public void setAuction(Auction auction) {
+		this.auction = auction;
+	}
+
+	public Asset getAsset() {
+		return asset;
+	}
+
+	public void setAsset(Asset asset) {
+		this.asset = asset;
+	}
+
+	public User getHostUser() {
+		return hostUser;
+	}
+
+	public void setHostUser(User hostUser) {
+		this.hostUser = hostUser;
+	}
+
+	public LocalDateTime getDeleteAt() {
+		return deleteAt;
+	}
+
+	public void setDeleteAt(LocalDateTime deleteAt) {
+		this.deleteAt = deleteAt;
+	}
+
+	public List<TransactionHistory> getHistories() {
+		return histories;
+	}
+
+	public void setHistories(List<TransactionHistory> histories) {
+		this.histories = histories;
+	}
+	
+	
 }

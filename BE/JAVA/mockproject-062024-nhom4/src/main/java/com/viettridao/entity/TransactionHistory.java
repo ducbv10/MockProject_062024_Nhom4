@@ -55,4 +55,78 @@ public class TransactionHistory {
 	@Column(name = "DeletedAt")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	LocalDateTime deleteAt;
+
+	public String getTransactionHistoryId() {
+		return transactionHistoryId;
+	}
+
+	public void setTransactionHistoryId(String transactionHistoryId) {
+		this.transactionHistoryId = transactionHistoryId;
+	}
+
+	public LocalDateTime getTradeDate() {
+		return tradeDate;
+	}
+
+	public void setTradeDate(LocalDateTime tradeDate) {
+		this.tradeDate = tradeDate;
+	}
+
+	public Double getTradeCost() {
+		return tradeCost;
+	}
+
+	public void setTradeCost(Double tradeCost) {
+		this.tradeCost = tradeCost;
+	}
+
+	public Double getDepositCost() {
+		return depositCost;
+	}
+
+	public void setDepositCost(Double depositCost) {
+		this.depositCost = depositCost;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public AuctionDetail getAuctionDetail() {
+		return auctionDetail;
+	}
+
+	public void setAuctionDetail(AuctionDetail auctionDetail) {
+		this.auctionDetail = auctionDetail;
+	}
+
+	public LocalDateTime getDeleteAt() {
+		return deleteAt;
+	}
+
+	public void setDeleteAt(LocalDateTime deleteAt) {
+		this.deleteAt = deleteAt;
+	}
+	
+	
 }

@@ -5,9 +5,9 @@ server:
 
 spring:
     datasource:
-        url: jdbc:sqlserver://NNGUYEN\\SQLEXPRESS:1433;encrypt=false;databaseName=MockProject_062024_Nhom4
+        url: jdbc:sqlserver://ATEM_11\\SQLEXPRESS:1433;encrypt=false;databaseName=MockProject_062024_Nhom4
         username: sa
-        password: Anvu003133
+        password: 12345678
         driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
 
     jpa:
