@@ -39,8 +39,8 @@ public class AuctionController {
 	@PostMapping
 	public ResponseData<?> createNewAuction(@RequestBody AuctionDTO auction) {
 		try {
-			auctionService.createNewAuction(auction);
-			return new ResponseData<>(HttpStatus.OK.value(), "Create new auction name " + auction.getName());
+			return new ResponseData<>(HttpStatus.CREATED.value(), "Create new auction name " + auction.getName(),
+					auctionService.createNewAuction(auction));
 		} catch (Exception e) {
 			return new ResponseError<>(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
@@ -55,7 +55,7 @@ public class AuctionController {
 			return new ResponseError<>(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
-	
+
 	@GetMapping("/{auctionId}")
 	public ResponseData<?> findAuctionById(@PathVariable("auctionId") String auctionId) {
 		try {
@@ -65,12 +65,12 @@ public class AuctionController {
 			return new ResponseError<>(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
-	
+
 	@GetMapping
 	public ResponseData<?> findAuctionByStatusAndSecretAndMethod(
 			@RequestParam(required = true, defaultValue = "") AuctionMethod method,
-            @RequestParam(required = true, defaultValue = "") AuctionIsSecret isSecret,
-            @RequestParam(required = true, defaultValue = "") AuctionStatus status) {
+			@RequestParam(required = true, defaultValue = "") AuctionIsSecret isSecret,
+			@RequestParam(required = true, defaultValue = "") AuctionStatus status) {
 		try {
 			return new ResponseData<>(HttpStatus.OK.value(), "Find auctions by status and secret and method",
 					auctionService.findByMethodAndIsSecretAndStatus(method, isSecret, status));
@@ -78,7 +78,7 @@ public class AuctionController {
 			return new ResponseError<>(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
-	
+
 	@DeleteMapping("/{auctionId}")
 	public ResponseData<?> deleteAuctionById(@PathVariable("auctionId") String auctionId) {
 		try {

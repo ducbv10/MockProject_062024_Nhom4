@@ -2,12 +2,12 @@ package com.viettridao.dto;
 
 import java.time.LocalDateTime;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.viettridao.entity.enums.AuctionIsSecret;
 import com.viettridao.entity.enums.AuctionMethod;
 import com.viettridao.entity.enums.AuctionStatus;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,6 +16,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class AuctionDTO {
 
 	private String auctionId;

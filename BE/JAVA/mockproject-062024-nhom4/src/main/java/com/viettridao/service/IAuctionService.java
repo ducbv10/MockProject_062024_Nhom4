@@ -9,9 +9,9 @@ import com.viettridao.entity.enums.AuctionStatus;
 
 public interface IAuctionService {
 
-	void createNewAuction(AuctionDTO auctionDTO);
+	AuctionDTO createNewAuction(AuctionDTO auctionDTO);
 
-	void updateAuction(AuctionDTO auctionDTO);
+	AuctionDTO updateAuction(AuctionDTO auctionDTO);
 
 	AuctionDTO findAuctionById(String auctionId);
 
@@ -21,5 +21,5 @@ public interface IAuctionService {
 	
 	List<AuctionDTO> findByMethodAndIsSecretAndStatus(AuctionMethod method, AuctionIsSecret isSecret, AuctionStatus status);
 
-	void deleteAuctionById(String auctionId);
+	String deleteAuctionById(String auctionId);
 }

@@ -72,7 +72,7 @@ public class AuctionServiceImpl implements IAuctionService {
 	}
 
 	@Override
-	public void createNewAuction(AuctionDTO auctionDTO) {
+	public AuctionDTO createNewAuction(AuctionDTO auctionDTO) {
 		try {
 			log.info("Create new auction name " + auctionDTO.getName());
 
@@ -80,6 +80,8 @@ public class AuctionServiceImpl implements IAuctionService {
 			LocalDateTime localDateTime = LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
 
 			checkHoliday(auctionDTO.getStartDate(), auctionDTO.getEndDate());
+			
+			Auction newAuction = new Auction();
 
 			if (auctionDTO.getStartDate().compareTo(localDateTime) < 0) {
 				throw new RuntimeException("Start date is invalid");
@@ -91,12 +93,12 @@ public class AuctionServiceImpl implements IAuctionService {
 
 			if (auctionDTO.getAuctionId() == null) {
 				String id = generateCustomId();
-				Auction newAuction = new Auction();
 				newAuction = mapper.map(auctionDTO, Auction.class);
 				newAuction.setAuctionId(id);
 				auctionRepo.save(newAuction);
 			}
 
+			return mapper.map(newAuction, AuctionDTO.class);
 		} catch (Exception e) {
 			log.error("Error message: {}", e.toString());
 			throw new RuntimeException(e.toString());
@@ -104,7 +106,7 @@ public class AuctionServiceImpl implements IAuctionService {
 	}
 
 	@Override
-	public void updateAuction(AuctionDTO auctionDTO) {
+	public AuctionDTO updateAuction(AuctionDTO auctionDTO) {
 		try {
 			log.info("Update auction id {}", auctionDTO.getAuctionId());
 
@@ -126,6 +128,7 @@ public class AuctionServiceImpl implements IAuctionService {
 			mapper.map(oldAuction, auctionDTO);
 			auctionRepo.save(oldAuction);
 
+			return mapper.map(oldAuction, AuctionDTO.class);
 		} catch (Exception e) {
 			log.error("Error message: {}", e.toString());
 			throw new RuntimeException(e.toString());
@@ -176,7 +179,7 @@ public class AuctionServiceImpl implements IAuctionService {
 	}
 
 	@Override
-	public void deleteAuctionById(String auctionId) {
+	public String deleteAuctionById(String auctionId) {
 		try {
 			log.info("Delete auction id {}", auctionId);
 			Auction auction = auctionRepo.findById(auctionId)
@@ -184,6 +187,8 @@ public class AuctionServiceImpl implements IAuctionService {
 
 			auction.setDeleteAt(LocalDateTime.now());
 			auctionRepo.save(auction);
+			
+			return "Delete successfully auction id " + auctionId;
 		} catch (Exception e) {
 			log.error("Error message: {}", e.toString());
 			throw new RuntimeException(e.toString());
