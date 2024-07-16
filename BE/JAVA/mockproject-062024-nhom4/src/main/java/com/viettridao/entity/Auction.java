@@ -5,9 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.viettridao.entity.enums.AuctionIsSecret;
+import com.viettridao.entity.enums.AuctionMethod;
+import com.viettridao.entity.enums.AuctionStatus;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -34,13 +39,16 @@ public class Auction {
 	String name;
 	
 	@Column(name = "Method")
-	String method;
+	@Enumerated(EnumType.STRING)
+	AuctionMethod method;
 	
 	@Column(name = "IsSecret")
-	String isSecret;
+	@Enumerated(EnumType.STRING)
+	AuctionIsSecret isSecret;
 	
 	@Column(name = "Status")
-	String status;
+	@Enumerated(EnumType.STRING)
+	AuctionStatus status;
 	
 	@Column(name = "StartDate")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")

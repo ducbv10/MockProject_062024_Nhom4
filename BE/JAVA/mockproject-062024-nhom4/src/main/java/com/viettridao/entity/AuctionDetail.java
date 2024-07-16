@@ -166,6 +166,4 @@ public class AuctionDetail {
 	public void setHistories(List<TransactionHistory> histories) {
 		this.histories = histories;
 	}
-	
-	
 }

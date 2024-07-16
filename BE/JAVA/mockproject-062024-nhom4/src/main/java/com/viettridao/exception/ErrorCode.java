@@ -1,7 +1,7 @@
 package com.viettridao.exception;
 
 public enum ErrorCode {
-	UNCATEGORIZED_EXCEPTION(9999, "Uncategorized exception"),
+	//UNCATEGORIZED_EXCEPTION(9999, "Uncategorized exception"),
 	INVALID_KEY(1001, "Invalid message key"),
 	USER_NOT_EXISTED(1004, "User does not exist"),
 	TAX_NOT_EXISTED(1005, "Tax does not exist"),

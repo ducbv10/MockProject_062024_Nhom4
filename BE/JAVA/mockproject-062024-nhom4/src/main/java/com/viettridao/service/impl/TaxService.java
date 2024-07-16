@@ -28,9 +28,9 @@ public class TaxService implements iTaxService{
         tax.setLocation(request.getLocation());
         tax.setValue(request.getValue());
         tax.setDeleteAt(request.getDeleteAt());
-        User user = userRepository.findById(request.getUserId())
-                .orElseThrow(() -> new RuntimeException("User not found"));
-        tax.setUser(user);
+//        User user = userRepository.findById(request.getUserId())
+//                .orElseThrow(() -> new RuntimeException("User not found"));
+//        tax.setUser(user);
 
         return taxRepository.save(tax);
     }
