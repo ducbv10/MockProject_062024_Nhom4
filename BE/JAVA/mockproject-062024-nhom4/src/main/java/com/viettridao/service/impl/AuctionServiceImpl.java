@@ -65,7 +65,6 @@ public class AuctionServiceImpl implements IAuctionService {
 
 			if (endDate != null)
 				throw new HolidayException(end + " is " + endDate);
-
 		} catch (Exception e) {
 			throw new RuntimeException(e.toString());
 		}
@@ -167,7 +166,7 @@ public class AuctionServiceImpl implements IAuctionService {
 		try {
 			log.info("Find auction page {} and limit {}", pageNo, pageSize);
 			pageNo = pageNo < 1 ? 1 : pageNo;
-			Pageable pageable = PageRequest.of(0, 5, Sort.by(Sort.Direction.ASC, "id"));
+			Pageable pageable = PageRequest.of(pageNo - 1, 5, Sort.by(Sort.Direction.ASC, "id"));
 			Page<Auction> listAuctions = auctionRepo.findAll(pageable);
 			List<AuctionDTO> listAuctionsDTO = listAuctions.stream().map(item -> mapper.map(item, AuctionDTO.class))
 					.collect(Collectors.toList());

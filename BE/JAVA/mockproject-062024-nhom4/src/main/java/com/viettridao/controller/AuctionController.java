@@ -20,6 +20,8 @@ import com.viettridao.response.ResponseData;
 import com.viettridao.response.ResponseError;
 import com.viettridao.service.impl.AuctionServiceImpl;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/auctions")
 public class AuctionController {
@@ -37,7 +39,7 @@ public class AuctionController {
 	}
 
 	@PostMapping
-	public ResponseData<?> createNewAuction(@RequestBody AuctionDTO auction) {
+	public ResponseData<?> createNewAuction(@RequestBody @Valid AuctionDTO auction) {
 		try {
 			return new ResponseData<>(HttpStatus.CREATED.value(), "Create new auction name " + auction.getName(),
 					auctionService.createNewAuction(auction));
@@ -47,9 +49,9 @@ public class AuctionController {
 	}
 
 	@PutMapping
-	public ResponseData<?> updateAuction(@RequestBody AuctionDTO auction) {
+	public ResponseData<?> updateAuction(@RequestBody @Valid AuctionDTO auction) {
 		try {
-			auctionService.createNewAuction(auction);
+			auctionService.updateAuction(auction);
 			return new ResponseData<>(HttpStatus.OK.value(), "Update auction name " + auction.getName());
 		} catch (Exception e) {
 			return new ResponseError<>(HttpStatus.BAD_REQUEST.value(), e.getMessage());

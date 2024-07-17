@@ -5,6 +5,11 @@ import com.viettridao.entity.enums.AssetIsInAuction;
 import com.viettridao.entity.enums.AssetIsNew;
 import com.viettridao.entity.enums.IsSold;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+
+@AllArgsConstructor
+@Builder
 public class AssetDTO {
 
 	private String assetId;

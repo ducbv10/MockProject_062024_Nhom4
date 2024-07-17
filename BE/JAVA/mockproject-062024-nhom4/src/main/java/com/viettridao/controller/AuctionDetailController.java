@@ -16,6 +16,8 @@ import com.viettridao.response.ResponseData;
 import com.viettridao.response.ResponseError;
 import com.viettridao.service.impl.AuctionDetailServiceImpl;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/auction-detail")
 public class AuctionDetailController {
@@ -26,38 +28,38 @@ public class AuctionDetailController {
 	@GetMapping("/{auctionDetailId}")
 	public ResponseData<?> findAuctionDetailById(@PathVariable("auctionDetailId") String auctionDetailId) {
 		try {
-			return new ResponseData<>(HttpStatus.OK.value(), "Find auction detail", 
+			return new ResponseData<>(HttpStatus.OK.value(), "Find auction detail",
 					auctionDetailService.findAuctionDetailById(auctionDetailId));
 		} catch (Exception e) {
 			return new ResponseError<>(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
-	
+
 	@PostMapping
-	public ResponseData<?> createNewAuctionDetail(@RequestBody AuctionDetailRequest request) {
+	public ResponseData<?> createNewAuctionDetail(@RequestBody @Valid AuctionDetailRequest request) {
 		try {
-			auctionDetailService.createNewAuctionDetail(request);;
-			return new ResponseData<>(HttpStatus.CREATED.value(), "New auction detail");
+			return new ResponseData<>(HttpStatus.CREATED.value(), "New auction detail",
+					auctionDetailService.createNewAuctionDetail(request));
 		} catch (Exception e) {
 			return new ResponseError<>(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
-	
+
 	@PutMapping
-	public ResponseData<?> updateAuctionDetail(@RequestBody AuctionDetailRequest request) {
+	public ResponseData<?> updateAuctionDetail(@RequestBody @Valid AuctionDetailRequest request) {
 		try {
-			auctionDetailService.updateAuctionDetail(request);
-			return new ResponseData<>(HttpStatus.OK.value(), "Update auction detail");
+			return new ResponseData<>(HttpStatus.OK.value(), "Update auction detail",
+					auctionDetailService.updateAuctionDetail(request));
 		} catch (Exception e) {
 			return new ResponseError<>(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
-	
+
 	@DeleteMapping("/{auctionDetailId}")
 	public ResponseData<?> deleteAuctionDetail(@PathVariable("auctionDetailId") String auctionDetailId) {
 		try {
-			auctionDetailService.deleteAuctionDetailById(auctionDetailId);
-			return new ResponseData<>(HttpStatus.OK.value(), "Delete auction detail");
+			return new ResponseData<>(HttpStatus.OK.value(), "Delete auction detail",
+					auctionDetailService.deleteAuctionDetailById(auctionDetailId));
 		} catch (Exception e) {
 			return new ResponseError<>(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}

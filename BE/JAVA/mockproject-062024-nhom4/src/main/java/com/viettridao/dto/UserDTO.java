@@ -6,6 +6,13 @@ import com.viettridao.entity.enums.Gender;
 import com.viettridao.entity.enums.UserIsBan;
 import com.viettridao.entity.enums.UserVerify;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
+@AllArgsConstructor
+@Builder
 public class UserDTO {
 
 	private String userId;

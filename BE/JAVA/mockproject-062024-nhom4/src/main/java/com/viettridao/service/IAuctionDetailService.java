@@ -5,11 +5,11 @@ import com.viettridao.request.AuctionDetailRequest;
 
 public interface IAuctionDetailService {
 
-	void createNewAuctionDetail(AuctionDetailRequest request);
+	AuctionDetailDTO createNewAuctionDetail(AuctionDetailRequest request);
 	
-	void updateAuctionDetail(AuctionDetailRequest request);
+	AuctionDetailDTO updateAuctionDetail(AuctionDetailRequest request);
 	
-	void deleteAuctionDetailById(String auctionDetailId);
+	String deleteAuctionDetailById(String auctionDetailId);
 	
 	AuctionDetailDTO findAuctionDetailById(String auctionDetailId);
 }
