@@ -14,9 +14,12 @@ const config: any = {
   },
 };
 
+// Single connection pool instance for the entire application
+const pool = new ConnectionPool(config);
+
 const poolPromise = async () => {
   try {
-    const pool = await new ConnectionPool(config).connect();
+    await pool.connect();
     console.log('Connected to MSSQL');
     return pool;
   } catch (err) {

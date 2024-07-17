@@ -1,12 +1,10 @@
-import swaggerJSDoc from 'swagger-jsdoc';
-
 const swaggerOptions = {
-  swaggerDefinition: {
+  definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Auction API',
+      title: 'MockProject_062024_Nhom4 US Auction API',
       version: '1.0.0',
-      description: 'Auction API',
+      description: 'US Auction API',
     },
     servers: [
       {
@@ -14,8 +12,17 @@ const swaggerOptions = {
         description: 'Development server',
       },
     ],
+    components: {
+      securitySchemes: {
+        BearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
+    },
   },
   apis: ['./src/routes/*.ts'],
 };
 
-export default swaggerJSDoc(swaggerOptions);
+export default swaggerOptions;
