@@ -13,7 +13,7 @@ class CreateAuctionDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('auction_details', function (Blueprint $table) {
+        Schema::create('auctiondetails', function (Blueprint $table) {
             // AuctionDetailId làm khóa chính, varchar(10)
             $table->string('AuctionDetailId', 10)->primary();
 

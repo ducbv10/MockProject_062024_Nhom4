@@ -4,6 +4,8 @@ use App\Http\Controllers\AppraiserController;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\WarehouseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -59,3 +61,5 @@ Route::get('warehouses/{WareHouseId}', [WarehouseController::class, 'show']);
 Route::post('warehouses', [WarehouseController::class, 'store']);
 Route::put('warehouses/{WareHouseId}', [WarehouseController::class, 'update']);
 Route::delete('warehouses/{WareHouseId}', [WarehouseController::class, 'destroy']);
+
+Route::put('users/{UserId}', [UserController::class, 'update']);

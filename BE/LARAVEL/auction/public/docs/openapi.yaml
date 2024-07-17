@@ -7,6 +7,1109 @@ servers:
   -
     url: 'http://localhost'
 paths:
+  '/api/appraisers/{id}':
+    delete:
+      summary: 'Remove the specified asset from storage.'
+      operationId: removeTheSpecifiedAssetFromStorage
+      description: 'This endpoint deletes a specific asset by its ID.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Appraiser deleted successfully'
+                properties:
+                  message:
+                    type: string
+                    example: 'Appraiser deleted successfully'
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Asset not found.'
+                properties:
+                  error:
+                    type: string
+                    example: 'Asset not found.'
+      tags:
+        - Appraiser
+      security: []
+    get:
+      summary: ''
+      operationId: getApiAppraisersId
+      description: ''
+      parameters: []
+      responses:
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Server Error'
+                properties:
+                  message:
+                    type: string
+                    example: 'Server Error'
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified asset in storage.'
+      operationId: updateTheSpecifiedAssetInStorage
+      description: 'This endpoint updates the details of a specific asset.'
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Name:
+                  type: string
+                  description: ''
+                  example: a
+                Experience:
+                  type: string
+                  description: ''
+                  example: illum
+                Email:
+                  type: string
+                  description: ''
+                  example: jessy19@example.org
+                Phone:
+                  type: string
+                  description: ''
+                  example: est
+                Address:
+                  type: string
+                  description: ''
+                  example: dolore
+              required:
+                - Name
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the asset.'
+        example: AP00000001
+        required: true
+        schema:
+          type: string
+  /api/assets:
+    get:
+      summary: 'Get a list of all assets.'
+      operationId: getAListOfAllAssets
+      description: 'This endpoint retrieves all assets from the database.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      AssetId: AS00000001
+                      Name: 'Asset 1'
+                      Description: 'Description of asset 1'
+                      Origin: 'Origin 1'
+                      AppraiserStatus: 'Appraiser status 1'
+                      IsNew: 'Yes'
+                      IsInAuction: 'No'
+                      IsSold: 'No'
+                      UserId: User1
+                      AppraiserId: Appraiser1
+                      WareHouseId: Warehouse1
+                      CategoryId: Category1
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        AssetId: AS00000001
+                        Name: 'Asset 1'
+                        Description: 'Description of asset 1'
+                        Origin: 'Origin 1'
+                        AppraiserStatus: 'Appraiser status 1'
+                        IsNew: 'Yes'
+                        IsInAuction: 'No'
+                        IsSold: 'No'
+                        UserId: User1
+                        AppraiserId: Appraiser1
+                        WareHouseId: Warehouse1
+                        CategoryId: Category1
+                    items:
+                      type: object
+                      properties:
+                        AssetId:
+                          type: string
+                          example: AS00000001
+                        Name:
+                          type: string
+                          example: 'Asset 1'
+                        Description:
+                          type: string
+                          example: 'Description of asset 1'
+                        Origin:
+                          type: string
+                          example: 'Origin 1'
+                        AppraiserStatus:
+                          type: string
+                          example: 'Appraiser status 1'
+                        IsNew:
+                          type: string
+                          example: 'Yes'
+                        IsInAuction:
+                          type: string
+                          example: 'No'
+                        IsSold:
+                          type: string
+                          example: 'No'
+                        UserId:
+                          type: string
+                          example: User1
+                        AppraiserId:
+                          type: string
+                          example: Appraiser1
+                        WareHouseId:
+                          type: string
+                          example: Warehouse1
+                        CategoryId:
+                          type: string
+                          example: Category1
+      tags:
+        - Assets
+      security: []
+    post:
+      summary: 'Store a newly created asset in storage.'
+      operationId: storeANewlyCreatedAssetInStorage
+      description: 'This endpoint creates a new asset with the provided details.'
+      parameters: []
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Asset created successfully'
+                  data:
+                    AssetId: AS00000001
+                    Name: 'Asset 1'
+                    Description: 'This is a description of asset 1.'
+                    Origin: 'Origin 1'
+                    AppraiserStatus: Approved
+                    IsNew: 'Yes'
+                    IsInAuction: 'No'
+                    IsSold: 'No'
+                    UserId: User1
+                    AppraiserId: Appraiser1
+                    WareHouseId: Warehouse1
+                    CategoryId: Category1
+                properties:
+                  message:
+                    type: string
+                    example: 'Asset created successfully'
+                  data:
+                    type: object
+                    properties:
+                      AssetId:
+                        type: string
+                        example: AS00000001
+                      Name:
+                        type: string
+                        example: 'Asset 1'
+                      Description:
+                        type: string
+                        example: 'This is a description of asset 1.'
+                      Origin:
+                        type: string
+                        example: 'Origin 1'
+                      AppraiserStatus:
+                        type: string
+                        example: Approved
+                      IsNew:
+                        type: string
+                        example: 'Yes'
+                      IsInAuction:
+                        type: string
+                        example: 'No'
+                      IsSold:
+                        type: string
+                        example: 'No'
+                      UserId:
+                        type: string
+                        example: User1
+                      AppraiserId:
+                        type: string
+                        example: Appraiser1
+                      WareHouseId:
+                        type: string
+                        example: Warehouse1
+                      CategoryId:
+                        type: string
+                        example: Category1
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error:
+                    AssetId:
+                      - 'The asset ID has already been taken.'
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      AssetId:
+                        type: array
+                        example:
+                          - 'The asset ID has already been taken.'
+                        items:
+                          type: string
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Failed to create asset.'
+                properties:
+                  error:
+                    type: string
+                    example: 'Failed to create asset.'
+      tags:
+        - Assets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                AssetId:
+                  type: string
+                  description: 'The ID of the asset.'
+                  example: AS00000001
+                Name:
+                  type: string
+                  description: 'The name of the asset.'
+                  example: 'Asset 1'
+                Description:
+                  type: string
+                  description: 'The description of the asset.'
+                  example: 'This is a description of asset 1.'
+                Origin:
+                  type: string
+                  description: 'The origin of the asset.'
+                  example: 'Origin 1'
+                AppraiserStatus:
+                  type: string
+                  description: 'The appraiser status of the asset.'
+                  example: Approved
+                IsNew:
+                  type: string
+                  description: 'Indicates if the asset is new.'
+                  example: 'Yes'
+                IsInAuction:
+                  type: string
+                  description: 'Indicates if the asset is in auction.'
+                  example: 'No'
+                IsSold:
+                  type: string
+                  description: 'Indicates if the asset is sold.'
+                  example: 'No'
+                UserId:
+                  type: string
+                  description: 'The user ID associated with the asset.'
+                  example: User1
+                AppraiserId:
+                  type: string
+                  description: 'The appraiser ID associated with the asset.'
+                  example: Appraiser1
+                WareHouseId:
+                  type: string
+                  description: 'The warehouse ID where the asset is stored.'
+                  example: Warehouse1
+                CategoryId:
+                  type: string
+                  description: 'The category ID associated with the asset.'
+                  example: Category1
+              required:
+                - AssetId
+                - Name
+      security: []
+  '/api/assets/{id}':
+    get:
+      summary: 'Display the specified asset.'
+      operationId: displayTheSpecifiedAsset
+      description: 'This endpoint retrieves the details of a specific asset by its ID.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    AssetId: AS00000001
+                    Name: 'Asset 1'
+                    Description: 'This is a description of asset 1.'
+                    Origin: 'Origin 1'
+                    AppraiserStatus: Approved
+                    IsNew: 'Yes'
+                    IsInAuction: 'No'
+                    IsSold: 'No'
+                    UserId: User1
+                    AppraiserId: Appraiser1
+                    WareHouseId: Warehouse1
+                    CategoryId: Category1
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      AssetId:
+                        type: string
+                        example: AS00000001
+                      Name:
+                        type: string
+                        example: 'Asset 1'
+                      Description:
+                        type: string
+                        example: 'This is a description of asset 1.'
+                      Origin:
+                        type: string
+                        example: 'Origin 1'
+                      AppraiserStatus:
+                        type: string
+                        example: Approved
+                      IsNew:
+                        type: string
+                        example: 'Yes'
+                      IsInAuction:
+                        type: string
+                        example: 'No'
+                      IsSold:
+                        type: string
+                        example: 'No'
+                      UserId:
+                        type: string
+                        example: User1
+                      AppraiserId:
+                        type: string
+                        example: Appraiser1
+                      WareHouseId:
+                        type: string
+                        example: Warehouse1
+                      CategoryId:
+                        type: string
+                        example: Category1
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Asset not found.'
+                properties:
+                  error:
+                    type: string
+                    example: 'Asset not found.'
+      tags:
+        - Assets
+      security: []
+    put:
+      summary: 'Update the specified asset in storage.'
+      operationId: updateTheSpecifiedAssetInStorage
+      description: 'This endpoint updates the details of a specific asset.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Asset updated successfully'
+                  data:
+                    AssetId: AS00000001
+                    Name: 'Asset 1'
+                    Description: 'This is a description of asset 1.'
+                    Origin: 'Origin 1'
+                    AppraiserStatus: Approved
+                    IsNew: 'Yes'
+                    IsInAuction: 'No'
+                    IsSold: 'No'
+                    UserId: User1
+                    AppraiserId: Appraiser1
+                    WareHouseId: Warehouse1
+                    CategoryId: Category1
+                properties:
+                  message:
+                    type: string
+                    example: 'Asset updated successfully'
+                  data:
+                    type: object
+                    properties:
+                      AssetId:
+                        type: string
+                        example: AS00000001
+                      Name:
+                        type: string
+                        example: 'Asset 1'
+                      Description:
+                        type: string
+                        example: 'This is a description of asset 1.'
+                      Origin:
+                        type: string
+                        example: 'Origin 1'
+                      AppraiserStatus:
+                        type: string
+                        example: Approved
+                      IsNew:
+                        type: string
+                        example: 'Yes'
+                      IsInAuction:
+                        type: string
+                        example: 'No'
+                      IsSold:
+                        type: string
+                        example: 'No'
+                      UserId:
+                        type: string
+                        example: User1
+                      AppraiserId:
+                        type: string
+                        example: Appraiser1
+                      WareHouseId:
+                        type: string
+                        example: Warehouse1
+                      CategoryId:
+                        type: string
+                        example: Category1
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error:
+                    Name:
+                      - 'The name field is required.'
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      Name:
+                        type: array
+                        example:
+                          - 'The name field is required.'
+                        items:
+                          type: string
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Asset not found.'
+                properties:
+                  error:
+                    type: string
+                    example: 'Asset not found.'
+      tags:
+        - Assets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Name:
+                  type: string
+                  description: 'The name of the asset.'
+                  example: 'Asset 1'
+                Description:
+                  type: string
+                  description: 'The description of the asset.'
+                  example: 'This is a description of asset 1.'
+                Origin:
+                  type: string
+                  description: 'The origin of the asset.'
+                  example: 'Origin 1'
+                AppraiserStatus:
+                  type: string
+                  description: 'The appraiser status of the asset.'
+                  example: Approved
+                IsNew:
+                  type: string
+                  description: 'Indicates if the asset is new.'
+                  example: 'Yes'
+                IsInAuction:
+                  type: string
+                  description: 'Indicates if the asset is in auction.'
+                  example: 'No'
+                IsSold:
+                  type: string
+                  description: 'Indicates if the asset is sold.'
+                  example: 'No'
+                UserId:
+                  type: string
+                  description: 'The user ID associated with the asset.'
+                  example: User1
+                AppraiserId:
+                  type: string
+                  description: 'The appraiser ID associated with the asset.'
+                  example: Appraiser1
+                WareHouseId:
+                  type: string
+                  description: 'The warehouse ID where the asset is stored.'
+                  example: Warehouse1
+                CategoryId:
+                  type: string
+                  description: 'The category ID associated with the asset.'
+                  example: Category1
+              required:
+                - Name
+      security: []
+    delete:
+      summary: 'Remove the specified asset from storage.'
+      operationId: removeTheSpecifiedAssetFromStorage
+      description: 'This endpoint deletes a specific asset by its ID.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Asset deleted successfully'
+                properties:
+                  message:
+                    type: string
+                    example: 'Asset deleted successfully'
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Asset not found.'
+                properties:
+                  error:
+                    type: string
+                    example: 'Asset not found.'
+      tags:
+        - Assets
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the asset.'
+        example: AS00000001
+        required: true
+        schema:
+          type: string
+  '/api/assets/restore/{id}':
+    patch:
+      summary: 'Restore the specified asset from storage.'
+      operationId: restoreTheSpecifiedAssetFromStorage
+      description: 'This endpoint restores a deleted asset by its ID.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Asset restored successfully'
+                  data:
+                    AssetId: AS00000001
+                    Name: 'Asset 1'
+                    Description: 'This is a description of asset 1.'
+                    Origin: 'Origin 1'
+                    AppraiserStatus: Approved
+                    IsNew: 'Yes'
+                    IsInAuction: 'No'
+                    IsSold: 'No'
+                    UserId: User1
+                    AppraiserId: Appraiser1
+                    WareHouseId: Warehouse1
+                    CategoryId: Category1
+                properties:
+                  message:
+                    type: string
+                    example: 'Asset restored successfully'
+                  data:
+                    type: object
+                    properties:
+                      AssetId:
+                        type: string
+                        example: AS00000001
+                      Name:
+                        type: string
+                        example: 'Asset 1'
+                      Description:
+                        type: string
+                        example: 'This is a description of asset 1.'
+                      Origin:
+                        type: string
+                        example: 'Origin 1'
+                      AppraiserStatus:
+                        type: string
+                        example: Approved
+                      IsNew:
+                        type: string
+                        example: 'Yes'
+                      IsInAuction:
+                        type: string
+                        example: 'No'
+                      IsSold:
+                        type: string
+                        example: 'No'
+                      UserId:
+                        type: string
+                        example: User1
+                      AppraiserId:
+                        type: string
+                        example: Appraiser1
+                      WareHouseId:
+                        type: string
+                        example: Warehouse1
+                      CategoryId:
+                        type: string
+                        example: Category1
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Asset not found.'
+                properties:
+                  error:
+                    type: string
+                    example: 'Asset not found.'
+      tags:
+        - Assets
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the asset.'
+        example: AS00000001
+        required: true
+        schema:
+          type: string
+  /api/categories:
+    get:
+      summary: 'Display a listing of the categories.'
+      operationId: displayAListingOfTheCategories
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      CategoryId: '1'
+                      CategoryName: 'Category 1'
+                      Description: 'Description of Category 1'
+                    -
+                      CategoryId: '2'
+                      CategoryName: 'Category 2'
+                      Description: 'Description of Category 2'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        CategoryId: '1'
+                        CategoryName: 'Category 1'
+                        Description: 'Description of Category 1'
+                      -
+                        CategoryId: '2'
+                        CategoryName: 'Category 2'
+                        Description: 'Description of Category 2'
+                    items:
+                      type: object
+                      properties:
+                        CategoryId:
+                          type: string
+                          example: '1'
+                        CategoryName:
+                          type: string
+                          example: 'Category 1'
+                        Description:
+                          type: string
+                          example: 'Description of Category 1'
+      tags:
+        - Categories
+      security: []
+    post:
+      summary: 'Store a newly created category in storage.'
+      operationId: storeANewlyCreatedCategoryInStorage
+      description: 'This endpoint creates a new category with the provided details.'
+      parameters: []
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Category created successfully'
+                  data:
+                    CategoryId: CA00000001
+                    CategoryName: 'Category 1'
+                    Description: 'This is a category description.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Category created successfully'
+                  data:
+                    type: object
+                    properties:
+                      CategoryId:
+                        type: string
+                        example: CA00000001
+                      CategoryName:
+                        type: string
+                        example: 'Category 1'
+                      Description:
+                        type: string
+                        example: 'This is a category description.'
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error:
+                    CategoryId:
+                      - 'The category ID has already been taken.'
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      CategoryId:
+                        type: array
+                        example:
+                          - 'The category ID has already been taken.'
+                        items:
+                          type: string
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Failed to create category.'
+                properties:
+                  error:
+                    type: string
+                    example: 'Failed to create category.'
+      tags:
+        - Categories
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                CategoryId:
+                  type: string
+                  description: 'The ID of the category.'
+                  example: CA00000001
+                CategoryName:
+                  type: string
+                  description: 'The name of the category.'
+                  example: 'Category 1'
+                Description:
+                  type: string
+                  description: 'The description of the category.'
+                  example: 'This is a category description.'
+              required:
+                - CategoryId
+                - CategoryName
+      security: []
+  '/api/categories/{id}':
+    get:
+      summary: 'Display the specified category.'
+      operationId: displayTheSpecifiedCategory
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    CategoryId: '1'
+                    CategoryName: 'Category 1'
+                    Description: 'Description of Category 1'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      CategoryId:
+                        type: string
+                        example: '1'
+                      CategoryName:
+                        type: string
+                        example: 'Category 1'
+                      Description:
+                        type: string
+                        example: 'Description of Category 1'
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Category not found.'
+                properties:
+                  error:
+                    type: string
+                    example: 'Category not found.'
+      tags:
+        - Categories
+      security: []
+    put:
+      summary: 'Update the specified category in storage.'
+      operationId: updateTheSpecifiedCategoryInStorage
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Category updated successfully'
+                  data:
+                    CategoryId: '1'
+                    CategoryName: 'Updated Category'
+                    Description: 'New description'
+                properties:
+                  message:
+                    type: string
+                    example: 'Category updated successfully'
+                  data:
+                    type: object
+                    properties:
+                      CategoryId:
+                        type: string
+                        example: '1'
+                      CategoryName:
+                        type: string
+                        example: 'Updated Category'
+                      Description:
+                        type: string
+                        example: 'New description'
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error:
+                    CategoryName:
+                      - 'The category name field is required.'
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      CategoryName:
+                        type: array
+                        example:
+                          - 'The category name field is required.'
+                        items:
+                          type: string
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Category not found.'
+                properties:
+                  error:
+                    type: string
+                    example: 'Category not found.'
+      tags:
+        - Categories
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                CategoryName:
+                  type: string
+                  description: 'The new name of the category.'
+                  example: 'Updated Category'
+                Description:
+                  type: string
+                  description: 'The new description of the category.'
+                  example: 'Maxime harum exercitationem natus fugit hic et.'
+              required:
+                - CategoryName
+      security: []
+    delete:
+      summary: 'Remove the specified category from storage.'
+      operationId: removeTheSpecifiedCategoryFromStorage
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Category deleted successfully'
+                properties:
+                  message:
+                    type: string
+                    example: 'Category deleted successfully'
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Category not found.'
+                properties:
+                  error:
+                    type: string
+                    example: 'Category not found.'
+      tags:
+        - Categories
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the category.'
+        example: '1'
+        required: true
+        schema:
+          type: string
+  '/api/categories/restore/{id}':
+    patch:
+      summary: 'Restore the specified category from soft delete.'
+      operationId: restoreTheSpecifiedCategoryFromSoftDelete
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Category restored successfully'
+                  data:
+                    CategoryId: '1'
+                    CategoryName: 'Restored Category'
+                    Description: 'Restored description'
+                properties:
+                  message:
+                    type: string
+                    example: 'Category restored successfully'
+                  data:
+                    type: object
+                    properties:
+                      CategoryId:
+                        type: string
+                        example: '1'
+                      CategoryName:
+                        type: string
+                        example: 'Restored Category'
+                      Description:
+                        type: string
+                        example: 'Restored description'
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Category not found.'
+                properties:
+                  error:
+                    type: string
+                    example: 'Category not found.'
+      tags:
+        - Categories
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the category to restore.'
+        example: '1'
+        required: true
+        schema:
+          type: string
   /api/user:
     get:
       summary: ''
@@ -29,6 +1132,169 @@ paths:
       tags:
         - Endpoints
       security: []
+  /api/appraisers:
+    get:
+      summary: ''
+      operationId: getApiAppraisers
+      description: ''
+      parameters: []
+      responses:
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Server Error'
+                properties:
+                  message:
+                    type: string
+                    example: 'Server Error'
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: ''
+      operationId: postApiAppraisers
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                AppraiserId:
+                  type: string
+                  description: 'Must not be greater than 10 characters.'
+                  example: xejrxy
+                Name:
+                  type: string
+                  description: ''
+                  example: iusto
+                Experience:
+                  type: string
+                  description: ''
+                  example: non
+                Email:
+                  type: string
+                  description: ''
+                  example: pklein@example.org
+                Phone:
+                  type: string
+                  description: ''
+                  example: adipisci
+                Address:
+                  type: string
+                  description: ''
+                  example: quibusdam
+              required:
+                - AppraiserId
+                - Name
+      security: []
+  '/api/appraisers/restore/{id}':
+    patch:
+      summary: ''
+      operationId: patchApiAppraisersRestoreId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the restore.'
+        example: commodi
+        required: true
+        schema:
+          type: string
+  '/api/users/{UserId}':
+    put:
+      summary: 'Update a user record.'
+      operationId: updateAUserRecord
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                UserName:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: hyqgojsivfhrcepounwkucy
+                PassWord:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: 'KNG}._dx'
+                Avatar:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: sxgokdxgdyierxdccusggenva
+                Name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: uhisftcrznzithinaz
+                DateOfBirth:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2024-07-15T05:25:38'
+                Gender:
+                  type: string
+                  description: ''
+                  example: male
+                  enum:
+                    - male
+                    - female
+                Phone:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: dlltsdksmmwxkxltm
+                Email:
+                  type: string
+                  description: 'Must be a valid email address. Must not be greater than 255 characters.'
+                  example: kristin77@example.com
+                AddressId:
+                  type: string
+                  description: 'Must not be greater than 10 characters.'
+                  example: na
+                IsBan:
+                  type: string
+                  description: ''
+                  example: unbanned
+                  enum:
+                    - banned
+                    - unbanned
+                Verify:
+                  type: string
+                  description: ''
+                  example: unverified
+                  enum:
+                    - verified
+                    - unverified
+      security: []
+    parameters:
+      -
+        in: path
+        name: UserId
+        description: ''
+        example: dolores
+        required: true
+        schema:
+          type: string
   /api/notifications:
     get:
       summary: 'Display a listing of the notifications.'
@@ -41,41 +1307,110 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                type: array
+                items:
+                  type: object
                 example:
-                  data:
-                    -
-                      NotificationId: '1'
-                      Content: 'Lorem ipsum...'
-                      Title: 'Notification 1'
-                    -
-                      NotificationId: '2'
-                      Content: 'Dolor sit amet...'
-                      Title: 'Notification 2'
-                properties:
-                  data:
-                    type: array
-                    example:
-                      -
-                        NotificationId: '1'
-                        Content: 'Lorem ipsum...'
-                        Title: 'Notification 1'
-                      -
-                        NotificationId: '2'
-                        Content: 'Dolor sit amet...'
-                        Title: 'Notification 2'
-                    items:
-                      type: object
-                      properties:
-                        NotificationId:
-                          type: string
-                          example: '1'
-                        Content:
-                          type: string
-                          example: 'Lorem ipsum...'
-                        Title:
-                          type: string
-                          example: 'Notification 1'
+                  -
+                    NotificationId: NT00000001
+                    UserId: US00000001
+                    Content: 'Your bid has been placed successfully'
+                    Title: 'Auction Ending Soon'
+                  -
+                    NotificationId: NT00000002
+                    UserId: US00000002
+                    Content: 'You have been outbid on item X'
+                    Title: 'New Item Listed'
+                  -
+                    NotificationId: NT00000003
+                    UserId: US00000003
+                    Content: 'Your item has been successfully sold'
+                    Title: 'Payment Received'
+                  -
+                    NotificationId: NT00000004
+                    UserId: US00000004
+                    Content: 'The auction for item Y is ending soon'
+                    Title: 'Bid Placed Successfully'
+                  -
+                    NotificationId: NT00000005
+                    UserId: US00000005
+                    Content: 'Your account has been credited with $100'
+                    Title: 'Outbid Notification'
+                  -
+                    NotificationId: NT00000006
+                    UserId: US00000006
+                    Content: 'Please verify your email to continue'
+                    Title: 'Account Update'
+                  -
+                    NotificationId: NT00000007
+                    UserId: US00000007
+                    Content: 'Your password has been changed successfully'
+                    Title: 'Deposit Refunded'
+                  -
+                    NotificationId: NT00000008
+                    UserId: US00000008
+                    Content: 'The auction for item Z starts in 1 hour'
+                    Title: 'Password Changed'
+                  -
+                    NotificationId: NT00000009
+                    UserId: US00000009
+                    Content: 'Your account balance is low'
+                    Title: 'Item Sold'
+                  -
+                    NotificationId: NT00000010
+                    UserId: US00000010
+                    Content: 'A new auction has been listed in your favorite category'
+                    Title: 'Auction Canceled'
+                  -
+                    NotificationId: NT00000011
+                    UserId: US00000011
+                    Content: 'Your payment has been received'
+                    Title: 'Email Verification Required'
+                  -
+                    NotificationId: NT00000012
+                    UserId: US00000012
+                    Content: 'Your deposit has been refunded'
+                    Title: 'Maintenance Notice'
+                  -
+                    NotificationId: NT00000013
+                    UserId: US00000013
+                    Content: 'Your item listing has been approved'
+                    Title: 'Message from Seller'
+                  -
+                    NotificationId: NT00000014
+                    UserId: US00000014
+                    Content: 'The auction for item A has been canceled'
+                    Title: 'Payment Declined'
+                  -
+                    NotificationId: NT00000015
+                    UserId: US00000015
+                    Content: 'You have a new message from the seller'
+                    Title: 'Account Suspended'
+                  -
+                    NotificationId: NT00000016
+                    UserId: US00000016
+                    Content: 'Your shipping address has been updated'
+                    Title: 'Item Pickup Ready'
+                  -
+                    NotificationId: NT00000017
+                    UserId: US00000017
+                    Content: 'Your item is ready for pickup'
+                    Title: 'Auction Rescheduled'
+                  -
+                    NotificationId: NT00000018
+                    UserId: US00000018
+                    Content: 'Your withdrawal request has been processed'
+                    Title: 'Transaction Completed'
+                  -
+                    NotificationId: NT00000019
+                    UserId: US00000019
+                    Content: 'The auction platform will undergo maintenance at midnight'
+                    Title: 'Shipping Update'
+                  -
+                    NotificationId: NT00000020
+                    UserId: US00000020
+                    Content: 'Your bid on item B was not successful'
+                    Title: 'Deposit Confirmation'
       tags:
         - Notifications
       security: []
@@ -84,35 +1419,7 @@ paths:
       operationId: storeANewlyCreatedNotificationInStorage
       description: ''
       parameters: []
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: 'Notification created successfully'
-                  data:
-                    NotificationId: '1'
-                    Content: 'Lorem ipsum...'
-                    Title: 'Notification 1'
-                properties:
-                  message:
-                    type: string
-                    example: 'Notification created successfully'
-                  data:
-                    type: object
-                    properties:
-                      NotificationId:
-                        type: string
-                        example: '1'
-                      Content:
-                        type: string
-                        example: 'Lorem ipsum...'
-                      Title:
-                        type: string
-                        example: 'Notification 1'
+      responses: {  }
       tags:
         - Notifications
       requestBody:
@@ -122,20 +1429,20 @@ paths:
             schema:
               type: object
               properties:
-                NotificationId:
+                UserId:
                   type: string
-                  description: 'The ID of the notification.'
-                  example: '1'
+                  description: 'The ID of the user associated with the notification.'
+                  example: U12345
                 Content:
                   type: string
                   description: 'The content of the notification.'
-                  example: id
+                  example: 'New message received.'
                 Title:
                   type: string
                   description: 'The title of the notification.'
-                  example: libero
+                  example: 'New Message'
               required:
-                - NotificationId
+                - UserId
                 - Content
                 - Title
       security: []
@@ -153,23 +1460,23 @@ paths:
               schema:
                 type: object
                 example:
-                  data:
-                    NotificationId: '1'
-                    Content: 'Lorem ipsum...'
-                    Title: 'Notification 1'
+                  NotificationId: NT00000001
+                  UserId: US00000001
+                  Content: 'Your bid has been placed successfully'
+                  Title: 'Auction Ending Soon'
                 properties:
-                  data:
-                    type: object
-                    properties:
-                      NotificationId:
-                        type: string
-                        example: '1'
-                      Content:
-                        type: string
-                        example: 'Lorem ipsum...'
-                      Title:
-                        type: string
-                        example: 'Notification 1'
+                  NotificationId:
+                    type: string
+                    example: NT00000001
+                  UserId:
+                    type: string
+                    example: US00000001
+                  Content:
+                    type: string
+                    example: 'Your bid has been placed successfully'
+                  Title:
+                    type: string
+                    example: 'Auction Ending Soon'
       tags:
         - Notifications
       security: []
@@ -178,35 +1485,7 @@ paths:
       operationId: updateTheSpecifiedNotificationInStorage
       description: ''
       parameters: []
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: 'Notification updated successfully'
-                  data:
-                    NotificationId: '1'
-                    Content: 'Updated content...'
-                    Title: 'Updated Notification'
-                properties:
-                  message:
-                    type: string
-                    example: 'Notification updated successfully'
-                  data:
-                    type: object
-                    properties:
-                      NotificationId:
-                        type: string
-                        example: '1'
-                      Content:
-                        type: string
-                        example: 'Updated content...'
-                      Title:
-                        type: string
-                        example: 'Updated Notification'
+      responses: {  }
       tags:
         - Notifications
       requestBody:
@@ -216,15 +1495,20 @@ paths:
             schema:
               type: object
               properties:
+                UserId:
+                  type: string
+                  description: 'The ID of the user associated with the notification.'
+                  example: U12345
                 Content:
                   type: string
-                  description: 'The new content of the notification.'
-                  example: consequuntur
+                  description: 'The content of the notification.'
+                  example: 'Updated message content.'
                 Title:
                   type: string
-                  description: 'The new title of the notification.'
-                  example: omnis
+                  description: 'The title of the notification.'
+                  example: 'Updated Message'
               required:
+                - UserId
                 - Content
                 - Title
       security: []
@@ -233,35 +1517,7 @@ paths:
       operationId: removeTheSpecifiedNotificationFromStorage
       description: ''
       parameters: []
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: 'Notification deleted successfully'
-                  data:
-                    NotificationId: '1'
-                    Content: 'Deleted content...'
-                    Title: 'Deleted Notification'
-                properties:
-                  message:
-                    type: string
-                    example: 'Notification deleted successfully'
-                  data:
-                    type: object
-                    properties:
-                      NotificationId:
-                        type: string
-                        example: '1'
-                      Content:
-                        type: string
-                        example: 'Deleted content...'
-                      Title:
-                        type: string
-                        example: 'Deleted Notification'
+      responses: {  }
       tags:
         - Notifications
       security: []
@@ -269,15 +1525,179 @@ paths:
       -
         in: path
         name: NotificationId
+        description: ''
+        example: NT00000001
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: id
         description: 'The ID of the notification.'
-        example: '1'
+        example: dolorem
+        required: true
+        schema:
+          type: string
+  /api/warehouses:
+    get:
+      summary: 'Display a listing of the warehouses.'
+      operationId: displayAListingOfTheWarehouses
+      description: ''
+      parameters: []
+      responses:
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Server Error'
+                properties:
+                  message:
+                    type: string
+                    example: 'Server Error'
+      tags:
+        - Warehouses
+      security: []
+    post:
+      summary: 'Store a newly created warehouse in storage.'
+      operationId: storeANewlyCreatedWarehouseInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Warehouses
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Position:
+                  type: string
+                  description: 'The position of the warehouse.'
+                  example: A1
+                Quantity:
+                  type: number
+                  description: 'The quantity of items in the warehouse.'
+                  example: 100.5
+                importDate:
+                  type: dateTime
+                  description: 'The import date of items in the warehouse.'
+                  example: '2024-07-14 10:00:00'
+                exportDate:
+                  type: dateTime
+                  description: 'The export date of items in the warehouse.'
+                  example: '2024-07-15 15:30:00'
+              required:
+                - Position
+                - Quantity
+                - importDate
+                - exportDate
+      security: []
+  '/api/warehouses/{WareHouseId}':
+    get:
+      summary: 'Display the specified warehouse.'
+      operationId: displayTheSpecifiedWarehouse
+      description: ''
+      parameters: []
+      responses:
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Server Error'
+                properties:
+                  message:
+                    type: string
+                    example: 'Server Error'
+      tags:
+        - Warehouses
+      security: []
+    put:
+      summary: 'Update the specified warehouse in storage.'
+      operationId: updateTheSpecifiedWarehouseInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Warehouses
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Position:
+                  type: string
+                  description: 'The position of the warehouse.'
+                  example: 'Updated Position'
+                Quantity:
+                  type: number
+                  description: 'The quantity of items in the warehouse.'
+                  example: 150.5
+                importDate:
+                  type: dateTime
+                  description: 'The import date of items in the warehouse.'
+                  example: '2024-07-15 09:00:00'
+                exportDate:
+                  type: dateTime
+                  description: 'The export date of items in the warehouse.'
+                  example: '2024-07-16 14:00:00'
+              required:
+                - Position
+                - Quantity
+                - importDate
+                - exportDate
+      security: []
+    delete:
+      summary: 'Remove the specified warehouse from storage.'
+      operationId: removeTheSpecifiedWarehouseFromStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Warehouses
+      security: []
+    parameters:
+      -
+        in: path
+        name: WareHouseId
+        description: ''
+        example: distinctio
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: id
+        description: 'The ID of the warehouse.'
+        example: quam
         required: true
         schema:
           type: string
 tags:
   -
+    name: Appraiser
+    description: ''
+  -
+    name: Assets
+    description: ''
+  -
+    name: Categories
+    description: ''
+  -
     name: Endpoints
     description: ''
   -
     name: Notifications
-    description: ''
+    description: "\nAPIs for managing notifications"
+  -
+    name: Warehouses
+    description: "\nAPIs for managing warehouses"

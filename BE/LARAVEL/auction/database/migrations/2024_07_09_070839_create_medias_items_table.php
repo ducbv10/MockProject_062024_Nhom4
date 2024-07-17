@@ -13,7 +13,7 @@ class CreateMediasItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('medias_items', function (Blueprint $table) {
+        Schema::create('mediasitems', function (Blueprint $table) {
             $table->string('MediaItemId', 10)->primary();
             $table->string('MediaId', 10);
 

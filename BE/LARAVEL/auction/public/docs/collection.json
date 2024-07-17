@@ -10,11 +10,658 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "cc683370-dcac-4bd0-a2f3-f18e80f15b76",
+        "_postman_id": "da8f33db-ba54-445b-b7e2-7ba4611d7c12",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
     "item": [
+        {
+            "name": "Appraiser",
+            "description": "",
+            "item": [
+                {
+                    "name": "Remove the specified asset from storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/appraisers\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/appraisers\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "AP00000001",
+                                    "description": "The ID of the asset."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint deletes a specific asset by its ID.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"message\": \"Appraiser deleted successfully\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n    \"error\": \"Asset not found.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Assets",
+            "description": "",
+            "item": [
+                {
+                    "name": "Get a list of all assets.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/assets",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/assets"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint retrieves all assets from the database.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": [\n        {\n            \"AssetId\": \"AS00000001\",\n            \"Name\": \"Asset 1\",\n            \"Description\": \"Description of asset 1\",\n            \"Origin\": \"Origin 1\",\n            \"AppraiserStatus\": \"Appraiser status 1\",\n            \"IsNew\": \"Yes\",\n            \"IsInAuction\": \"No\",\n            \"IsSold\": \"No\",\n            \"UserId\": \"User1\",\n            \"AppraiserId\": \"Appraiser1\",\n            \"WareHouseId\": \"Warehouse1\",\n            \"CategoryId\": \"Category1\"\n        }\n    ]\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Display the specified asset.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/assets\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/assets\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "AS00000001",
+                                    "description": "The ID of the asset."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint retrieves the details of a specific asset by its ID.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": {\n        \"AssetId\": \"AS00000001\",\n        \"Name\": \"Asset 1\",\n        \"Description\": \"This is a description of asset 1.\",\n        \"Origin\": \"Origin 1\",\n        \"AppraiserStatus\": \"Approved\",\n        \"IsNew\": \"Yes\",\n        \"IsInAuction\": \"No\",\n        \"IsSold\": \"No\",\n        \"UserId\": \"User1\",\n        \"AppraiserId\": \"Appraiser1\",\n        \"WareHouseId\": \"Warehouse1\",\n        \"CategoryId\": \"Category1\"\n    }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n    \"error\": \"Asset not found.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Store a newly created asset in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/assets",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/assets"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"AssetId\":\"AS00000001\",\"Name\":\"Asset 1\",\"Description\":\"This is a description of asset 1.\",\"Origin\":\"Origin 1\",\"AppraiserStatus\":\"Approved\",\"IsNew\":\"Yes\",\"IsInAuction\":\"No\",\"IsSold\":\"No\",\"UserId\":\"User1\",\"AppraiserId\":\"Appraiser1\",\"WareHouseId\":\"Warehouse1\",\"CategoryId\":\"Category1\"}"
+                        },
+                        "description": "This endpoint creates a new asset with the provided details.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\n    \"message\": \"Asset created successfully\",\n    \"data\": {\n        \"AssetId\": \"AS00000001\",\n        \"Name\": \"Asset 1\",\n        \"Description\": \"This is a description of asset 1.\",\n        \"Origin\": \"Origin 1\",\n        \"AppraiserStatus\": \"Approved\",\n        \"IsNew\": \"Yes\",\n        \"IsInAuction\": \"No\",\n        \"IsSold\": \"No\",\n        \"UserId\": \"User1\",\n        \"AppraiserId\": \"Appraiser1\",\n        \"WareHouseId\": \"Warehouse1\",\n        \"CategoryId\": \"Category1\"\n    }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n    \"error\": {\n        \"AssetId\": [\n            \"The asset ID has already been taken.\"\n        ]\n    }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n    \"error\": \"Failed to create asset.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the specified asset in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/assets\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/assets\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "AS00000001",
+                                    "description": "The ID of the asset."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"Name\":\"Asset 1\",\"Description\":\"This is a description of asset 1.\",\"Origin\":\"Origin 1\",\"AppraiserStatus\":\"Approved\",\"IsNew\":\"Yes\",\"IsInAuction\":\"No\",\"IsSold\":\"No\",\"UserId\":\"User1\",\"AppraiserId\":\"Appraiser1\",\"WareHouseId\":\"Warehouse1\",\"CategoryId\":\"Category1\"}"
+                        },
+                        "description": "This endpoint updates the details of a specific asset.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"message\": \"Asset updated successfully\",\n    \"data\": {\n        \"AssetId\": \"AS00000001\",\n        \"Name\": \"Asset 1\",\n        \"Description\": \"This is a description of asset 1.\",\n        \"Origin\": \"Origin 1\",\n        \"AppraiserStatus\": \"Approved\",\n        \"IsNew\": \"Yes\",\n        \"IsInAuction\": \"No\",\n        \"IsSold\": \"No\",\n        \"UserId\": \"User1\",\n        \"AppraiserId\": \"Appraiser1\",\n        \"WareHouseId\": \"Warehouse1\",\n        \"CategoryId\": \"Category1\"\n    }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n    \"error\": {\n        \"Name\": [\n            \"The name field is required.\"\n        ]\n    }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n    \"error\": \"Asset not found.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Remove the specified asset from storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/assets\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/assets\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "AS00000001",
+                                    "description": "The ID of the asset."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint deletes a specific asset by its ID.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"message\": \"Asset deleted successfully\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n    \"error\": \"Asset not found.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Restore the specified asset from storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/assets\/restore\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/assets\/restore\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "AS00000001",
+                                    "description": "The ID of the asset."
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint restores a deleted asset by its ID.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"message\": \"Asset restored successfully\",\n    \"data\": {\n        \"AssetId\": \"AS00000001\",\n        \"Name\": \"Asset 1\",\n        \"Description\": \"This is a description of asset 1.\",\n        \"Origin\": \"Origin 1\",\n        \"AppraiserStatus\": \"Approved\",\n        \"IsNew\": \"Yes\",\n        \"IsInAuction\": \"No\",\n        \"IsSold\": \"No\",\n        \"UserId\": \"User1\",\n        \"AppraiserId\": \"Appraiser1\",\n        \"WareHouseId\": \"Warehouse1\",\n        \"CategoryId\": \"Category1\"\n    }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n    \"error\": \"Asset not found.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Categories",
+            "description": "",
+            "item": [
+                {
+                    "name": "Display a listing of the categories.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/categories",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/categories"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"data\": [\n     {\n         \"CategoryId\": \"1\",\n         \"CategoryName\": \"Category 1\",\n         \"Description\": \"Description of Category 1\"\n     },\n     {\n         \"CategoryId\": \"2\",\n         \"CategoryName\": \"Category 2\",\n         \"Description\": \"Description of Category 2\"\n     }\n ]\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Display the specified category.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/categories\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/categories\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the category."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"data\": {\n     \"CategoryId\": \"1\",\n     \"CategoryName\": \"Category 1\",\n     \"Description\": \"Description of Category 1\"\n }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n \"error\": \"Category not found.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Store a newly created category in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/categories",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/categories"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"CategoryId\":\"CA00000001\",\"CategoryName\":\"Category 1\",\"Description\":\"This is a category description.\"}"
+                        },
+                        "description": "This endpoint creates a new category with the provided details.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\n    \"message\": \"Category created successfully\",\n    \"data\": {\n        \"CategoryId\": \"CA00000001\",\n        \"CategoryName\": \"Category 1\",\n        \"Description\": \"This is a category description.\"\n    }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n    \"error\": {\n        \"CategoryId\": [\n            \"The category ID has already been taken.\"\n        ]\n    }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n    \"error\": \"Failed to create category.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the specified category in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/categories\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/categories\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the category to update."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"CategoryName\":\"Updated Category\",\"Description\":\"Maxime harum exercitationem natus fugit hic et.\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"message\": \"Category updated successfully\",\n \"data\": {\n     \"CategoryId\": \"1\",\n     \"CategoryName\": \"Updated Category\",\n     \"Description\": \"New description\"\n }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n \"error\": {\n     \"CategoryName\": [\n         \"The category name field is required.\"\n     ]\n }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n \"error\": \"Category not found.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Remove the specified category from storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/categories\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/categories\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the category to delete."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"message\": \"Category deleted successfully\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n \"error\": \"Category not found.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Restore the specified category from soft delete.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/categories\/restore\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/categories\/restore\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the category to restore."
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"message\": \"Category restored successfully\",\n \"data\": {\n     \"CategoryId\": \"1\",\n     \"CategoryName\": \"Restored Category\",\n     \"Description\": \"Restored description\"\n }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n \"error\": \"Category not found.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
         {
             "name": "Endpoints",
             "description": "",
@@ -66,12 +713,277 @@
                             "name": ""
                         }
                     ]
+                },
+                {
+                    "name": "GET api\/appraisers",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/appraisers",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/appraisers"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "58"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/appraisers\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/appraisers\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/appraisers\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "4",
+                                    "description": "The ID of the appraiser."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "57"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "POST api\/appraisers",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/appraisers",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/appraisers"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"AppraiserId\":\"xejrxy\",\"Name\":\"iusto\",\"Experience\":\"non\",\"Email\":\"pklein@example.org\",\"Phone\":\"adipisci\",\"Address\":\"quibusdam\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update the specified asset in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/appraisers\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/appraisers\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "4",
+                                    "description": "The ID of the appraiser."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"Name\":\"a\",\"Experience\":\"illum\",\"Email\":\"jessy19@example.org\",\"Phone\":\"est\",\"Address\":\"dolore\"}"
+                        },
+                        "description": "This endpoint updates the details of a specific asset.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "PATCH api\/appraisers\/restore\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/appraisers\/restore\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/appraisers\/restore\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "commodi",
+                                    "description": "The ID of the restore."
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update a user record.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users\/:UserId",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users\/:UserId",
+                            "variable": [
+                                {
+                                    "id": "UserId",
+                                    "key": "UserId",
+                                    "value": "dolores",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"UserName\":\"hyqgojsivfhrcepounwkucy\",\"PassWord\":\"KNG}._dx\",\"Avatar\":\"sxgokdxgdyierxdccusggenva\",\"Name\":\"uhisftcrznzithinaz\",\"DateOfBirth\":\"2024-07-15T05:25:38\",\"Gender\":\"male\",\"Phone\":\"dlltsdksmmwxkxltm\",\"Email\":\"kristin77@example.com\",\"AddressId\":\"na\",\"IsBan\":\"unbanned\",\"Verify\":\"unverified\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
                 }
             ]
         },
         {
             "name": "Notifications",
-            "description": "",
+            "description": "\nAPIs for managing notifications",
             "item": [
                 {
                     "name": "Display a listing of the notifications.",
@@ -101,9 +1013,30 @@
                     },
                     "response": [
                         {
-                            "header": [],
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "56"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
                             "code": 200,
-                            "body": "{\n \"data\": [\n     {\n         \"NotificationId\": \"1\",\n         \"Content\": \"Lorem ipsum...\",\n         \"Title\": \"Notification 1\"\n     },\n     {\n         \"NotificationId\": \"2\",\n         \"Content\": \"Dolor sit amet...\",\n         \"Title\": \"Notification 2\"\n     }\n ]\n}",
+                            "body": "[{\"NotificationId\":\"NT00000001\",\"UserId\":\"US00000001\",\"Content\":\"Your bid has been placed successfully\",\"Title\":\"Auction Ending Soon\"},{\"NotificationId\":\"NT00000002\",\"UserId\":\"US00000002\",\"Content\":\"You have been outbid on item X\",\"Title\":\"New Item Listed\"},{\"NotificationId\":\"NT00000003\",\"UserId\":\"US00000003\",\"Content\":\"Your item has been successfully sold\",\"Title\":\"Payment Received\"},{\"NotificationId\":\"NT00000004\",\"UserId\":\"US00000004\",\"Content\":\"The auction for item Y is ending soon\",\"Title\":\"Bid Placed Successfully\"},{\"NotificationId\":\"NT00000005\",\"UserId\":\"US00000005\",\"Content\":\"Your account has been credited with $100\",\"Title\":\"Outbid Notification\"},{\"NotificationId\":\"NT00000006\",\"UserId\":\"US00000006\",\"Content\":\"Please verify your email to continue\",\"Title\":\"Account Update\"},{\"NotificationId\":\"NT00000007\",\"UserId\":\"US00000007\",\"Content\":\"Your password has been changed successfully\",\"Title\":\"Deposit Refunded\"},{\"NotificationId\":\"NT00000008\",\"UserId\":\"US00000008\",\"Content\":\"The auction for item Z starts in 1 hour\",\"Title\":\"Password Changed\"},{\"NotificationId\":\"NT00000009\",\"UserId\":\"US00000009\",\"Content\":\"Your account balance is low\",\"Title\":\"Item Sold\"},{\"NotificationId\":\"NT00000010\",\"UserId\":\"US00000010\",\"Content\":\"A new auction has been listed in your favorite category\",\"Title\":\"Auction Canceled\"},{\"NotificationId\":\"NT00000011\",\"UserId\":\"US00000011\",\"Content\":\"Your payment has been received\",\"Title\":\"Email Verification Required\"},{\"NotificationId\":\"NT00000012\",\"UserId\":\"US00000012\",\"Content\":\"Your deposit has been refunded\",\"Title\":\"Maintenance Notice\"},{\"NotificationId\":\"NT00000013\",\"UserId\":\"US00000013\",\"Content\":\"Your item listing has been approved\",\"Title\":\"Message from Seller\"},{\"NotificationId\":\"NT00000014\",\"UserId\":\"US00000014\",\"Content\":\"The auction for item A has been canceled\",\"Title\":\"Payment Declined\"},{\"NotificationId\":\"NT00000015\",\"UserId\":\"US00000015\",\"Content\":\"You have a new message from the seller\",\"Title\":\"Account Suspended\"},{\"NotificationId\":\"NT00000016\",\"UserId\":\"US00000016\",\"Content\":\"Your shipping address has been updated\",\"Title\":\"Item Pickup Ready\"},{\"NotificationId\":\"NT00000017\",\"UserId\":\"US00000017\",\"Content\":\"Your item is ready for pickup\",\"Title\":\"Auction Rescheduled\"},{\"NotificationId\":\"NT00000018\",\"UserId\":\"US00000018\",\"Content\":\"Your withdrawal request has been processed\",\"Title\":\"Transaction Completed\"},{\"NotificationId\":\"NT00000019\",\"UserId\":\"US00000019\",\"Content\":\"The auction platform will undergo maintenance at midnight\",\"Title\":\"Shipping Update\"},{\"NotificationId\":\"NT00000020\",\"UserId\":\"US00000020\",\"Content\":\"Your bid on item B was not successful\",\"Title\":\"Deposit Confirmation\"}]",
                             "name": ""
                         }
                     ]
@@ -120,7 +1053,13 @@
                                 {
                                     "id": "NotificationId",
                                     "key": "NotificationId",
-                                    "value": "1",
+                                    "value": "NT00000001",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "dolorem",
                                     "description": "The ID of the notification."
                                 }
                             ]
@@ -144,9 +1083,30 @@
                     },
                     "response": [
                         {
-                            "header": [],
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "55"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
                             "code": 200,
-                            "body": "{\n \"data\": {\n     \"NotificationId\": \"1\",\n     \"Content\": \"Lorem ipsum...\",\n     \"Title\": \"Notification 1\"\n }\n}",
+                            "body": "{\"NotificationId\":\"NT00000001\",\"UserId\":\"US00000001\",\"Content\":\"Your bid has been placed successfully\",\"Title\":\"Auction Ending Soon\"}",
                             "name": ""
                         }
                     ]
@@ -173,21 +1133,14 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"NotificationId\":\"1\",\"Content\":\"id\",\"Title\":\"libero\"}"
+                            "raw": "{\"UserId\":\"U12345\",\"Content\":\"New message received.\",\"Title\":\"New Message\"}"
                         },
                         "description": "",
                         "auth": {
                             "type": "noauth"
                         }
                     },
-                    "response": [
-                        {
-                            "header": [],
-                            "code": 200,
-                            "body": "{\n \"message\": \"Notification created successfully\",\n \"data\": {\n     \"NotificationId\": \"1\",\n     \"Content\": \"Lorem ipsum...\",\n     \"Title\": \"Notification 1\"\n }\n}",
-                            "name": ""
-                        }
-                    ]
+                    "response": []
                 },
                 {
                     "name": "Update the specified notification in storage.",
@@ -201,8 +1154,14 @@
                                 {
                                     "id": "NotificationId",
                                     "key": "NotificationId",
-                                    "value": "1",
-                                    "description": "The ID of the notification to update."
+                                    "value": "NT00000001",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "saepe",
+                                    "description": "The ID of the notification."
                                 }
                             ]
                         },
@@ -219,21 +1178,14 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"Content\":\"consequuntur\",\"Title\":\"omnis\"}"
+                            "raw": "{\"UserId\":\"U12345\",\"Content\":\"Updated message content.\",\"Title\":\"Updated Message\"}"
                         },
                         "description": "",
                         "auth": {
                             "type": "noauth"
                         }
                     },
-                    "response": [
-                        {
-                            "header": [],
-                            "code": 200,
-                            "body": "{\n \"message\": \"Notification updated successfully\",\n \"data\": {\n     \"NotificationId\": \"1\",\n     \"Content\": \"Updated content...\",\n     \"Title\": \"Updated Notification\"\n }\n}",
-                            "name": ""
-                        }
-                    ]
+                    "response": []
                 },
                 {
                     "name": "Remove the specified notification from storage.",
@@ -247,8 +1199,14 @@
                                 {
                                     "id": "NotificationId",
                                     "key": "NotificationId",
-                                    "value": "1",
-                                    "description": "The ID of the notification to delete."
+                                    "value": "NT00000001",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "ut",
+                                    "description": "The ID of the notification."
                                 }
                             ]
                         },
@@ -269,14 +1227,257 @@
                             "type": "noauth"
                         }
                     },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Warehouses",
+            "description": "\nAPIs for managing warehouses",
+            "item": [
+                {
+                    "name": "Display a listing of the warehouses.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/warehouses",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/warehouses"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
                     "response": [
                         {
-                            "header": [],
-                            "code": 200,
-                            "body": "{\n \"message\": \"Notification deleted successfully\",\n \"data\": {\n     \"NotificationId\": \"1\",\n     \"Content\": \"Deleted content...\",\n     \"Title\": \"Deleted Notification\"\n }\n}",
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "54"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
                             "name": ""
                         }
                     ]
+                },
+                {
+                    "name": "Display the specified warehouse.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/warehouses\/:WareHouseId",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/warehouses\/:WareHouseId",
+                            "variable": [
+                                {
+                                    "id": "WareHouseId",
+                                    "key": "WareHouseId",
+                                    "value": "distinctio",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "quam",
+                                    "description": "The ID of the warehouse."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "53"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Store a newly created warehouse in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/warehouses",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/warehouses"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"Position\":\"A1\",\"Quantity\":100.5,\"importDate\":\"2024-07-14 10:00:00\",\"exportDate\":\"2024-07-15 15:30:00\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update the specified warehouse in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/warehouses\/:WareHouseId",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/warehouses\/:WareHouseId",
+                            "variable": [
+                                {
+                                    "id": "WareHouseId",
+                                    "key": "WareHouseId",
+                                    "value": "tenetur",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "molestiae",
+                                    "description": "The ID of the warehouse."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"Position\":\"Updated Position\",\"Quantity\":150.5,\"importDate\":\"2024-07-15 09:00:00\",\"exportDate\":\"2024-07-16 14:00:00\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Remove the specified warehouse from storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/warehouses\/:WareHouseId",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/warehouses\/:WareHouseId",
+                            "variable": [
+                                {
+                                    "id": "WareHouseId",
+                                    "key": "WareHouseId",
+                                    "value": "atque",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "ipsam",
+                                    "description": "The ID of the warehouse."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
                 }
             ]
         }

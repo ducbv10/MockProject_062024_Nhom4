@@ -13,7 +13,7 @@ class CreateTransactionsHistoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('transactions_history', function (Blueprint $table) {
+        Schema::create('transactionshistory', function (Blueprint $table) {
             // TransactionHistoryId làm khóa chính, varchar(10)
             $table->string('TransactionHistoryId', 10)->primary();
 
