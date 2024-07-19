@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.viettridao.request.AuctionDetailRequest;
@@ -50,6 +51,30 @@ public class AuctionDetailController {
 		try {
 			return new ResponseData<>(HttpStatus.OK.value(), "Update auction detail",
 					auctionDetailService.updateAuctionDetail(request));
+		} catch (Exception e) {
+			return new ResponseError<>(HttpStatus.BAD_REQUEST.value(), e.getMessage());
+		}
+	}
+	
+	@PutMapping("/{auctionDetailId}/host")
+	public ResponseData<?> updateHost(
+			@PathVariable("auctionDetailId") String auctionDetailId, 
+			@RequestParam("hostId") String hostId) {
+		try {
+			return new ResponseData<>(HttpStatus.OK.value(), "Update host for auction detail",
+					auctionDetailService.updateHostUser(hostId, auctionDetailId));
+		} catch (Exception e) {
+			return new ResponseError<>(HttpStatus.BAD_REQUEST.value(), e.getMessage());
+		}
+	}
+	
+	@PutMapping("/{auctionDetailId}/winner")
+	public ResponseData<?> updateWinner(
+			@PathVariable("auctionDetailId") String auctionDetailId, 
+			@RequestParam("winnerId") String winnerId) {
+		try {
+			return new ResponseData<>(HttpStatus.OK.value(), "Update winner for auction detail",
+					auctionDetailService.updateWinner(winnerId, auctionDetailId));
 		} catch (Exception e) {
 			return new ResponseError<>(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}

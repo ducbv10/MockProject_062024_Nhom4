@@ -26,4 +26,7 @@ public interface AuctionRepository extends JpaRepository<Auction, String> {
     List<Auction> findAuctionsByMethodAndSecretAndStatus(@Param("method") AuctionMethod method, 
                                @Param("isSecret") AuctionIsSecret isSecret, 
                                @Param("status") AuctionStatus status);
+	
+	@Query(value = "SELECT a FROM Auction a WHERE a.status = upcoming ORDER BY a.startDate LIMIT 6")
+	List<Auction> findTop6ByStatusUpcoming();
 }
