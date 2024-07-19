@@ -26,26 +26,26 @@ public class GlobalExceptionHandler {
 //		
 //		return ResponseEntity.badRequest().body(apiResponse);
 //	}
-//	
-//	@ExceptionHandler(value = AppException.class)
-//	ResponseEntity<ApiResponse> handlingAppException(AppException exception) {
-//		ErrorCode errorCode = exception.getErrorCode();
-//		ApiResponse apiResponse = new ApiResponse<>();
-//		apiResponse.setCode(errorCode.getCode());
-//		apiResponse.setMessage(errorCode.getMessage());
-//		
-//		return ResponseEntity.badRequest().body(apiResponse);
-//	}
-//	
-//	@ExceptionHandler(HttpMessageNotReadableException.class)
-//    public ResponseEntity<ApiResponse> handleHttpMessageNotReadableException(HttpMessageNotReadableException exception) {
-//		ApiResponse apiResponse = new ApiResponse<>();
-//		apiResponse.setCode(ErrorCode.DATETIME_FORMAT_INVALID.getCode());
-//		apiResponse.setMessage(ErrorCode.DATETIME_FORMAT_INVALID.getMessage());
-//		
-//		return ResponseEntity.badRequest().body(apiResponse);
-//    }
-//	
+	
+	@ExceptionHandler(value = AppException.class)
+	ResponseEntity<ApiResponse> handlingAppException(AppException exception) {
+		ErrorCode errorCode = exception.getErrorCode();
+		ApiResponse apiResponse = new ApiResponse<>();
+		apiResponse.setCode(errorCode.getCode());
+		apiResponse.setMessage(errorCode.getMessage());
+		
+		return ResponseEntity.badRequest().body(apiResponse);
+	}
+	
+	@ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<ApiResponse> handleHttpMessageNotReadableException(HttpMessageNotReadableException exception) {
+		ApiResponse apiResponse = new ApiResponse<>();
+		apiResponse.setCode(ErrorCode.DATETIME_FORMAT_INVALID.getCode());
+		apiResponse.setMessage(ErrorCode.DATETIME_FORMAT_INVALID.getMessage());
+		
+		return ResponseEntity.badRequest().body(apiResponse);
+    }
+	
 //	@ExceptionHandler(value = MethodArgumentNotValidException.class)
 //	ResponseEntity<ApiResponse> handlingValidation(MethodArgumentNotValidException exception) {
 //		String enumKey = exception.getFieldError().getDefaultMessage();
