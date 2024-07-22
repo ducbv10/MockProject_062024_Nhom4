@@ -45,7 +45,7 @@ public class AuctionDetail {
 	@Column(name = "Step")
 	Double step;
 	
-	@Column(name = "TotalIime")
+	@Column(name = "TotalTime")
 	String totalTime;
 	
 	@ManyToOne()

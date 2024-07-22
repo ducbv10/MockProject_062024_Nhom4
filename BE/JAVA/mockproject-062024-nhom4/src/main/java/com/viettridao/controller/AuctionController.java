@@ -37,6 +37,15 @@ public class AuctionController {
 			return new ResponseError<>(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
+	
+	@GetMapping("/top-6")
+	public ResponseData<?> getTop6AuctionsUpcoming() {
+		try {
+			return new ResponseData<>(HttpStatus.OK.value(), "Top 6 auctions upcoming", auctionService.getTop6AuctionUpcoming());
+		} catch (Exception e) {
+			return new ResponseError<>(HttpStatus.BAD_REQUEST.value(), e.getMessage());
+		}
+	}
 
 	@PostMapping
 	public ResponseData<?> createNewAuction(@RequestBody @Valid AuctionDTO auction) {
@@ -91,14 +100,14 @@ public class AuctionController {
 		}
 	}
 
-//	@GetMapping
-//	public ResponseData<?> findAllAuctionWithPageable(@RequestParam("pageNo") int pageNo,
-//			@RequestParam("limit") int pageSize) {
-//		try {
-//			return new ResponseData<>(HttpStatus.OK.value(), "Find list auction page " + pageNo,
-//					auctionService.findAllAuctionPageable(pageNo, pageSize));
-//		} catch (Exception e) {
-//			return new ResponseError<>(HttpStatus.BAD_REQUEST.value(), e.getMessage());
-//		}
-//	}
+	@GetMapping("/pagination")
+	public ResponseData<?> findAllAuctionWithPageable(@RequestParam("page") int pageNo,
+			@RequestParam("limit") int pageSize) {
+		try {
+			return new ResponseData<>(HttpStatus.OK.value(), "Find list auction page " + pageNo,
+					auctionService.findAllAuctionPageable(pageNo, pageSize));
+		} catch (Exception e) {
+			return new ResponseError<>(HttpStatus.BAD_REQUEST.value(), e.getMessage());
+		}
+	}
 }

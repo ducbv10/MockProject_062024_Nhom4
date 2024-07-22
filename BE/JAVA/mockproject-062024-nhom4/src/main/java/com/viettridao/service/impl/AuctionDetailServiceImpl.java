@@ -87,6 +87,13 @@ public class AuctionDetailServiceImpl implements IAuctionDetailService {
 		
 		return auctionDetail;
 	}
+	
+	private AuctionDetail findById(String id) {
+		AuctionDetail auctionDetail = auctionDetailRepo.findById(id)
+				.orElseThrow(() -> new RuntimeException("Not found auction detail id " + id));
+		
+		return auctionDetail;
+	}
 
 	@Override
 	public AuctionDetailDTO createNewAuctionDetail(AuctionDetailRequest request) {
@@ -110,8 +117,7 @@ public class AuctionDetailServiceImpl implements IAuctionDetailService {
 	public AuctionDetailDTO updateAuctionDetail(AuctionDetailRequest request) {
 		try {
 			log.info("Update info auction detail id {}", request.getAuctionDetailId());
-			AuctionDetail oldAuctionDetail = auctionDetailRepo.findById(request.getAuctionDetailId())
-					.orElseThrow(() -> new NotFoundException("Not found auction detail id " + request.getAuctionDetailId()));
+			AuctionDetail oldAuctionDetail = findById(request.getAuctionDetailId());
 			convertRequestToEntity(oldAuctionDetail, request);
 			auctionDetailRepo.save(oldAuctionDetail);
 			
@@ -125,8 +131,7 @@ public class AuctionDetailServiceImpl implements IAuctionDetailService {
 	@Override
 	public String deleteAuctionDetailById(String auctionDetailId) {
 		try {
-			AuctionDetail auctionDetail = auctionDetailRepo.findById(auctionDetailId)
-					.orElseThrow(() -> new RuntimeException("Not found auction detail id " + auctionDetailId));
+			AuctionDetail auctionDetail = findById(auctionDetailId);
 			
 			auctionDetail.setDeleteAt(LocalDateTime.now());
 			auctionDetailRepo.save(auctionDetail);
@@ -144,6 +149,36 @@ public class AuctionDetailServiceImpl implements IAuctionDetailService {
 			AuctionDetail auctionDetail = auctionDetailRepo.findById(auctionDetailId)
 					.orElseThrow(() -> new RuntimeException("Not found auction detail id " + auctionDetailId));
 			return mapper.map(auctionDetail, AuctionDetailDTO.class);
+		} catch (Exception e) {
+			log.error("Error message: {}", e.toString());
+			throw new RuntimeException(e.toString());
+		}
+	}
+
+	@Override
+	public String updateHostUser(String hostUser, String auctionDetailId) {
+		try {
+			AuctionDetail auctionDetail = findById(auctionDetailId);
+			User host = userRepo.findById(hostUser).orElseThrow(() -> new NotFoundException("Not found user id " + hostUser));
+			auctionDetail.setHostUser(host);
+			auctionDetailRepo.save(auctionDetail);
+			
+			return "Update host " + host + " for auction detail " + auctionDetailId + " success";
+		} catch (Exception e) {
+			log.error("Error message: {}", e.toString());
+			throw new RuntimeException(e.toString());
+		}
+	}
+
+	@Override
+	public String updateWinner(String winnerId, String auctionDetailId) {
+		try {
+			AuctionDetail auctionDetail = findById(auctionDetailId);
+			User winner = userRepo.findById(winnerId).orElseThrow(() -> new NotFoundException("Not found user id " + winnerId));
+			auctionDetail.setWonUser(winner);
+			auctionDetailRepo.save(auctionDetail);
+			
+			return "Update winner " + winnerId + " for auction detail " + auctionDetailId + " success";
 		} catch (Exception e) {
 			log.error("Error message: {}", e.toString());
 			throw new RuntimeException(e.toString());

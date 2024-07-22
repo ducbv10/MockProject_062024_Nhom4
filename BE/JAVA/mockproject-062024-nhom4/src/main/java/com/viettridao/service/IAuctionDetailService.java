@@ -12,4 +12,8 @@ public interface IAuctionDetailService {
 	String deleteAuctionDetailById(String auctionDetailId);
 	
 	AuctionDetailDTO findAuctionDetailById(String auctionDetailId);
+	
+	String updateHostUser(String hostUser, String auctionDetailId);
+	
+	String updateWinner(String winnerId, String auctionDetailId);
 }

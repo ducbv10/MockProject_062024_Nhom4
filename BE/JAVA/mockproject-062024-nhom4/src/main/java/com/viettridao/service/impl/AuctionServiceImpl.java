@@ -24,6 +24,7 @@ import com.viettridao.exception.AuctionException;
 import com.viettridao.exception.HolidayException;
 import com.viettridao.repository.AuctionRepository;
 import com.viettridao.repository.HolidayRepository;
+import com.viettridao.response.PaginationResult;
 import com.viettridao.service.IAuctionService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -162,15 +163,21 @@ public class AuctionServiceImpl implements IAuctionService {
 	}
 
 	@Override
-	public List<AuctionDTO> findAllAuctionPageable(int pageNo, int pageSize) {
+	public PaginationResult<AuctionDTO> findAllAuctionPageable(int pageNo, int pageSize) {
 		try {
 			log.info("Find auction page {} and limit {}", pageNo, pageSize);
 			pageNo = pageNo < 1 ? 1 : pageNo;
-			Pageable pageable = PageRequest.of(pageNo - 1, 5, Sort.by(Sort.Direction.ASC, "id"));
+			Pageable pageable = PageRequest.of(pageNo - 1, 5, Sort.by(Sort.Direction.ASC, "auctionId"));
 			Page<Auction> listAuctions = auctionRepo.findAll(pageable);
 			List<AuctionDTO> listAuctionsDTO = listAuctions.stream().map(item -> mapper.map(item, AuctionDTO.class))
 					.collect(Collectors.toList());
-			return listAuctionsDTO;
+			
+			PaginationResult<AuctionDTO> results = new PaginationResult<AuctionDTO>();
+			results.setData(listAuctionsDTO);
+			results.setTotalItems(listAuctions.getTotalElements());
+			results.setTotalPages(listAuctions.getTotalPages());
+			
+			return results;
 		} catch (Exception e) {
 			log.error("Error message: {}", e.toString());
 			throw new RuntimeException(e.toString());
@@ -201,6 +208,21 @@ public class AuctionServiceImpl implements IAuctionService {
 			log.info("Find auctions by method {} and secret {} and status {}", method, isSecret, status);
 
 			List<Auction> listAuctions = auctionRepo.findAuctionsByMethodAndSecretAndStatus(method, isSecret, status);
+			List<AuctionDTO> listAuctionsDTO = listAuctions.stream().map(item -> mapper.map(item, AuctionDTO.class))
+					.collect(Collectors.toList());
+			return listAuctionsDTO;
+		} catch (Exception e) {
+			log.error("Error message: {}", e.toString());
+			throw new RuntimeException(e.toString());
+		}
+	}
+
+	@Override
+	public List<AuctionDTO> getTop6AuctionUpcoming() {
+		try {
+			log.info("Get top 6 autions upcoming");
+
+			List<Auction> listAuctions = auctionRepo.findTop6ByStatusUpcoming();
 			List<AuctionDTO> listAuctionsDTO = listAuctions.stream().map(item -> mapper.map(item, AuctionDTO.class))
 					.collect(Collectors.toList());
 			return listAuctionsDTO;
