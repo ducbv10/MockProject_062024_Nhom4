@@ -1,64 +1,23 @@
 import { Router } from 'express';
-import { register, login, forgotPassword, logout, updateUser, getUserInfo } from '../controllers/userController';
-import authMiddleware from '../middleware/authMiddleware';
+import { login, logout } from '../controllers/userAdminController';
+import authAdminMiddleware from '../middleware/authAdminMiddleware';
+import { getUserInfo, updateUser } from '../controllers/userController';
 
 const router = Router();
 
 /**
  * @swagger
  * tags:
- *   name: User
- *   description: APIs for managing user authentication
+ *   name: Admin
+ *   description: APIs for managing admin user data
  */
 
 /**
  * @swagger
- * /user/register:
+ * /admin/login:
  *   post:
- *     summary: Register a new user
- *     tags: [User]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               userName:
- *                 type: string
- *               password:
- *                 type: string
- *               email:
- *                 type: string
- *               name:
- *                 type: string
- *               address:
- *                 type: string
- *               zipCodeId:
- *                 type: string
- *               bankName:
- *                 type: string
- *               bankNum:
- *                 type: string
- *               bankBranch:
- *                 type: string
- *     responses:
- *       201:
- *         description: User registered successfully
- *       400:
- *         description: User already exists
- *       500:
- *         description: Internal server error
- */
-
-router.post('/register', register);
-
-/**
- * @swagger
- * /user/login:
- *   post:
- *     summary: Login a user
- *     tags: [User]
+ *     summary: Admin login
+ *     tags: [Admin]
  *     requestBody:
  *       required: true
  *       content:
@@ -72,7 +31,14 @@ router.post('/register', register);
  *                 type: string
  *     responses:
  *       200:
- *         description: User logged in successfully
+ *         description: Admin logged in successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 token:
+ *                   type: string
  *       400:
  *         description: Invalid credentials
  *       500:
@@ -82,54 +48,29 @@ router.post('/login', login);
 
 /**
  * @swagger
- * /user/forgot-password:
+ * /admin/logout:
  *   post:
- *     summary: Forgot password
- *     tags: [User]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               email:
- *                 type: string
- *     responses:
- *       200:
- *         description: Password reset link has been sent to your email
- *       400:
- *         description: User not found
- *       500:
- *         description: Internal server error
- */
-router.post('/forgot-password', forgotPassword);
-
-/**
- * @swagger
- * /user/logout:
- *   post:
- *     summary: Logout a user
+ *     summary: Admin logout
  *     description: |
- *       Invalidate the current JWT token and log the user out.
+ *       Invalidate the current JWT token and log the admin out.
  *       Make sure to include your JWT token in the Authorization header as `Bearer <your_token_here>`.
- *     tags: [User]
+ *     tags: [Admin]
  *     security:
  *       - BearerAuth: []
  *     responses:
  *       200:
  *         description: Logout successful
- *       401:
- *         description: Invalid token or token expired
+ *       500:
+ *         description: Internal server error
  */
-router.post('/logout', authMiddleware, logout);
+router.post('/logout', authAdminMiddleware, logout);
 
 /**
  * @swagger
- * /user/info/{userId}:
+ * /admin/info/{userId}:
  *   get:
  *     summary: Get user information
- *     tags: [User]
+ *     tags: [Admin]
  *     parameters:
  *       - in: path
  *         name: userId
@@ -148,72 +89,71 @@ router.post('/logout', authMiddleware, logout);
  *                 user:
  *                   type: object
  *                   properties:
- *                     UserId:
+ *                     userId:
  *                       type: string
- *                     UserName:
+ *                     userName:
  *                       type: string
- *                     PassWord:
+ *                     password:
  *                       type: string
- *                     Avatar:
+ *                     avatar:
  *                       type: string
- *                     Name:
+ *                     name:
  *                       type: string
- *                     DateOfBirth:
+ *                     dateOfBirth:
  *                       type: string
  *                       format: date-time
- *                     Gender:
+ *                     gender:
  *                       type: string
- *                     Phone:
+ *                     phone:
  *                       type: string
- *                     Email:
+ *                     email:
  *                       type: string
- *                     AddressId:
+ *                     addressId:
  *                       type: string
- *                     IsBan:
+ *                     isBan:
  *                       type: string
- *                     Verify:
+ *                     verify:
  *                       type: string
- *                     DeletedAt:
+ *                     deletedAt:
  *                       type: string
  *                       format: date-time
  *                 address:
  *                   type: object
  *                   properties:
- *                     AddressId:
+ *                     addressId:
  *                       type: string
- *                     Name:
+ *                     name:
  *                       type: string
- *                     ZipCodeId:
+ *                     zipCodeId:
  *                       type: string
  *                 payment:
  *                   type: object
  *                   properties:
- *                     PaymentId:
+ *                     paymentId:
  *                       type: string
- *                     UserId:
+ *                     userId:
  *                       type: string
- *                     BankName:
+ *                     bankName:
  *                       type: string
- *                     BankNum:
+ *                     bankNum:
  *                       type: string
- *                     BankBranch:
+ *                     bankBranch:
  *                       type: string
- *                     AccountBalance:
+ *                     accountBalance:
  *                       type: number
  *       404:
  *         description: User not found
  *       500:
  *         description: Internal server error
  */
-
-router.get('/info/:userId', authMiddleware, getUserInfo);
+router.get('/info/:userId', authAdminMiddleware, getUserInfo);
 
 /**
  * @swagger
- * /user/update:
+ * /admin/info/update:
  *   put:
  *     summary: Update an existing user
- *     tags: [User]
+ *     tags: [Admin]
  *     requestBody:
  *       required: true
  *       content:
@@ -259,7 +199,6 @@ router.get('/info/:userId', authMiddleware, getUserInfo);
  *       500:
  *         description: Internal server error
  */
-
-router.put('/update', authMiddleware, updateUser);
+router.put('/info/update', authAdminMiddleware, updateUser);
 
 export default router;

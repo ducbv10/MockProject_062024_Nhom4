@@ -1,16 +1,23 @@
 import { Request, Response } from 'express';
 import UserModel from '../models/user';
+import UserRoleModel from '../models/userRole';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import AddressController from '../controllers/addressController';
 import PaymentController from '../controllers/paymentController';
 
-interface DecodedToken {
-  userId: string;
-}
-
 export const register = async (req: Request, res: Response) => {
-  const { UserName, PassWord, Email, Name, Address, ZipCodeId, BankName, BankNum, BankBranch } = req.body;
+  const {
+    userName: UserName,
+    password: PassWord,
+    email: Email,
+    name: Name,
+    address: Address,
+    zipCodeId: ZipCodeId,
+    bankName: BankName,
+    bankNum: BankNum,
+    bankBranch: BankBranch
+  } = req.body;  
 
   try {
     const existingUser = await UserModel.findByEmail(Email);
@@ -47,6 +54,8 @@ export const register = async (req: Request, res: Response) => {
     };
     await PaymentController.createPayment(paymentData);
 
+    await UserRoleModel.create({ UserId: userId });
+
     res.status(201).json({ message: 'User registered successfully' });
   } catch (err) {
     if (err instanceof Error) {
@@ -58,7 +67,7 @@ export const register = async (req: Request, res: Response) => {
 };
 
 export const login = async (req: Request, res: Response) => {
-  const { Email, PassWord } = req.body
+  const { email: Email, password: PassWord } = req.body
 
   try {
     const user = await UserModel.findByEmail(Email)
@@ -88,7 +97,7 @@ export const login = async (req: Request, res: Response) => {
 }
 
 export const forgotPassword = async (req: Request, res: Response) => {
-  const { Email } = req.body
+  const { email: Email } = req.body
 
   try {
     const user = await UserModel.findByEmail(Email)
@@ -120,5 +129,107 @@ export const logout = async (req: Request, res: Response) => {
   } catch (err) {
     console.error('Logout Error:', err);
     res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
+export const getUserInfo = async (req: Request, res: Response) => {
+  const { userId } = req.params;
+
+  try {
+    // Fetch user info
+    const user = await UserModel.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Fetch address info if AddressId exists
+    let address = null;
+    if (user.AddressId) {
+      const address: any = {};
+      await AddressController.findAddressById(user.AddressId, address);
+    }
+
+    // Fetch payment info
+    const payment: any = {};
+    await PaymentController.findPaymentById(user.UserId, payment);
+
+    // Construct response
+    const response = {
+      user,
+      address,
+      payment,
+    };
+
+    res.json(response);
+  } catch (err) {
+    console.error('Error in UserController.getUserInfo:', err);
+    res.status(500).json({ message: 'Failed to fetch user information' });
+  }
+};
+
+export const updateUser = async (req: Request, res: Response) => {
+  const {
+    userId: UserId,
+    userName: UserName,
+    password: PassWord,
+    avatar: Avatar,
+    name: Name,
+    dateOfBirth: DateOfBirth,
+    gender: Gender,
+    phone: Phone,
+    email: Email,
+    addressName: AddressName,
+    zipCodeId: ZipCodeId,
+    bankName: BankName,
+    bankNum: BankNum,
+    bankBranch: BankBranch
+  } = req.body;
+
+  try {
+    const user = await UserModel.findById(UserId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    const userUpdates: any = {};
+    if (UserName) userUpdates.UserName = UserName;
+    if (PassWord) userUpdates.PassWord = await bcrypt.hash(PassWord, 10);
+    if (Avatar) userUpdates.Avatar = Avatar;
+    if (Name) userUpdates.Name = Name;
+    if (DateOfBirth) userUpdates.DateOfBirth = DateOfBirth;
+    if (Gender) userUpdates.Gender = Gender;
+    if (Phone) userUpdates.Phone = Phone;
+    if (Email) userUpdates.Email = Email;
+
+    if (Object.keys(userUpdates).length) {
+      await UserModel.updateById(UserId, userUpdates);
+    }
+
+    const addressUpdates: any = {};
+    if (AddressName) addressUpdates.Name = AddressName;
+    if (ZipCodeId) addressUpdates.ZipCodeId = ZipCodeId;
+
+    if (Object.keys(addressUpdates).length && user.AddressId) {
+      await AddressController.updateAddress(user.AddressId, addressUpdates);
+    }
+
+    const paymentUpdates: any = {};
+    if (BankName) paymentUpdates.BankName = BankName;
+    if (BankNum) paymentUpdates.BankNum = BankNum;
+    if (BankBranch) paymentUpdates.BankBranch = BankBranch;
+
+    if (Object.keys(paymentUpdates).length) {
+      await PaymentController.updatePayment(user.UserId, paymentUpdates);
+    }
+
+    const updatedUser = await UserModel.findById(UserId); // Fetch the updated user data
+
+    res.json({ message: 'User updated successfully', user: updatedUser });
+  } catch (err) {
+    if (err instanceof Error) {
+      res.status(500).json({ message: err.message });
+    } else {
+      res.status(500).json({ message: 'An unknown error occurred' });
+    }
   }
 };
