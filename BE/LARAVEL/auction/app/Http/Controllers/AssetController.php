@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Asset;
+use App\Models\Media;
+use App\Models\MediaItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class AssetController extends Controller
 {
@@ -44,7 +47,17 @@ class AssetController extends Controller
      */
     public function index()
     {
-        $assets = Asset::all();
+        $assets = Asset::with('media.mediaItems')->get();
+
+    // // Chuyển đổi dữ liệu để bao gồm hình ảnh
+    // $assets = $assets->map(function ($asset) {
+    //     $mediaItems = $asset->media->flatMap->mediaItems;
+    //     $images = $mediaItems->pluck('Value');
+    //     $asset->images = $images;
+    //     unset($asset->media); // Xóa trường media nếu không cần thiết
+    //     return $asset;
+    // });
+
         return response()->json(['data' => $assets]);
     }
 
@@ -115,12 +128,18 @@ class AssetController extends Controller
             'AppraiserId' => 'nullable|string|max:10',
             'WareHouseId' => 'nullable|string|max:10',
             'CategoryId' => 'nullable|string|max:10',
+            'media' => 'nullable|array',
+            'media.*.MediaId' => 'required|string|max:10',
+            'media.*.MediaItems' => 'nullable|array',
+            'media.*.MediaItems.*.MediaItemId' => 'required|string|max:10',
+            'media.*.MediaItems.*.Value' => 'required|string',
         ]);
 
-        if ($validator->fails()) {
+         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 400);
         }
 
+        DB::beginTransaction();
         try {
             $data = $request->only([
                 'AssetId', 'Name', 'Description', 'Origin', 'AppraiserStatus',
@@ -130,11 +149,34 @@ class AssetController extends Controller
 
             $asset = Asset::create($data);
 
+            if ($request->has('media')) {
+                foreach ($request->media as $mediaData) {
+                    $media = new Media([
+                        'MediaId' => $mediaData['MediaId'],
+                        'AssetId' => $asset->AssetId,
+                    ]);
+                    $asset->media()->save($media);
+
+                    if (isset($mediaData['MediaItems'])) {
+                        foreach ($mediaData['MediaItems'] as $mediaItemData) {
+                            $mediaItem = new MediaItem([
+                                'MediaItemId' => $mediaItemData['MediaItemId'],
+                                'MediaId' => $media->MediaId,
+                                'Value' => $mediaItemData['Value'],
+                            ]);
+                            $media->mediaItems()->save($mediaItem);
+                        }
+                    }
+                }
+            }
+
+            DB::commit();
             return response()->json([
                 'message' => 'Asset created successfully',
-                'data' => $asset,
+                'data' => $asset->load('media.mediaItems'),
             ], 201);
         } catch (\Exception $e) {
+            DB::rollBack();
             return response()->json(['error' => 'Failed to create asset.'], 500);
         }
     }
@@ -173,7 +215,7 @@ class AssetController extends Controller
      */
     public function show($id)
     {
-        $asset = Asset::findOrFail($id);
+        $asset = Asset::with(['media.mediaItems'])->findOrFail($id);
         return response()->json(['data' => $asset]);
     }
 
@@ -246,18 +288,56 @@ class AssetController extends Controller
             'AppraiserId' => 'nullable|string|max:10',
             'WareHouseId' => 'nullable|string|max:10',
             'CategoryId' => 'nullable|string|max:10',
+            'media' => 'nullable|array',
+            'media.*.MediaId' => 'required|string|max:10',
+            'media.*.MediaItems' => 'nullable|array',
+            'media.*.MediaItems.*.MediaItemId' => 'required|string|max:10',
+            'media.*.MediaItems.*.Value' => 'required|string',
         ]);
 
-        if ($validator->fails()) {
+         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 400);
         }
 
-        $asset->update($request->all());
+        DB::beginTransaction();
+        try {
+            $asset->update($request->only([
+                'Name', 'Description', 'Origin', 'AppraiserStatus',
+                'IsNew', 'IsInAuction', 'IsSold', 'UserId', 'AppraiserId',
+                'WareHouseId', 'CategoryId'
+            ]));
 
-        return response()->json([
-            'message' => 'Asset updated successfully',
-            'data' => $asset,
-        ], 200);
+            if ($request->has('media')) {
+                $asset->media()->delete();
+                foreach ($request->media as $mediaData) {
+                    $media = new Media([
+                        'MediaId' => $mediaData['MediaId'],
+                        'AssetId' => $asset->AssetId,
+                    ]);
+                    $asset->media()->save($media);
+
+                    if (isset($mediaData['MediaItems'])) {
+                        foreach ($mediaData['MediaItems'] as $mediaItemData) {
+                            $mediaItem = new MediaItem([
+                                'MediaItemId' => $mediaItemData['MediaItemId'],
+                                'MediaId' => $media->MediaId,
+                                'Value' => $mediaItemData['Value'],
+                            ]);
+                            $media->mediaItems()->save($mediaItem);
+                        }
+                    }
+                }
+            }
+
+            DB::commit();
+            return response()->json([
+                'message' => 'Asset updated successfully',
+                'data' => $asset->load('media.mediaItems'),
+            ], 200);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json(['error' => 'Failed to update asset.'], 500);
+        }
     }
 
     /**
@@ -287,11 +367,17 @@ class AssetController extends Controller
             return response()->json(['error' => 'Asset not found.'], 404);
         }
 
-        $asset->delete();
+        DB::beginTransaction();
+        try {
+            $asset->media()->delete();
+            $asset->delete();
 
-        return response()->json([
-            'message' => 'Asset deleted successfully',
-        ], 200);
+            DB::commit();
+            return response()->json(['message' => 'Asset deleted successfully.'], 200);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json(['error' => 'Failed to delete asset.'], 500);
+        }
     }
 
     /**
@@ -329,17 +415,59 @@ class AssetController extends Controller
      */
     public function restore($id)
     {
-        $asset = Asset::withTrashed()->find($id);
+         $asset = Asset::onlyTrashed()->find($id);
 
         if (!$asset) {
-            return response()->json(['error' => 'Asset not found.'], 404);
+            return response()->json(['error' => 'Asset not found or not deleted.'], 404);
         }
 
-        $asset->restore();
+        DB::beginTransaction();
+        try {
+            $asset->restore();
 
-        return response()->json([
-            'message' => 'Asset restored successfully',
-            'data' => $asset,
-        ], 200);
+            // Restore related media and media items if necessary
+            foreach ($asset->media()->withTrashed()->get() as $media) {
+                $media->restore();
+                foreach ($media->mediaItems()->withTrashed()->get() as $mediaItem) {
+                    $mediaItem->restore();
+                }
+            }
+            DB::commit();
+            return response()->json(['message' => 'Asset restored successfully.', 'data' => $asset->load('media.mediaItems')], 200);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json(['error' => 'Failed to restore asset.'], 500);
+        }
+    }
+    // Trả về tất cả sản phẩm đang đấu giá
+    public function getAuctionedProducts()
+    {
+        $auctionedProducts = DB::table('Auction as a')
+            ->join('AuctionDetail as ad', 'a.AuctionId', '=', 'ad.AuctionId')
+            ->join('Asset as ass', 'ad.AssetId', '=', 'ass.AssetId')
+            ->leftJoin('Media as m', 'm.AssetId', '=', 'ass.AssetId')
+            ->leftJoin('MediaItem as mi', 'mi.MediaId', '=', 'm.MediaId')
+            ->select('a.StartDate', 'mi.Value as Image', 'ass.Name', 'ad.StartingPrice')
+            ->where('ass.IsInAuction', 'inauctioned')
+            ->whereNull('mi.DeletedAt')
+            ->get();
+
+        return response()->json($auctionedProducts);
+    }
+
+    // Trả về tất cả sản phẩm đã đấu giá thành công
+    public function getSuccessfullyAuctionedProducts()
+    {
+        $successfullyAuctionedProducts = DB::table('Auction as a')
+            ->join('AuctionDetail as ad', 'a.AuctionId', '=', 'ad.AuctionId')
+            ->join('Asset as ass', 'ad.AssetId', '=', 'ass.AssetId')
+            ->leftJoin('Media as m', 'm.AssetId', '=', 'ass.AssetId')
+            ->leftJoin('MediaItem as mi', 'mi.MediaId', '=', 'm.MediaId')
+            ->select('mi.Value as Image', 'ass.Name', 'a.EndDate', 'ad.PresentPrice as FinalPrice')
+            ->where('a.Status', 'finished')
+            ->whereNull('mi.DeletedAt')
+            ->get();
+
+        return response()->json($successfullyAuctionedProducts);
     }
 }

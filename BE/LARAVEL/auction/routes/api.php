@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WarehouseController;
+use App\Http\Controllers\AuctionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/auctioned-products', [AuctionController::class, 'auctionedProducts']);
+Route::get('/successfully-auctioned-products', [AuctionController::class, 'successfullyAuctionedProducts']);
+
 Route::prefix('categories')->group(function () {
     Route::get('/', [CategoryController::class, 'index']); // Get All Categories
     Route::get('/{id}', [CategoryController::class, 'show']); // Get Category by ID
@@ -40,6 +44,8 @@ Route::prefix('assets')->group(function () {
     Route::put('/{id}', [AssetController::class, 'update']); // Update Asset
     Route::delete('/{id}', [AssetController::class, 'destroy']); // Soft Delete Asset
     Route::patch('/restore/{id}', [AssetController::class, 'restore']); // Restore Soft Deleted Asset
+    Route::get('/auctioned-products', [AssetController::class, 'getAuctionedProducts']);
+    Route::get('/successfully-auctioned-products', [AssetController::class, 'getSuccessfullyAuctionedProducts']);
 });
 Route::prefix('appraisers')->group(function () {
     Route::get('/', [AppraiserController::class, 'index']); // Get All Assets
